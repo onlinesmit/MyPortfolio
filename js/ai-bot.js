@@ -12,22 +12,25 @@
     const KNOWLEDGE_BASE = [
         {
             keywords: ["hi", "hello", "hey", "namaste", "hlo", "kem cho", "kya haal", "hola", "start"],
-            reply: `👋 **Hello!** I am Smit's AI Assistant. How can I help you today?<br><br>You can ask me about his **experience**, **education**, **tech stack**, **projects**, or connect directly on **WhatsApp** or **LinkedIn**!`,
+            reply: `👋 **Hello!** I am Smit's AI Assistant. How can I help you today?<br><br>You can ask me about his **experience** (Turtlemint, Bluestocks Fintech, VVH&ES), **UGC NET Dec 2024 qualification**, **education**, **tech stack** (Spring Boot, React, Java, MERN), **projects** (Code Sync, CRUD App, School Portal), or connect directly on **WhatsApp** or **Calling**!`,
             actions: [
-                { text: "💼 Experience & Edu", chip: "experience" },
+                { text: "🎓 UGC NET Dec 2024", chip: "net" },
+                { text: "💼 Experience", chip: "experience" },
                 { text: "⚡ Tech Stack", chip: "skills" },
                 { text: "🚀 Projects", chip: "projects" },
                 { text: "💬 WhatsApp (+91 9875052329)", url: WHATSAPP_LINK, isWa: true }
             ]
         },
         {
-            keywords: ["who is smit", "about", "bio", "background", "kaun hai", "smit kumar", "introduce"],
-            reply: `👨‍💻 **About Smit Kumar**:<br>
-            • **Full Stack Software Developer & Computer Expert** with 3+ years of experience in tech, educational leadership, and modern web architectures.<br>
-            • **Current Role**: **Computer Lecturer at VVH&ES** and building high-performance web applications using React, Java, and MERN stack.<br>
-            • **Previous Role**: Software Developer & Team Lead at **Open Waiver** (led team of 5, boosted company profit ~30%).<br>
-            • **Education**: MCA from GL Bajaj (AKTU, 2022-24) & B.Sc (Maths & CS, 85% Distinction) from University of Allahabad.<br>
-            • **Languages**: English, Hindi, and Gujarati.`,
+            keywords: ["who is smit", "about", "bio", "background", "kaun hai", "smit kumar", "smit kumar gupta", "introduce"],
+            reply: `👨‍💻 **About Smit Kumar Gupta**:<br>
+            • **UGC NET Qualified (Dec 2024)** in Computer Science & Applications.<br>
+            • **Software Development Engineer & Computer Expert** with 3+ years of experience across fintech engineering and academic mentorship.<br>
+            • **Current Roles**: **Operation Executive at Turtlemint** (Mar 2025 – Present) & **Computer Lecturer / Tech Lead at VVH&ES** (Nov 2024 – Present).<br>
+            • **Previous Role**: **Software Development Engineer (SDE) at Bluestocks Fintech** (Jul 2024 – Feb 2025).<br>
+            • **Education**: MCA from GL Bajaj (AKTU, CGPA: 7.1/10) & B.Sc (Maths & CS, 85.6% Distinction) from University of Allahabad.<br>
+            • **Certifications**: Applied Cloud Computing (Microsoft & SAP India), Google Generative AI.<br>
+            • **Location**: Vapi, Gujarat, India.`,
             actions: [
                 { text: "🔗 LinkedIn Profile", url: LINKEDIN_URL },
                 { text: "📄 Download Resume", url: "assets/smit_resume.pdf" },
@@ -35,17 +38,29 @@
             ]
         },
         {
-            keywords: ["experience", "internship", "open waiver", "vvh&es", "vidya vikas", "teacher", "lecturer", "work", "job", "career"],
+            keywords: ["net", "ugc net", "ugc", "assistant professor", "exam", "qualification"],
+            reply: `🎓 **UGC NET Qualified (December 2024)**:<br>
+            • **Exam**: National Eligibility Test (UGC NET Dec 2024) conducted by National Testing Agency (NTA).<br>
+            • **Subject**: Computer Science and Applications.<br>
+            • **Significance**: National certification establishing eligibility for Assistant Professorship and deep domain mastery in Algorithms, Data Structures, Operating Systems, DBMS, Software Engineering, and Computer Networks.`,
+            actions: [
+                { text: "📄 Download Resume", url: "assets/smit_resume.pdf" },
+                { text: "🔗 LinkedIn Profile", url: LINKEDIN_URL }
+            ]
+        },
+        {
+            keywords: ["experience", "internship", "bluestocks", "turtlemint", "fintech", "sde", "vvh&es", "vidya vikas", "teacher", "lecturer", "work", "job", "career"],
             reply: `💼 **Professional Experience (3+ Years)**:<br><br>
-            1. 🏫 **Computer Lecturer & Tech Lead** — **VVH&ES** (Vapi, Gujarat | 12/11/2024 – Present)<br>
-            - Head of computer education, student lectures, digital curriculum & campus tech infrastructure.<br>
-            - Architected & launched official school web portal (<a href="https://vidyavikasschoolvapi.netlify.app/" target="_blank" style="color:#e84949;">vidyavikasschoolvapi.netlify.app</a>) with online admissions & notifications.<br>
-            - Training and mentoring students in programming fundamentals, modern web development, and digital literacy.<br><br>
-            2. 💻 **Software Developer & Team Lead** — **Open Waiver** (Remote | 12/10/2022 – 12/10/2023)<br>
-            - Led a team of 5 developers building high-performance frontend interfaces using HTML5, CSS3, JS, and Tailwind CSS.<br>
-            - Increased company profitability by approximately 30%.<br><br>
-            3. 🏆 **Team Lead — COAT IV Aptitude Test** (2020)<br>
-            - Led 20 volunteers for intercollegiate tech aptitude event and secured 3rd rank!`,
+            1. 🏢 **Operation Executive — Turtlemint**, Vapi (Mar 2025 – Present)<br>
+            - Managing operational workflows, process automation, and fintech operations.<br><br>
+            2. 💻 **Software Development Engineer (SDE) — Bluestocks Fintech** (Jul 2024 – Feb 2025)<br>
+            - Engineered scalable web applications using React.js and modern JavaScript.<br>
+            - Built and consumed RESTful APIs, optimized database queries, and participated in agile sprints.<br><br>
+            3. 🏫 **Computer Lecturer & Tech Lead — VVH&ES**, Vapi (Nov 2024 – Present)<br>
+            - Head of computer science instruction and laboratory infrastructure.<br>
+            - Built the official school web portal (<a href="https://vidyavikasschoolvapi.netlify.app/" target="_blank" style="color:#e84949;">vidyavikasschoolvapi.netlify.app</a>) with online admissions 2026-27.<br><br>
+            4. 🏆 **Team Lead — COAT IV Aptitude Test** (Leadership)<br>
+            - Led a team of 20 to 50 volunteers for intercollegiate tech event, securing 3rd rank!`,
             actions: [
                 { text: "🔗 View on LinkedIn", url: LINKEDIN_URL },
                 { text: "📄 Resume PDF", url: "assets/smit_resume.pdf" },
@@ -55,49 +70,66 @@
         {
             keywords: ["education", "college", "degree", "mca", "bsc", "gl bajaj", "allahabad university", "aktu", "studies"],
             reply: `🎓 **Academic Qualifications**:<br><br>
-            1. 🎓 **Master of Computer Application (MCA)** (2022 – 2024)<br>
+            1. 🎓 **UGC NET Qualified (Dec 2024)**<br>
+            • Computer Science & Applications (National Testing Agency).<br><br>
+            2. 🎓 **Master of Computer Applications (MCA)** (2022 – 2024)<br>
             • **GL Bajaj Institute of Technology & Management**, Greater Noida (AKTU)<br>
-            • Advanced computing, web technologies, software architecture & database systems.<br><br>
-            2. 🎓 **Bachelor of Science (Mathematics & Computer Science)** (2019 – 2022)<br>
+            • **CGPA: 7.1 / 10**<br>
+            • Advanced computer science, OOPs (Java), DBMS, full-stack software development.<br><br>
+            3. 🎓 **Bachelor of Science (Mathematics & Computer Science)** (2019 – 2022)<br>
             • **University of Allahabad**, Prayagraj<br>
-            • **Percentage: 85% (Distinction)** with strong foundation in discrete math and algorithmic logic.`,
+            • **Percentage: 85.6% (Distinction)** with deep grounding in computational math and algorithms.`,
             actions: [
                 { text: "🔗 Connect on LinkedIn", url: LINKEDIN_URL },
                 { text: "📄 View Resume", url: "assets/smit_resume.pdf" }
             ]
         },
         {
-            keywords: ["project", "projects", "work", "portfolio", "websites", "kya banaya", "apps"],
+            keywords: ["certifications", "certificate", "microsoft", "sap", "google", "cloud", "edunet"],
+            reply: `📜 **Official Certifications**:<br><br>
+            • ☁️ **Applied Cloud Computing For Software Development**: Edunet Foundation with Microsoft & SAP India (09/2023 – 03/2024).<br>
+            • 🤖 **Certification on Generative AI**: Google.<br>
+            • 💻 **Computer Skills Certification**: ISPG College.<br>
+            • 🎓 **UGC NET Dec 2024**: University Grants Commission / NTA.`,
+            actions: [
+                { text: "📄 View in Resume", url: "assets/smit_resume.pdf" },
+                { text: "🔗 LinkedIn Certifications", url: LINKEDIN_URL }
+            ]
+        },
+        {
+            keywords: ["project", "projects", "work", "portfolio", "websites", "code sync", "crud", "spring boot", "kya banaya", "apps"],
             reply: `🚀 **Smit's Top Projects**:<br><br>
-            1. 🏫 **Vidya Vikas School**: Official responsive web portal for Vidya Vikas Hindi & English School, Vapi with online admissions & notice board.<br>
-            2. 🛒 **Online Shopping**: Custom e-commerce platform with store hours functionality using HTML, CSS, JS, PHP, MySQL.<br>
-            3. ⚛️ **React Portfolio**: Sleek, modern portfolio built with ReactJS showcasing skills & projects.<br>
-            4. 🎮 **Tic Tac Toe**: Interactive game built with vanilla JS and responsive UI.`,
+            1. 💻 **Code Sync (2024)**: Real-time code collaboration platform allowing multiple programmers to code together in live synchronization. Built with React.js, Node.js, Express.js, and WebSockets.<br><br>
+            2. 🍃 **Full Stack CRUD Application (2023)**: Enterprise full-stack web application with Spring Boot (Java) RESTful backend and React.js frontend, backed by MySQL relational database.<br><br>
+            3. 🏫 **Vidya Vikas School Web Portal**: Official live responsive site for Vidya Vikas Hindi & English School, Vapi (<a href="https://vidyavikasschoolvapi.netlify.app/" target="_blank" style="color:#e84949;">vidyavikasschoolvapi.netlify.app</a>) with Admissions 2026-27 notice popup.<br><br>
+            4. 🛒 **Online Shopping System**: E-commerce website with store opening/closing automation built using HTML5, CSS3, JavaScript, PHP, and MySQL.`,
             actions: [
                 { text: "🏫 Visit School Website", url: "https://vidyavikasschoolvapi.netlify.app/" },
-                { text: "🛒 Visit Shopping Store", url: "https://smitshoppingsystem.000webhostapp.com/" },
-                { text: "⚛️ React Portfolio", url: "https://smitreactportfolio.netlify.app/" }
+                { text: "💻 GitHub Projects", url: "https://github.com/onlinesmit" },
+                { text: "🛒 Online Shopping", url: "https://smitshoppingsystem.000webhostapp.com/" }
             ]
         },
         {
             keywords: ["vidya vikas", "school", "school website", "vapi"],
-            reply: `🏫 **Vidya Vikas Hindi & English School Website**:<br>
+            reply: `🏫 **Vidya Vikas Hindi & English School Web Portal**:<br>
             • Live URL: <a href="https://vidyavikasschoolvapi.netlify.app/" target="_blank" style="color:#e84949;text-decoration:underline;">vidyavikasschoolvapi.netlify.app</a><br>
-            • Features: Admissions open 2026-27 popup, responsive layout, course offerings, campus information, and mobile navigation.<br>
+            • Features: Interactive Admissions Open 2026-27 modal, curriculum guides, school history (Est. 1986), campus photos, and responsive navigation.<br>
             • Tech: HTML5, CSS3, JavaScript.`,
             actions: [
                 { text: "🌐 Open School Website", url: "https://vidyavikasschoolvapi.netlify.app/" }
             ]
         },
         {
-            keywords: ["skill", "skills", "tech stack", "technologies", "languages", "tools", "react", "mern", "javascript", "node", "mongo", "c++", "java", "dsa"],
+            keywords: ["skill", "skills", "tech stack", "technologies", "languages", "tools", "spring boot", "react", "mern", "javascript", "node", "mongo", "c++", "java", "sql", "mysql", "oops", "dbms"],
             reply: `⚡ **Smit's Technical Skills & Stack**:<br><br>
-            • **Programming Languages**: C, C++, Java, JavaScript (ES6+)<br>
-            • **Frontend**: React.js, HTML5, CSS3, Tailwind CSS, Bootstrap, Redux<br>
-            • **Backend & APIs**: Node.js, Express.js, RESTful APIs, MERN Stack<br>
-            • **Databases**: MongoDB, MySQL<br>
-            • **Tools & Platforms**: Git, GitHub, VS Code, Netlify, Vercel, PWA, SEO<br>
-            • **DSA & Problem Solving**: Actively solves challenges on LeetCode, CodeStudio, and GeeksforGeeks (GFG).`,
+            • **Languages**: Java, JavaScript (ES6+), C, C++, SQL<br>
+            • **Concepts**: OOPs (Object-Oriented Programming), DBMS, Data Structures & Algorithms<br>
+            • **Backend & Frameworks**: Spring Boot, Node.js, Express.js, RESTful APIs, MERN Stack<br>
+            • **Frontend**: React.js, HTML5, CSS3, Tailwind CSS, Bootstrap<br>
+            • **Databases**: MySQL, MongoDB<br>
+            • **Cloud & AI**: Microsoft & SAP Cloud, Google Generative AI<br>
+            • **Tools**: Git, GitHub, VS Code, Netlify, Vercel<br>
+            • **Qualities**: Leadership, Adaptability, Team Work, Student Mentorship`,
             actions: [
                 { text: "💼 Hire Smit", chip: "hire" },
                 { text: "💬 WhatsApp Me", url: WHATSAPP_LINK, isWa: true },
@@ -107,7 +139,7 @@
         {
             keywords: ["linkedin", "profile", "social", "connect"],
             reply: `🔗 **LinkedIn Profile**:<br>
-            Connect with Smit Kumar on LinkedIn to see recommendations, network, and discuss career opportunities:<br>
+            Connect with Smit Kumar Gupta on LinkedIn to see recommendations, network, and discuss career opportunities:<br>
             👉 <a href="${LINKEDIN_URL}" target="_blank" style="color:#0077b5;font-weight:700;">linkedin.com/in/smitkumar1/</a>`,
             actions: [
                 { text: "🌐 Open LinkedIn Profile", url: LINKEDIN_URL },
@@ -116,25 +148,28 @@
         },
         {
             keywords: ["whatsapp", "phone", "number", "mobile", "contact", "call", "email", "reach", "baat", "message"],
-            reply: `📞 **Contact Smit Kumar Directly**:<br><br>
-            • 📱 **WhatsApp & Call**: <a href="${WHATSAPP_LINK}" target="_blank" style="color:#25D366;font-weight:700;">+91 9875052329</a><br>
-            • ✉️ **Email**: <a href="mailto:smitkumar09@gmail.com" style="color:#6366f1;">smitkumar09@gmail.com</a> / <a href="mailto:onlinesmitg@gmail.com" style="color:#6366f1;">onlinesmitg@gmail.com</a><br>
+            reply: `📞 **Contact Smit Kumar Gupta Directly**:<br><br>
+            • 📱 **WhatsApp**: <a href="${WHATSAPP_LINK}" target="_blank" style="color:#25D366;font-weight:700;">+91 9875052329</a><br>
+            • 📞 **Direct Call**: <a href="tel:+919554839476" style="color:#2563eb;font-weight:700;">+91 9554839476</a><br>
+            • ✉️ **Email**: <a href="mailto:smitkumar09@gmail.com" style="color:#6366f1;">smitkumar09@gmail.com</a><br>
             • 🔗 **LinkedIn**: <a href="${LINKEDIN_URL}" target="_blank" style="color:#0077b5;">linkedin.com/in/smitkumar1/</a><br>
-            • 📍 **Location**: Prayagraj / Vapi, India<br><br>
-            Feel free to ping on WhatsApp anytime!`,
+            • 📍 **Location**: Vapi, Gujarat, India<br><br>
+            Feel free to ping on WhatsApp or call anytime!`,
             actions: [
                 { text: "💬 Open WhatsApp Chat", url: WHATSAPP_LINK, isWa: true },
+                { text: "📞 Call +91 9554839476", url: "tel:+919554839476" },
                 { text: "✉️ Send Email", url: "mailto:smitkumar09@gmail.com" }
             ]
         },
         {
             keywords: ["hire", "freelance", "job", "work", "available", "opportunity", "collaborate", "salary", "rate", "cost"],
-            reply: `💼 **Available for Hire & Projects!**<br><br>
-            Smit is actively seeking full-time roles, internships, and freelance projects (Full Stack / Frontend Web Development).<br><br>
-            ⭐ MCA Post-Graduate with distinction background in Computer Science<br>
-            ⭐ Hands-on MERN stack development & API integrations<br>
-            ⭐ Clean, scalable code with 100% responsiveness<br><br>
-            Let's discuss your requirements on WhatsApp: **+91 9875052329**!`,
+            reply: `💼 **Available for Full-Time Roles & Opportunities!**<br><br>
+            Smit is actively open to Software Engineering, SDE, Full Stack Developer, and Technical Lecturer roles.<br><br>
+            ⭐ **UGC NET Qualified (Dec 2024)** in Computer Science<br>
+            ⭐ Hands-on experience at **Bluestocks Fintech (SDE)** & **Turtlemint**<br>
+            ⭐ Full-stack expertise in **Spring Boot, Java, React.js, Node.js, and MySQL**<br>
+            ⭐ Proven leadership (Led 20-50 volunteers; 3rd rank in COAT IV)<br><br>
+            Let's connect directly on WhatsApp: **+91 9875052329** or Phone: **+91 9554839476**!`,
             actions: [
                 { text: "🚀 Chat on WhatsApp (+91 9875052329)", url: WHATSAPP_LINK, isWa: true },
                 { text: "📄 View Resume", url: "assets/smit_resume.pdf" }
@@ -142,12 +177,13 @@
         },
         {
             keywords: ["resume", "cv", "pdf", "download resume", "bio data"],
-            reply: `📄 **Smit's Resume** is available for download. Click below to view or download the complete PDF copy:`,
+            reply: `📄 **Smit's Official Resume** has been updated with his latest credentials (UGC NET Dec 2024, Turtlemint, Bluestocks Fintech, Code Sync, Spring Boot). Click below to view or download:`,
             actions: [
-                { text: "📥 Download Resume PDF", url: "assets/smit_resume.pdf" },
+                { text: "📥 Download Official Resume PDF", url: "assets/smit_resume.pdf" },
                 { text: "💬 WhatsApp Smit", url: WHATSAPP_LINK, isWa: true }
             ]
         }
+    ];
     ];
 
     // Sound chime via Web Audio API

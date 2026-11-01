@@ -35,16 +35,17 @@ if (contactForm) {
 
 var typeData = new Typed(".role", {
     strings: [
-      "Full Stack Software Developer",
+      "Software Development Engineer",
+      "UGC NET Qualified (Dec 2024)",
       "Computer Lecturer @ VVH&ES",
-      "Computer Expert",
-      "MERN Stack Engineer",
-      "Java & React Coder",
-      "Tech Lead",
+      "Full Stack Developer (Spring Boot & MERN)",
+      "Ex-SDE @ Bluestocks Fintech",
+      "Operation Executive @ Turtlemint",
+      "Java & React Specialist"
     ],
     loop: true,
-    typeSpeed: 85,
-    backSpeed: 65,
-    backDelay: 1200,
+    typeSpeed: 75,
+    backSpeed: 55,
+    backDelay: 1300,
   });
 
