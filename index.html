@@ -18,11 +18,11 @@
     <meta name="twitter:url" content="https://smitwebdev.com" />
     <!-- description -->
     <meta name="description"
-      content="Smit is a MERN stack web developer from India who has expertise in developing user-friendly responsive websites using HTML5, CSS3, JavaScript, Tailwind, Bootstrap, ReactJs etc. and he is a keen learner. To have a discussion, get in touch with him today!" />
+      content="Full Stack Software Developer &amp; Computer Expert with 3+ years of experience in tech, educational leadership, and modern web architectures. Currently Computer Lecturer at VVH&amp;ES and building high-performance web applications using React, Java, and MERN stack." />
     <meta property="og:description"
-      content="Smit is a MERN stack web developer from India who has expertise in developing user-friendly responsive websites using HTML5, CSS3, JavaScript, Tailwind, Bootstrap, ReactJs etc. and he is a keen learner. To have a discussion, get in touch with him today!" />
+      content="Full Stack Software Developer &amp; Computer Expert with 3+ years of experience in tech, educational leadership, and modern web architectures. Currently Computer Lecturer at VVH&amp;ES and building high-performance web applications using React, Java, and MERN stack." />
     <meta name="twitter:description"
-      content="Smit is a MERN stack web developer from India who has expertise in developing user-friendly responsive websites using HTML5, CSS3, JavaScript, Tailwind, Bootstrap, ReactJs etc. and he is a keen learner. To have a discussion, get in touch with him today!" />
+      content="Full Stack Software Developer &amp; Computer Expert with 3+ years of experience in tech, educational leadership, and modern web architectures. Currently Computer Lecturer at VVH&amp;ES and building high-performance web applications using React, Java, and MERN stack." />
     <!-- image -->
     <meta property="og:image" content="images/android-chrome-192x192.png" />
     <meta name="twitter:image" content="images/android-chrome-192x192.png"/>
@@ -46,9 +46,13 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="css/portfolio.css" />
+    <link rel="stylesheet" href="css/portfolio.css?v=3" />
+    <link rel="stylesheet" href="css/impressive-enhancements.css?v=3" />
   </head>
   <body>
+    <!-- scroll progress bar -->
+    <div id="scroll-progress"></div>
+
     <!-- mobile nav -->
     <div class="overlay"></div>
     <div class="hamburger">
@@ -57,24 +61,34 @@
     
     <nav class="nav-div mobile-nav">
       <ul>
+        <li><a href="#services">services</a></li>
         <li><a href="#projects">projects</a></li>
+        <li><a href="#experience">experience</a></li>
         <li><a href="#skills">skills</a></li>
         <li><a href="#contact">contact me</a></li>
+        <li><a href="https://wa.me/919875052329?text=Hi%20Smit%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect%21" target="_blank" style="color: #25D366;"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a></li>
       </ul>
     </nav>
 
     <!-- ///////// header /////////-->
     <header class="container">
       <div class="logo-div">
-        <img src="images/userAsset/NavLogo.png" alt="" />
+        <img src="images/userAsset/NavLogo.png" alt="Smit Logo" />
         <span class="name"> </span>
       </div>
 
       <nav class="nav-div">
         <ul>
+          <li><a href="#services">services</a></li>
           <li><a href="#projects">projects</a></li>
+          <li><a href="#experience">experience</a></li>
           <li><a href="#skills">skills</a></li>
           <li><a href="#contact">contact me</a></li>
+          <li>
+            <a href="https://wa.me/919875052329?text=Hi%20Smit%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect%21" target="_blank" class="nav-whatsapp-btn">
+              <i class="fa-brands fa-whatsapp"></i> WhatsApp
+            </a>
+          </li>
         </ul>
       </nav>
     </header>
@@ -85,13 +99,25 @@
 
       <!-- left -->
       <div class="hero-section-left">
+        <div class="hero-status-pill">
+          <span class="pulse-dot"></span> Computer Lecturer &amp; Full Stack Software Developer • Vapi, Gujarat
+        </div>
         <h1 class="name">Hi! I'm SmiT</h1>
         <p class="profession"> <span class="role"></span></p>
         <p class="desc">
-          I’m a software developer and it is my portfolio website. Here you’ll
-          learn about my journey as a software developer.
+          Full Stack Software Developer &amp; Computer Expert with 3+ years of experience in tech, educational leadership, and modern web architectures. Currently Computer Lecturer at VVH&amp;ES and building high-performance web applications using React, Java, and MERN stack.
         </p>
-        <a class="btn" href="assets/smit_resume.pdf" target="_blank" download>Hire me</a>
+        <div style="display: flex; gap: 0.8rem; margin: 1.2rem 0; flex-wrap: wrap;">
+          <span class="timeline-tag" style="background:#eef2ff; color:#4338ca; border-color:#c7d2fe; font-size:1.3rem; padding:0.5rem 1.2rem;"><i class="fa-solid fa-language"></i> English • हिन्दी • ગુજરાતી</span>
+          <span class="timeline-tag" style="background:#ecfdf5; color:#047857; border-color:#a7f3d0; font-size:1.3rem; padding:0.5rem 1.2rem;"><i class="fa-solid fa-cloud"></i> Cloud Developer (2024)</span>
+          <span class="timeline-tag" style="background:#fef3c7; color:#b45309; border-color:#fde68a; font-size:1.3rem; padding:0.5rem 1.2rem;"><i class="fa-solid fa-award"></i> LinkedIn Learning Certified</span>
+        </div>
+        <div class="hero-btn-group">
+          <a class="btn" href="assets/smit_resume.pdf" target="_blank" download>Hire me</a>
+          <a class="btn-whatsapp-hero" href="https://wa.me/919875052329?text=Hi%20Smit%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project%21" target="_blank">
+            <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+          </a>
+        </div>
       </div>
 
       <!-- right -->
@@ -125,6 +151,54 @@
       <a class="btn extra-btn" href="assets/smit_resume.pdf" target="_blank" download>Hire me</a>
     </section>
 
+    <!-- ////////// stats counter bar ////////// -->
+    <div class="hero-stats-bar">
+      <div class="stat-card">
+        <span class="stat-number" data-target="15" data-suffix="+">15+</span>
+        <span class="stat-label">Projects Completed</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number" data-target="3" data-suffix="+ Years">3+ Years</span>
+        <span class="stat-label">Hands-on Experience</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number" data-target="100" data-suffix="%">100%</span>
+        <span class="stat-label">Client Satisfaction</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">MERN</span>
+        <span class="stat-label">Full Stack Stack</span>
+      </div>
+    </div>
+
+    <!-- ////////// services section ////////// -->
+    <section class="services-section container" id="services">
+      <h2 class="project-header" style="font-size: 6rem; text-align: center;">What I Do</h2>
+      <p class="section-subtitle">Delivering high-quality, high-speed, modern web experiences</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-code"></i></div>
+          <h3 class="service-title">Frontend Development</h3>
+          <p class="service-desc">Crafting responsive, accessible, pixel-perfect user interfaces using modern HTML5, CSS3, Tailwind, and React.js.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-layer-group"></i></div>
+          <h3 class="service-title">MERN Stack Apps</h3>
+          <p class="service-desc">Building full-stack scalable web solutions with MongoDB, Express, React, and Node.js with secure REST APIs.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+          <h3 class="service-title">Responsive UI/UX</h3>
+          <p class="service-desc">Mobile-first designs with smooth micro-interactions, clean layout structures, and cross-browser consistency.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-bolt"></i></div>
+          <h3 class="service-title">Speed, PWA & SEO</h3>
+          <p class="service-desc">Optimizing Core Web Vitals, PWA offline caching, structured metadata, and lightning-fast load times.</p>
+        </div>
+      </div>
+    </section>
+
     <!-- /////// projects section /////////// -->
     <section class="project-section" id="projects">
       <h2 class="project-header">projects</h2>
@@ -136,6 +210,7 @@
         <div class="project-card" id="project-4">
           <div class="project-number">04</div>
           <div class="project-content">
+            <div class="project-badge-pill"><i class="fa-solid fa-bag-shopping"></i> E-Commerce Demo</div>
             <div class="project-skills-container">
               <img src="images/stack/HTML.png" alt="" />
               <img src="images/stack/CSS.png" alt="" />
@@ -169,20 +244,20 @@
          <div class="project-card" id="project-2">
           <div class="project-number">03</div>
           <div class="project-content">
+            <div class="project-badge-pill" style="color:#38ef7d;"><i class="fa-solid fa-circle-check"></i> Live Client Project</div>
             <div class="project-skills-container">
               <img src="images/stack/HTML.png" alt="" />
               <img src="images/stack/CSS.png" alt="" />
               <img src="images/stack/Javascript.svg" alt="" />
             </div>
 
-            <h2>password generator</h2>
+            <h2>Vidya Vikas School</h2>
 
-            <p>A password generator app which can be used for creating random passwords 
-              according to the inputs set by the user
+            <p>Official responsive website for Vidya Vikas Hindi & English School, Vapi built using HTML, CSS, and JavaScript with interactive features and admissions portal.
             </p>
 
             <div class="project-buttons">
-              <a class="btn" href="https://github.com/onlinesmit" target="_blank">
+              <a class="btn" href="https://vidyavikasschoolvapi.netlify.app/" target="_blank">
                 Read More
                 <span class="screen-reader-text">learn more</span>
               </a>
@@ -190,7 +265,7 @@
                 <i class="fa-brands fa-github icons"></i>
               </a>
 
-              <a href="https://github.com/onlinesmit" target="_blank" aria-label="link">
+              <a href="https://vidyavikasschoolvapi.netlify.app/" target="_blank" aria-label="link">
                 <i class="fa-solid fa-link icons"></i>
               </a>
             </div>
@@ -201,6 +276,7 @@
         <div class="project-card" id="project-3">
           <div class="project-number">02</div>
           <div class="project-content">
+            <div class="project-badge-pill" style="color:#61dafb;"><i class="fa-brands fa-react"></i> React App</div>
             <div class="project-skills-container">
               <img src="images/stack/HTML.png" alt="" />
               <img src="images/stack/CSS.png" alt="" />
@@ -235,6 +311,7 @@
         <div class="project-card" id="project-1">
           <div class="project-number">01</div>
           <div class="project-content">
+            <div class="project-badge-pill" style="color:#f7df1e;"><i class="fa-brands fa-js"></i> JavaScript Game</div>
             <div class="project-skills-container">
               <img src="images/stack/HTML.png" alt="html" />
               <img src="images/stack/CSS.png" alt="css" />
@@ -268,6 +345,151 @@
       </div>
     </section>
 
+    <!-- /////// experience & education section /////////// -->
+    <section class="timeline-section" id="experience">
+      <div class="container">
+        <h2 class="project-header" style="font-size: 6rem; text-align: center;">Experience & Education</h2>
+        <p class="section-subtitle">My professional journey, academic background & key milestones</p>
+
+        <div class="timeline-grid">
+          <!-- Left: Experience & Leadership -->
+          <div>
+            <div class="timeline-column-heading">
+              <i class="fa-solid fa-briefcase"></i> Work Experience &amp; Leadership
+            </div>
+            <div class="timeline-list">
+              <!-- Item 1: VVH&ES -->
+              <div class="timeline-item">
+                <span class="timeline-dot"></span>
+                <span class="timeline-badge" style="background: rgba(37, 211, 102, 0.15); color: #16a34a;">Present Role</span>
+                <h3 class="timeline-title">Computer Lecturer &amp; Tech Lead</h3>
+                <div class="timeline-subtitle">
+                  <span>VVH&amp;ES (Vidya Vikas Hindi &amp; English School)</span> • <span>Vapi, Gujarat</span> • <span>12/11/2024 – Present</span>
+                </div>
+                <p class="timeline-desc">
+                  • Head of computer science curriculum, student lectures &amp; digital campus infrastructure.<br>
+                  • Architected and developed the school's official website (<a href="https://vidyavikasschoolvapi.netlify.app/" target="_blank" style="color:#e84949; text-decoration:underline;">vidyavikasschoolvapi.netlify.app</a>) with online admissions 2026-27, academic calendar, and responsive navigation.<br>
+                  • Lecturing and mentoring students in computer fundamentals, modern programming, and digital literacy.
+                </p>
+                <div class="timeline-tags">
+                  <span class="timeline-tag">Computer Lecturer</span>
+                  <span class="timeline-tag">Tech Lead</span>
+                  <span class="timeline-tag">School Portal</span>
+                  <span class="timeline-tag">JavaScript</span>
+                  <span class="timeline-tag">Vapi, Gujarat</span>
+                </div>
+              </div>
+
+              <!-- Item 2: Open Waiver -->
+              <div class="timeline-item">
+                <span class="timeline-dot"></span>
+                <span class="timeline-badge">12/10/2022 – 12/10/2023</span>
+                <h3 class="timeline-title">Software Developer &amp; Team Lead</h3>
+                <div class="timeline-subtitle">
+                  <span>Open Waiver</span> • <span>Remote</span>
+                </div>
+                <p class="timeline-desc">
+                  • Led an agile engineering team of 5 developers to build high-performance web interfaces.<br>
+                  • Engineered modern frontend components using HTML5, CSS3, JavaScript, and Tailwind CSS, driving a documented ~30% increase in company profitability.<br>
+                  • Managed Git workflows, code reviews, and cross-browser responsiveness.
+                </p>
+                <div class="timeline-tags">
+                  <span class="timeline-tag">Team Lead (5 Devs)</span>
+                  <span class="timeline-tag">+30% Profit Growth</span>
+                  <span class="timeline-tag">Tailwind CSS</span>
+                  <span class="timeline-tag">JavaScript</span>
+                  <span class="timeline-tag">Git</span>
+                </div>
+              </div>
+
+              <!-- Item 3: Leadership -->
+              <div class="timeline-item">
+                <span class="timeline-dot"></span>
+                <span class="timeline-badge" style="background: rgba(99, 102, 241, 0.15); color: #6366f1;">Leadership</span>
+                <h3 class="timeline-title">Team Lead — COAT IV Aptitude Test</h3>
+                <div class="timeline-subtitle">
+                  <span>Intercollegiate Aptitude Event</span> • <span>3rd Rank</span>
+                </div>
+                <p class="timeline-desc">
+                  Led and coordinated a team of 20 volunteers to organize and execute an online intercollegiate aptitude test with hundreds of participating students, securing 3rd rank overall.
+                </p>
+                <div class="timeline-tags">
+                  <span class="timeline-tag">20 Volunteers Led</span>
+                  <span class="timeline-tag">Event Coordination</span>
+                  <span class="timeline-tag">3rd Rank</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Education -->
+          <div>
+            <div class="timeline-column-heading">
+              <i class="fa-solid fa-graduation-cap"></i> Academic Background &amp; Certifications
+            </div>
+            <div class="timeline-list">
+              <!-- Item 1: MCA -->
+              <div class="timeline-item">
+                <span class="timeline-dot"></span>
+                <span class="timeline-badge">2022 – 2024</span>
+                <h3 class="timeline-title">Master of Computer Application (MCA)</h3>
+                <div class="timeline-subtitle">
+                  <span>GL Bajaj Institute of Technology and Management, Greater Noida (AKTU)</span>
+                </div>
+                <p class="timeline-desc">
+                  Advanced Computer Science, Web Technologies, Software Engineering, Object-Oriented Programming (Java, C++), Database Management Systems, and Cloud Architectures.
+                </p>
+                <div class="timeline-tags">
+                  <span class="timeline-tag">MCA Post-Graduate</span>
+                  <span class="timeline-tag">AKTU</span>
+                  <span class="timeline-tag">Java &amp; React</span>
+                </div>
+              </div>
+
+              <!-- Item 2: BSc -->
+              <div class="timeline-item">
+                <span class="timeline-dot"></span>
+                <span class="timeline-badge">2019 – 2022</span>
+                <h3 class="timeline-title">Bachelor of Science (Mathematics &amp; Computer Science)</h3>
+                <div class="timeline-subtitle">
+                  <span>University of Allahabad, Prayagraj</span>
+                </div>
+                <p class="timeline-desc">
+                  Graduated with 85% Distinction. Strong analytical and mathematical foundations with computer science theory, discrete mathematics, and data structures.
+                </p>
+                <div class="timeline-tags">
+                  <span class="timeline-tag">85% Distinction</span>
+                  <span class="timeline-tag">B.Sc Computer Science</span>
+                  <span class="timeline-tag">Mathematics</span>
+                </div>
+              </div>
+
+              <!-- Item 3: Certifications & Continuous Learning -->
+              <div class="timeline-item">
+                <span class="timeline-dot"></span>
+                <span class="timeline-badge" style="background: rgba(234, 179, 8, 0.15); color: #ca8a04;">Verified Certifications</span>
+                <h3 class="timeline-title">Certifications &amp; Coding Profiles</h3>
+                <div class="timeline-subtitle">
+                  <span>Cloud, MERN &amp; Data Structures</span>
+                </div>
+                <p class="timeline-desc">
+                  • ☁️ <strong>Cloud Developer Certified</strong> (2024)<br>
+                  • 💼 <strong>LinkedIn Learning Certified</strong> (2023)<br>
+                  • ⚛️ <strong>MERN Stack Web Development</strong> (CodeHelp - Love Babbar)<br>
+                  • 🧠 <strong>DSA Profiles</strong>: Active problem solver on LeetCode, CodeStudio, and GeeksforGeeks.
+                </p>
+                <div class="timeline-tags">
+                  <span class="timeline-tag">Cloud Developer 2024</span>
+                  <span class="timeline-tag">LinkedIn Certified</span>
+                  <span class="timeline-tag">CodeHelp MERN</span>
+                  <span class="timeline-tag">LeetCode</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- ////////////////// skills section //////// -->
     <section class="skill-section" id="skills">
@@ -279,23 +501,77 @@
           </h2>
 
           <p>
-            Hi Everyone My name is Smit Kumar. I am a Frontend Web Developer I
-            have been Learning Web Development for one Year and Currently I am working as a
-            Online Web Developer Intern in a Open Waiver.Nowadays I am
-            Learning MERN stack to improve my Skillset and become a Full Stack Developer
+            Hi! My name is <strong>Smit Kumar</strong>. I am a <strong>Full Stack Software Developer &amp; Computer Expert</strong> with 3+ years of experience in tech, educational leadership, and modern web architectures. Currently <strong>Computer Lecturer at VVH&amp;ES</strong> and building high-performance web applications using React, Java, and MERN stack.
           </p>
-<!-- 
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non
-            doloremque aspernatur, maiores voluptatum minus laudantium?
-            Perspiciatis accusamus minima porro dolores necessitatibus, magni
-            dolorem et qui veniam nulla sequi molestiae maxime.
-          </p> -->
+          <p style="margin-top: 1rem;">
+            Holding an MCA from GL Bajaj (AKTU) and a B.Sc in Mathematics &amp; Computer Science (85% Distinction) from University of Allahabad, I combine deep technical expertise with hands-on software engineering at Open Waiver and educational mentorship at VVH&amp;ES.
+          </p>
 
-          <!-- <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis quidem
-            quos ullam veritatis voluptates tenetur qui ipsa nulla culpa itaque?
-          </p> -->
+          <!-- Categorized Skill Badges -->
+          <div class="skills-categorized-grid">
+            <div class="skill-category-card">
+              <div class="skill-category-title"><i class="fa-solid fa-code"></i> Programming Languages</div>
+              <div class="skill-pills-wrap">
+                <span class="skill-pill-item">C Language</span>
+                <span class="skill-pill-item">C++</span>
+                <span class="skill-pill-item">Java</span>
+                <span class="skill-pill-item">JavaScript (ES6+)</span>
+              </div>
+            </div>
+
+            <div class="skill-category-card">
+              <div class="skill-category-title"><i class="fa-brands fa-react"></i> Frontend Technologies</div>
+              <div class="skill-pills-wrap">
+                <span class="skill-pill-item">React.js</span>
+                <span class="skill-pill-item">HTML5</span>
+                <span class="skill-pill-item">CSS3</span>
+                <span class="skill-pill-item">Tailwind CSS</span>
+                <span class="skill-pill-item">Bootstrap</span>
+              </div>
+            </div>
+
+            <div class="skill-category-card">
+              <div class="skill-category-title"><i class="fa-solid fa-server"></i> Backend & Databases</div>
+              <div class="skill-pills-wrap">
+                <span class="skill-pill-item">Node.js</span>
+                <span class="skill-pill-item">Express.js</span>
+                <span class="skill-pill-item">MongoDB</span>
+                <span class="skill-pill-item">MySQL</span>
+                <span class="skill-pill-item">REST APIs</span>
+              </div>
+            </div>
+
+            <div class="skill-category-card">
+              <div class="skill-category-title"><i class="fa-solid fa-toolbox"></i> Tools &amp; Workflows</div>
+              <div class="skill-pills-wrap">
+                <span class="skill-pill-item">Git &amp; GitHub</span>
+                <span class="skill-pill-item">VS Code</span>
+                <span class="skill-pill-item">Netlify</span>
+                <span class="skill-pill-item">Vercel</span>
+                <span class="skill-pill-item">PWA</span>
+              </div>
+            </div>
+
+            <div class="skill-category-card">
+              <div class="skill-category-title"><i class="fa-solid fa-users"></i> Leadership &amp; Soft Skills</div>
+              <div class="skill-pills-wrap">
+                <span class="skill-pill-item">Team Leadership</span>
+                <span class="skill-pill-item">Student Mentorship</span>
+                <span class="skill-pill-item">Communication</span>
+                <span class="skill-pill-item">Good Listener</span>
+                <span class="skill-pill-item">Problem Solving</span>
+              </div>
+            </div>
+
+            <div class="skill-category-card">
+              <div class="skill-category-title"><i class="fa-solid fa-earth-americas"></i> Languages Known</div>
+              <div class="skill-pills-wrap">
+                <span class="skill-pill-item" style="color:#2563eb;"><i class="fa-solid fa-check"></i> English (Professional)</span>
+                <span class="skill-pill-item" style="color:#ea580c;"><i class="fa-solid fa-check"></i> Hindi (Native)</span>
+                <span class="skill-pill-item" style="color:#059669;"><i class="fa-solid fa-check"></i> Gujarati (Professional)</span>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="skill-section-right">
@@ -304,33 +580,22 @@
             class="blob-style"
             alt=""
           />
-          <img src="images/stack/HTML.png" alt="" />
-          <img src="images/stack/CSS.png" alt="" />
-          <img src="images/stack/Javascript.svg" alt="" />
-          <img src="images/stack/Tailwind.png" alt="" />
-          <img src="images/stack/Bootstrap.svg" alt="" />
+          <img src="images/stack/HTML.png" alt="HTML" />
+          <img src="images/stack/CSS.png" alt="CSS" />
+          <img src="images/stack/Javascript.svg" alt="JavaScript" />
+          <img src="images/stack/Tailwind.png" alt="Tailwind" />
+          <img src="images/stack/Bootstrap.svg" alt="Bootstrap" />
 
-          <img src="images/stack/Git.svg" alt="" />
-          <img src="images/stack/Github.svg" alt="" />
+          <img src="images/stack/Git.svg" alt="Git" />
+          <img src="images/stack/Github.svg" alt="GitHub" />
 
-          <img src="images/stack/React.png" alt="" />
-          <!-- <img src="images/stack/NodeJs.svg" alt="" /> -->
-
-          <!-- <img src="images/stack/Next.svg" alt="" />
-          <img src="images/stack/Redux.svg" alt="" /> -->
-
-        
-
-          <!-- <img src="images/stack/MaterialUI.svg" alt="" /> -->
-          <!-- <img src="images/stack/Express.png" alt="" /> -->
-        
-          <!-- <img src="images/stack/Bash.svg" alt="" /> -->
-          <!-- <img src="images/stack/MongoDB.svg" alt="" /> -->
-          <!-- <img src="images/stack/Vercel.svg" alt="" /> -->
-          <!-- <img src="images/stack/ChartJs.svg" alt="" /> -->
-          <!-- <img src="images/stack/Docker.svg" alt="" /> -->
-          <!-- <img src="images/stack/Graphql.svg" alt="" />/ -->
-          <!-- <img src="images/stack/K8s.svg" alt="" /> -->
+          <img src="images/stack/React.png" alt="React" />
+          <img src="images/stack/NodeJs.svg" alt="Node.js" />
+          <img src="images/stack/Express.png" alt="Express" />
+          <img src="images/stack/MongoDB.svg" alt="MongoDB" />
+          <img src="images/stack/Typescript.svg" alt="TypeScript" />
+          <img src="images/stack/Redux.svg" alt="Redux" />
+          <img src="images/stack/Vercel.svg" alt="Vercel" />
         </div>
       </div>
     </section>
@@ -341,46 +606,85 @@
       <div class="contact-section-content container">
         <h2 class="contact-section-heading">Contact Me</h2>
         <h3 class="contact-section-sub-heading">
-          Questions, thoughts, or just want to say hello?
+          Questions, thoughts, or just want to say hello? Let's connect!
         </h3>
 
-        <form action="#" class="contact-form">
-          <div class="form-field">
-            <input type="text" 
-            placeholder="Enter your name" 
-            required/>
+        <div class="contact-section-layout">
+          <!-- Quick contact cards -->
+          <div class="contact-info-cards">
+            <a href="https://wa.me/919875052329?text=Hi%20Smit%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect%21" target="_blank" class="contact-info-card">
+              <div class="contact-card-icon icon-whatsapp-bg">
+                <i class="fa-brands fa-whatsapp"></i>
+              </div>
+              <div>
+                <div class="contact-card-title">WhatsApp & Call</div>
+                <div class="contact-card-value">+91 9875052329</div>
+                <div class="contact-card-sub"><i class="fa-solid fa-comment-dots"></i> Click to chat instantly</div>
+              </div>
+            </a>
+
+            <a href="mailto:onlinesmitg@gmail.com?subject=I%20Liked%20your%20Portfolio&body=Hi%20Smit%2C" target="_blank" class="contact-info-card">
+              <div class="contact-card-icon icon-email-bg">
+                <i class="fa-regular fa-envelope"></i>
+              </div>
+              <div>
+                <div class="contact-card-title">Direct Email</div>
+                <div class="contact-card-value">onlinesmitg@gmail.com</div>
+                <div class="contact-card-sub" style="color:var(--clr-orange);"><i class="fa-solid fa-paper-plane"></i> Quick response guaranteed</div>
+              </div>
+            </a>
+
+            <div class="contact-info-card">
+              <div class="contact-card-icon icon-location-bg">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div>
+                <div class="contact-card-title">Location</div>
+                <div class="contact-card-value">Vapi, Gujarat, India</div>
+                <div class="contact-card-sub" style="color:var(--clr-blue);"><i class="fa-solid fa-globe"></i> Open to Remote Worldwide</div>
+              </div>
+            </div>
           </div>
 
-          <div class="form-field">
-            <input type="email"
-             placeholder="Enter your email address"
-             required />
-          </div>
+          <!-- Contact Form -->
+          <form action="#" class="contact-form">
+            <div class="form-field">
+              <input type="text" 
+              placeholder="Enter your name" 
+              required/>
+            </div>
 
-          <div class="form-field">
-            <input type="text" 
-            placeholder="Enter your subject"
-            required />
-          </div>
+            <div class="form-field">
+              <input type="email"
+               placeholder="Enter your email address"
+               required />
+            </div>
 
-          <div class="form-field">
-            <textarea
-              name=""
-              id="my-textarea"
-              cols="30"
-              rows="10"
-              placeholder="Enter your message"
-              required
-            ></textarea>
-          </div>
+            <div class="form-field">
+              <input type="text" 
+              placeholder="Enter your subject"
+              required />
+            </div>
 
-          <div class="button-field">
-            <button type="submit" class="btn form-btn">
-              Send Message
-              <i class="fa-solid fa-paper-plane icon"></i>
-            </button>
-          </div>
-        </form>
+            <div class="form-field">
+              <textarea
+                name=""
+                id="my-textarea"
+                cols="30"
+                rows="10"
+                placeholder="Enter your message"
+                required
+              ></textarea>
+            </div>
+
+            <div class="button-field">
+              <button type="submit" class="btn form-btn">
+                Send Message
+                <i class="fa-solid fa-paper-plane icon"></i>
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </section>
 
@@ -391,14 +695,20 @@
 
         <nav class="nav-div">
           <ul>
+            <li><a href="#services">services</a></li>
             <li><a href="#projects">projects</a></li>
+            <li><a href="#experience">experience</a></li>
             <li><a href="#skills">skills</a></li>
             <li><a href="#contact">contact me</a></li>
           </ul>
         </nav>
 
         <div class="social-icons">
-          <a href="https://www.linkedin.com/in/smitkumar1" target="_blank" aria-label="linkedin account">
+          <a href="https://wa.me/919875052329?text=Hi%20Smit%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect%21" target="_blank" aria-label="whatsapp account" style="color: #25D366;">
+            <i class="fa-brands fa-whatsapp icon"></i>
+          </a>
+
+          <a href="https://www.linkedin.com/in/smitkumar1/" target="_blank" aria-label="linkedin account">
             <i class="fa-brands fa-linkedin icon"></i>
           </a>
 
@@ -424,23 +734,92 @@
     </footer>
     <!-- ///// -->
 
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919875052329?text=Hi%20Smit%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect%21" target="_blank" id="whatsapp-floating" aria-label="Chat on WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+      <span class="wa-tooltip">Chat on WhatsApp (+91 9875052329)</span>
+    </a>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" aria-label="Back to top">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Floating AI Bot Widget -->
+    <div id="ai-bot-container">
+      <button class="ai-bot-launcher" aria-label="Open AI Assistant" title="Chat with Smit's AI">
+        <i class="fa-solid fa-robot"></i>
+        <span class="ai-badge">Ask AI</span>
+      </button>
+
+      <div class="ai-chat-window">
+        <div class="ai-chat-header">
+          <div class="ai-header-left">
+            <div class="ai-avatar">
+              <i class="fa-solid fa-robot"></i>
+              <span class="ai-avatar-online"></span>
+            </div>
+            <div>
+              <div class="ai-header-title">Smit's AI Assistant</div>
+              <div class="ai-header-status">
+                <span class="pulse-dot" style="width:7px;height:7px;"></span> Online | Ask anything
+              </div>
+            </div>
+          </div>
+          <div class="ai-header-actions">
+            <button class="ai-btn-icon" id="ai-clear-btn" title="Clear Chat">
+              <i class="fa-solid fa-rotate-right"></i>
+            </button>
+            <button class="ai-btn-icon" id="ai-close-btn" title="Close Chat">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="ai-chat-body">
+          <!-- Dynamic chat messages injected here -->
+        </div>
+
+        <div class="ai-quick-chips">
+          <button class="ai-chip" data-query="about">💬 About Smit</button>
+          <button class="ai-chip" data-query="projects">🚀 Projects</button>
+          <button class="ai-chip" data-query="skills">⚡ Tech Stack</button>
+          <button class="ai-chip" data-query="hire">💼 Hire Smit</button>
+          <button class="ai-chip ai-chip-whatsapp" data-query="whatsapp">📱 WhatsApp: 9875052329</button>
+          <button class="ai-chip" data-query="resume">📄 Resume</button>
+        </div>
+
+        <div class="ai-chat-input-bar">
+          <input type="text" class="ai-chat-input" placeholder="Type a message or question..." />
+          <button class="ai-send-btn" aria-label="Send Message">
+            <i class="fa-solid fa-paper-plane"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
     <!-- /////// scripts /// -->
 
         
     <script>
       if ("serviceWorker" in navigator) { 
+        navigator.serviceWorker.getRegistrations().then(registrations => {
+          for (let reg of registrations) {
+            reg.update();
+          }
+        });
         navigator.serviceWorker.register("sw.js").then(registration => {
-          console.log("SW Registered!");
-          // console.log(registration);
+          registration.update();
+          console.log("SW Registered & Updated!");
         }).catch(error => {
-          console.log("SW Registration Failed!");
-          console.log(error);
-      });
-    }
+          console.log("SW Registration Failed!", error);
+        });
+      }
     </script>
-
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <script src="js/script.js"></script>
+    <script src="js/script.js?v=3"></script>
+    <script src="js/enhancements.js?v=3"></script>
+    <script src="js/ai-bot.js?v=3"></script>
 
 
    

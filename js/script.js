@@ -3,37 +3,48 @@ const mobileNav = document.querySelector('.mobile-nav');
 const overlay = document.querySelector('.overlay');
 const contactForm = document.querySelector('.contact-form');
 
-hamburger.addEventListener('click', () => {
-  mobileNav.classList.toggle('active');
-  hamburger.classList.toggle('active');
-  overlay.classList.toggle('active');
-});
+if (hamburger && mobileNav && overlay) {
+  hamburger.addEventListener('click', () => {
+    mobileNav.classList.toggle('active');
+    hamburger.classList.toggle('active');
+    overlay.classList.toggle('active');
+  });
 
-function closeMobileNav(){
-  mobileNav.classList.remove('active');
-  hamburger.classList.remove('active');
-  overlay.classList.remove('active');
+  function closeMobileNav(){
+    mobileNav.classList.remove('active');
+    hamburger.classList.remove('active');
+    overlay.classList.remove('active');
+  }
+
+  overlay.addEventListener("click", closeMobileNav);
+
+  const mobileLinks = document.querySelectorAll('.mobile-nav a');
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', closeMobileNav);
+  });
 }
 
-overlay.addEventListener("click", closeMobileNav);
-
-contactForm.addEventListener('submit', (event) => {
-  // event.preventDefault();
-  alert("your response has been successfully submitted")}
-
-  );
+if (contactForm) {
+  contactForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    alert("Thank you! Your response has been successfully submitted. Smit will get back to you shortly.");
+    contactForm.reset();
+  });
+}
 
 
 var typeData = new Typed(".role", {
     strings: [
-      "Web Developer",
-      "Frontend Developer",
-      "Full Stack Developer",
-      "Coder",
+      "Full Stack Software Developer",
+      "Computer Lecturer @ VVH&ES",
+      "Computer Expert",
+      "MERN Stack Engineer",
+      "Java & React Coder",
+      "Tech Lead",
     ],
     loop: true,
-    typeSpeed: 100,
-    backSpeed: 80,
-    backDelay: 1000,
+    typeSpeed: 85,
+    backSpeed: 65,
+    backDelay: 1200,
   });
 
