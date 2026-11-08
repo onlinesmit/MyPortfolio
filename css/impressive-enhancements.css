@@ -2448,9 +2448,11 @@ header .logo-div:hover img {
     margin-bottom: 1.4rem;
 }
 .footer-logo-img {
-    width: 5rem;
-    height: 5rem;
+    width: 5.5rem;
+    height: 5.5rem;
     object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
 }
 .footer-logo-text {
     font-size: 2.2rem;
