@@ -22,8 +22,8 @@
             ]
         },
         {
-            keywords: ["who is smit", "about", "bio", "background", "kaun hai", "smit kumar", "smit kumar gupta", "introduce"],
-            reply: `👨‍💻 **About Smit Kumar Gupta**:<br>
+            keywords: ["who is smit", "who is sk", "sk", "about", "bio", "background", "kaun hai", "smit kumar", "smit kumar gupta", "introduce"],
+            reply: `👨‍💻 **About SK**:<br>
             • **2x UGC NET Qualified (Assistant Professor & Ph.D. Admission)** in Computer Science & Applications.<br>
             • **National Competitive Exam Track Record**: Cleared **CBI (Tier 1 & 2, Interview Stage)**, **UPSC (2x Prelims, 1x Mains)**, **Navy SSR (post-12th)**, **NDA Exam 1**, and appeared in **30+ Government Examinations**.<br>
             • **Values & Social Leadership**: Serving as **Nagar Sharirik Pramukh (RSS)**, completed *Sangh Shiksha Varga*, *Prathmik Varga*, and *Prarambhik Varga*; active Shikshak & social worker.<br>
@@ -224,7 +224,7 @@
         {
             keywords: ["linkedin", "profile", "social", "connect"],
             reply: `🔗 **LinkedIn Profile**:<br>
-            Connect with Smit Kumar Gupta on LinkedIn to see recommendations, network, and discuss career opportunities:<br>
+            Connect with SK on LinkedIn to see recommendations, network, and discuss career opportunities:<br>
             👉 <a href="${LINKEDIN_URL}" target="_blank" style="color:#0077b5;font-weight:700;">linkedin.com/in/smitkumar1/</a>`,
             actions: [
                 { text: "🌐 Open LinkedIn Profile", url: LINKEDIN_URL },
@@ -233,7 +233,7 @@
         },
         {
             keywords: ["whatsapp", "phone", "number", "mobile", "contact", "email", "reach", "baat", "message"],
-            reply: `💬 **Contact Smit Kumar Gupta Directly**:<br><br>
+            reply: `💬 **Contact SK Directly**:<br><br>
             • 📱 **WhatsApp**: <a href="${WHATSAPP_LINK}" target="_blank" style="color:#25D366;font-weight:700;">+91 9875052329</a><br>
             • ✉️ **Email**: <a href="mailto:smitkumar09@gmail.com" style="color:#6366f1;">smitkumar09@gmail.com</a><br>
             • 🔗 **LinkedIn**: <a href="${LINKEDIN_URL}" target="_blank" style="color:#0077b5;">linkedin.com/in/smitkumar1/</a><br>
