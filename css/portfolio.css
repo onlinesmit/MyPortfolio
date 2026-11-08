@@ -414,8 +414,10 @@ header{
 
 /* ///////////////////// project section //////////////// */
 .project-section{
-    background-color: var(--clr-light-gray);
-    padding-top: 3rem;
+    background: radial-gradient(circle at 50% 10%, #1e1b4b 0%, #0d1224 45%, #060912 100%);
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+    position: relative;
 }
 
     .project-section .project-header{
@@ -589,8 +591,8 @@ header{
 .skill-section{
     position: relative;
     overflow: hidden;
-    padding: 8rem 0 24rem;
-    margin-top: 16rem;
+    padding: 8rem 0 10rem;
+    margin-top: 6rem;
 }
 
 .skill-section-content{
