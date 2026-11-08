@@ -7,6 +7,8 @@
     const WHATSAPP_NUMBER = "919875052329";
     const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20Smit%2C%20I%20am%20chatting%20from%20your%20portfolio%20AI%20bot%20and%20would%20like%20to%20connect%21`;
     const LINKEDIN_URL = "https://www.linkedin.com/in/smitkumar1/";
+    const TELEGRAM_URL = "https://t.me/onlinesmit";
+    const FACEBOOK_URL = "https://facebook.com/onlinesmit";
 
     // Bot Knowledge Base
     const KNOWLEDGE_BASE = [
@@ -138,7 +140,7 @@
             reply: `💼 **Professional Experience (3+ Years)**:<br><br>
             1. 🏫 **Computer Lecturer & Tech Lead — VVH&ES (Vidya Vikas Hindi & English School)**, Vapi (Sep 2025 – Present)<br>
             - Leading computer science curriculum, instructional lectures, and digital laboratory infrastructure.<br>
-            - Built the official school web portal (<a href="https://vidyavikasschoolvapi.netlify.app/" target="_blank" style="color:#e84949;">vidyavikasschoolvapi.netlify.app</a>) with online admissions 2026-27.<br><br>
+            - Built the official school web portal (<a href="https://vidyavikasschool.netlify.app/" target="_blank" style="color:#e84949;">vidyavikasschool.netlify.app</a>) with online admissions 2026-27.<br><br>
             2. 🏢 **Operation Executive — Turtlemint**, Vapi (Mar 2025 – Aug 2025)<br>
             - Managed operational workflows, process automation, digital integration, and fintech operations.<br><br>
             3. 💻 **Software Development Engineer (SDE) — Bluestocks Fintech** (Jul 2024 – Feb 2025)<br>
@@ -149,7 +151,7 @@
             actions: [
                 { text: "🔗 View on LinkedIn", url: LINKEDIN_URL },
                 { text: "📄 Resume PDF", url: "assets/smit_resume.pdf" },
-                { text: "🏫 School Website", url: "https://vidyavikasschoolvapi.netlify.app/" }
+                { text: "🏫 School Website", url: "https://vidyavikasschool.netlify.app/" }
             ]
         },
         {
@@ -186,12 +188,12 @@
             reply: `🚀 **Smit's Top Projects**:<br><br>
             1. 🚀 **Delight Media Agency**: Premier digital growth powerhouse portal (<a href="https://delightmedia.netlify.app/" target="_blank" style="color:#e84949;">delightmedia.netlify.app</a>) with service showcases, SEO, Web/App dev consulting, and instant quote booking.<br><br>
             2. 🤖 **Smit AI Resume Builder**: Real-time intelligent resume builder integrated with Supabase Cloud persistence, ATS Classic & Modern 2-column styles, custom accent themes, and 1-click PDF export (<a href="https://onlinesmit.github.io/smit_AI_resume/" target="_blank" style="color:#e84949;">Try App</a>).<br><br>
-            3. 🏫 **Vidya Vikas School Web Portal**: Official live responsive site for Vidya Vikas Hindi & English School, Vapi (<a href="https://vidyavikasschoolvapi.netlify.app/" target="_blank" style="color:#e84949;">vidyavikasschoolvapi.netlify.app</a>) with Admissions 2026-27 notice popup.<br><br>
+            3. 🏫 **Vidya Vikas School Web Portal**: Official live responsive site for Vidya Vikas Hindi & English School, Vapi (<a href="https://vidyavikasschool.netlify.app/" target="_blank" style="color:#e84949;">vidyavikasschool.netlify.app</a>) with Admissions 2026-27 notice popup.<br><br>
             4. 🛒 **Online Shopping System**: E-commerce website with store opening/closing automation built using HTML5, CSS3, JavaScript, PHP, and MySQL.`,
             actions: [
                 { text: "🚀 Delight Media", url: "https://delightmedia.netlify.app/" },
                 { text: "🤖 Try AI Resume Builder", url: "https://onlinesmit.github.io/smit_AI_resume/" },
-                { text: "🏫 Visit School Website", url: "https://vidyavikasschoolvapi.netlify.app/" },
+                { text: "🏫 Visit School Website", url: "https://vidyavikasschool.netlify.app/" },
                 { text: "💻 GitHub Projects", url: "https://github.com/onlinesmit" }
             ]
         },
@@ -219,11 +221,11 @@
         {
             keywords: ["vidya vikas", "school", "school website", "vapi"],
             reply: `🏫 **Vidya Vikas Hindi & English School Web Portal**:<br>
-            • Live URL: <a href="https://vidyavikasschoolvapi.netlify.app/" target="_blank" style="color:#e84949;text-decoration:underline;">vidyavikasschoolvapi.netlify.app</a><br>
+            • Live URL: <a href="https://vidyavikasschool.netlify.app/" target="_blank" style="color:#e84949;text-decoration:underline;">vidyavikasschool.netlify.app</a><br>
             • Features: Interactive Admissions Open 2026-27 modal, curriculum guides, school history (Est. 1986), campus photos, and responsive navigation.<br>
             • Tech: HTML5, CSS3, JavaScript.`,
             actions: [
-                { text: "🌐 Open School Website", url: "https://vidyavikasschoolvapi.netlify.app/" }
+                { text: "🌐 Open School Website", url: "https://vidyavikasschool.netlify.app/" }
             ]
         },
         {
@@ -250,6 +252,26 @@
             👉 <a href="${LINKEDIN_URL}" target="_blank" style="color:#0077b5;font-weight:700;">linkedin.com/in/smitkumar1/</a>`,
             actions: [
                 { text: "🌐 Open LinkedIn Profile", url: LINKEDIN_URL },
+                { text: "💬 Chat on WhatsApp", url: WHATSAPP_LINK, isWa: true }
+            ]
+        },
+        {
+            keywords: ["facebook", "fb"],
+            reply: `📘 **Facebook Profile**:<br>
+            Connect with Smit on Facebook:<br>
+            👉 <a href="${FACEBOOK_URL}" target="_blank" style="color:#1877f2;font-weight:700;">facebook.com/onlinesmit</a>`,
+            actions: [
+                { text: "📘 Open Facebook", url: FACEBOOK_URL },
+                { text: "💬 Chat on WhatsApp", url: WHATSAPP_LINK, isWa: true }
+            ]
+        },
+        {
+            keywords: ["telegram", "tg"],
+            reply: `✈️ **Telegram**:<br>
+            Connect with Smit directly on Telegram:<br>
+            👉 <a href="${TELEGRAM_URL}" target="_blank" style="color:#229ED9;font-weight:700;">t.me/onlinesmit</a>`,
+            actions: [
+                { text: "✈️ Open Telegram", url: TELEGRAM_URL },
                 { text: "💬 Chat on WhatsApp", url: WHATSAPP_LINK, isWa: true }
             ]
         },

@@ -2574,6 +2574,16 @@ header .logo-div:hover img {
     border-color: #555555;
     box-shadow: 0 6px 18px rgba(255, 255, 255, 0.2);
 }
+.social-circle.fb-icon:hover {
+    background: #1877f2;
+    border-color: #1877f2;
+    box-shadow: 0 6px 18px rgba(24, 119, 242, 0.45);
+}
+.social-circle.tg-icon:hover {
+    background: #229ED9;
+    border-color: #229ED9;
+    box-shadow: 0 6px 18px rgba(34, 158, 217, 0.45);
+}
 .social-circle.ig-icon:hover {
     background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
     border-color: transparent;
