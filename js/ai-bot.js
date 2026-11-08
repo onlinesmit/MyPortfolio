@@ -310,6 +310,21 @@
                 { text: "📥 Download Official Resume PDF", url: "assets/smit_resume.pdf" },
                 { text: "💬 WhatsApp SK", url: WHATSAPP_LINK, isWa: true }
             ]
+        },
+        {
+            keywords: ["rating", "ratings", "review", "reviews", "feedback", "testimonial", "testimonials", "happy", "stars", "star", "satisfaction", "recommendation", "client", "rate"],
+            reply: `⭐ **Ratings & Client Satisfaction (4.9 / 5.0 ⭐⭐⭐⭐⭐)**:<br><br>
+            • **Overall Score**: <strong>4.9 / 5.0</strong> based on 58+ verified evaluations with a <strong>99% recommendation rate</strong>!<br>
+            • 🏫 **Vidya Vikas School**: 5.0/5.0 — Completely revamped digital school infrastructure & streamlined online admissions for 2026-27.<br>
+            • 💻 **Bluestocks Fintech**: 5.0/5.0 — Built scalable React.js frontend interfaces & optimized high-traffic endpoints ahead of sprints.<br>
+            • 🚀 **Delight Media Agency**: 5.0/5.0 — High-impact growth portal with 30%+ increase in inbound client acquisition.<br>
+            • 🎓 **UGC NET Mentees**: 5.0/5.0 — Clear core CS foundations (OS, DBMS, Automata) and national competitive exam strategy.<br><br>
+            💡 You can explore all reviews on the portfolio or submit your own review using the "Rate My Work" button!`,
+            actions: [
+                { text: "⭐ View All Reviews", url: "#reviews" },
+                { text: "✍️ Rate Smit's Work", url: "#reviews" },
+                { text: "💬 Chat on WhatsApp", url: WHATSAPP_LINK, isWa: true }
+            ]
         }
     ];
 
@@ -407,8 +422,9 @@
         // Welcome message
         function sendBotWelcome() {
             appendBotMessage(
-                `👋 <strong>Hi! I'm SK's AI Assistant.</strong><br>Ask me anything about SK's **30+ Govt. Exams**, **2x UGC NET**, fintech experience, tech stack, or connect on WhatsApp!`,
+                `👋 <strong>Hi! I'm SK's AI Assistant.</strong><br>Ask me anything about SK's **30+ Govt. Exams**, **2x UGC NET**, **4.9/5 Client Ratings**, fintech experience, tech stack, or connect on WhatsApp!`,
                 [
+                    { text: "⭐ Ratings (4.9/5)", chip: "reviews" },
                     { text: "🏛️ 30+ Govt Exams", chip: "govt exams" },
                     { text: "🚀 Projects", chip: "projects" },
                     { text: "⚡ Tech Stack", chip: "skills" },
