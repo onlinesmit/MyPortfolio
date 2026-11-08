@@ -315,9 +315,9 @@
             keywords: ["rating", "ratings", "review", "reviews", "feedback", "testimonial", "testimonials", "happy", "stars", "star", "satisfaction", "recommendation", "client", "rate"],
             reply: `⭐ **Ratings & Client Satisfaction (4.9 / 5.0 ⭐⭐⭐⭐⭐)**:<br><br>
             • **Overall Score**: <strong>4.9 / 5.0</strong> based on 58+ verified evaluations with a <strong>99% recommendation rate</strong>!<br>
-            • 🏫 **Vidya Vikas School**: 5.0/5.0 — Completely revamped digital school infrastructure & streamlined online admissions for 2026-27.<br>
             • 💻 **Bluestocks Fintech**: 5.0/5.0 — Built scalable React.js frontend interfaces & optimized high-traffic endpoints ahead of sprints.<br>
             • 🚀 **Delight Media Agency**: 5.0/5.0 — High-impact growth portal with 30%+ increase in inbound client acquisition.<br>
+            • 🏢 **Turtlemint InsurTech**: 4.9/5.0 — High-velocity process automation, workflow integration, and cross-functional clarity.<br>
             • 🎓 **UGC NET Mentees**: 5.0/5.0 — Clear core CS foundations (OS, DBMS, Automata) and national competitive exam strategy.<br><br>
             💡 You can explore all reviews on the portfolio or submit your own review using the "Rate My Work" button!`,
             actions: [
