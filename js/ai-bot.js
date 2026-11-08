@@ -182,16 +182,27 @@
             ]
         },
         {
-            keywords: ["project", "projects", "work", "portfolio", "websites", "code sync", "crud", "spring boot", "kya banaya", "apps"],
+            keywords: ["project", "projects", "work", "portfolio", "websites", "code sync", "ai resume", "resume builder", "kya banaya", "apps"],
             reply: `🚀 **Smit's Top Projects**:<br><br>
             1. 💻 **Code Sync (2024)**: Real-time code collaboration platform allowing multiple programmers to code together in live synchronization. Built with React.js, Node.js, Express.js, and WebSockets.<br><br>
-            2. 🍃 **Full Stack CRUD Application (2023)**: Enterprise full-stack web application with Spring Boot (Java) RESTful backend and React.js frontend, backed by MySQL relational database.<br><br>
+            2. 🤖 **Smit AI Resume Builder**: Real-time intelligent resume builder integrated with Supabase Cloud persistence, ATS Classic & Modern 2-column styles, custom accent themes, and 1-click PDF export (<a href="https://onlinesmit.github.io/smit_AI_resume/" target="_blank" style="color:#e84949;">Try App</a>).<br><br>
             3. 🏫 **Vidya Vikas School Web Portal**: Official live responsive site for Vidya Vikas Hindi & English School, Vapi (<a href="https://vidyavikasschoolvapi.netlify.app/" target="_blank" style="color:#e84949;">vidyavikasschoolvapi.netlify.app</a>) with Admissions 2026-27 notice popup.<br><br>
             4. 🛒 **Online Shopping System**: E-commerce website with store opening/closing automation built using HTML5, CSS3, JavaScript, PHP, and MySQL.`,
             actions: [
+                { text: "🤖 Try AI Resume Builder", url: "https://onlinesmit.github.io/smit_AI_resume/" },
                 { text: "🏫 Visit School Website", url: "https://vidyavikasschoolvapi.netlify.app/" },
-                { text: "💻 GitHub Projects", url: "https://github.com/onlinesmit" },
-                { text: "🛒 Online Shopping", url: "https://smitshoppingsystem.000webhostapp.com/" }
+                { text: "💻 GitHub Projects", url: "https://github.com/onlinesmit" }
+            ]
+        },
+        {
+            keywords: ["resume builder", "ai resume", "smit ai resume", "resume generator", "cv builder"],
+            reply: `📄 **Smit AI Resume Builder**:<br>
+            • Live URL: <a href="https://onlinesmit.github.io/smit_AI_resume/" target="_blank" style="color:#e84949;text-decoration:underline;">onlinesmit.github.io/smit_AI_resume/</a><br>
+            • Features: ATS-standard classic monochrome & modern 2-column templates, Supabase Cloud persistence, dynamic sample data, accent theme picker, live interactive preview, and one-click PDF print/download.<br>
+            • Tech Stack: AI Engine, Supabase Cloud, React/JavaScript, Responsive UI.`,
+            actions: [
+                { text: "🚀 Open AI Resume Builder", url: "https://onlinesmit.github.io/smit_AI_resume/" },
+                { text: "💻 GitHub Repo", url: "https://github.com/onlinesmit/smit_AI_resume" }
             ]
         },
         {

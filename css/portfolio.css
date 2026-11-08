@@ -446,7 +446,9 @@ header{
     }
 
     .project-container #project-2{
-        background: linear-gradient(135deg, #064e3b 0%, #0f172a 60%, #047857 100%);
+        background-image: url('../images/projects/ai-resume-builder.png');
+        background-size: cover;
+        background-position: center;
     }
 
     .project-container #project-3{
