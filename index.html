@@ -46,8 +46,8 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="css/portfolio.css?v=10" />
-    <link rel="stylesheet" href="css/impressive-enhancements.css?v=10" />
+    <link rel="stylesheet" href="css/portfolio.css?v=11" />
+    <link rel="stylesheet" href="css/impressive-enhancements.css?v=11" />
   </head>
   <body>
     <!-- scroll progress bar -->
@@ -55,39 +55,59 @@
 
     <!-- mobile nav -->
     <div class="overlay"></div>
-    <div class="hamburger">
+    <div class="hamburger" aria-label="Toggle Navigation Menu">
       <span></span>
     </div>
     
     <nav class="nav-div mobile-nav">
+      <div class="mobile-nav-header">
+        <div class="mobile-nav-brand">
+          <img src="images/userAsset/NavLogo.png" alt="Smit Logo" class="mobile-logo-img" />
+          <div class="mobile-brand-info">
+            <span class="mobile-brand-name">Smit Kumar Gupta</span>
+            <span class="mobile-brand-tag">2x UGC NET • SDE</span>
+          </div>
+        </div>
+        <button type="button" class="mobile-nav-close" aria-label="Close menu">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
       <ul>
-        <li><a href="#services">services</a></li>
-        <li><a href="#projects">projects</a></li>
+        <li><a href="#services"><i class="fa-solid fa-layer-group"></i> Services</a></li>
+        <li><a href="#projects"><i class="fa-solid fa-code"></i> Projects</a></li>
         <li><a href="#govt-exams"><i class="fa-solid fa-award"></i> Govt. Exams</a></li>
-        <li><a href="#milestones"><i class="fa-solid fa-flag"></i> Values &amp; Impact</a></li>
-        <li><a href="#experience">experience</a></li>
-        <li><a href="#skills">skills</a></li>
-        <li><a href="#contact">contact me</a></li>
-        <li><a href="https://wa.me/919875052329?text=Hi%20Smit%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect%21" target="_blank" style="color: #25D366;"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a></li>
+        <li><a href="#milestones"><i class="fa-solid fa-hands-praying"></i> Values &amp; Impact</a></li>
+        <li><a href="#experience"><i class="fa-solid fa-briefcase"></i> Experience</a></li>
+        <li><a href="#skills"><i class="fa-solid fa-laptop-code"></i> Tech Stack</a></li>
+        <li><a href="#contact"><i class="fa-solid fa-envelope"></i> Contact Me</a></li>
       </ul>
+
+      <div class="mobile-nav-footer">
+        <a href="https://wa.me/919875052329?text=Hi%20Smit%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect%21" target="_blank" class="mobile-wa-btn">
+          <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+        </a>
+      </div>
     </nav>
 
     <!-- ///////// header /////////-->
     <header class="container">
       <div class="logo-div">
-        <img src="images/userAsset/NavLogo.png" alt="Smit Logo" />
-        <span class="name"> </span>
+        <a href="#" class="brand-link" style="display:flex;align-items:center;text-decoration:none;">
+          <img src="images/userAsset/NavLogo.png" alt="Smit Logo" />
+          <span class="name">Smit</span>
+        </a>
       </div>
 
       <nav class="nav-div">
         <ul>
-          <li><a href="#services">services</a></li>
-          <li><a href="#projects">projects</a></li>
-          <li><a href="#govt-exams">govt. exams</a></li>
-          <li><a href="#milestones">values &amp; impact</a></li>
-          <li><a href="#experience">experience</a></li>
-          <li><a href="#skills">skills</a></li>
-          <li><a href="#contact">contact me</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#govt-exams">Govt. Exams</a></li>
+          <li><a href="#milestones">Values</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
           <li>
             <a href="https://wa.me/919875052329?text=Hi%20Smit%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect%21" target="_blank" class="nav-whatsapp-btn">
               <i class="fa-brands fa-whatsapp"></i> WhatsApp
@@ -351,7 +371,7 @@
         <div class="section-tag-pill">
           <i class="fa-solid fa-award"></i> National Competitive Track Record
         </div>
-        <h2 class="project-header" style="font-size: 5.5rem; text-align: center;">Government &amp; National Exams</h2>
+        <h2 class="project-header govt-exams-header-title">Government &amp; National Exams</h2>
         <p class="section-subtitle">
           Demonstrated analytical rigor, mathematical precision &amp; high-stakes perseverance across prestigious national examinations
         </p>
@@ -933,135 +953,214 @@
     </section>
 
     <!-- //////////////// contact section ////////// -->
- 
     <section class="contact-section" id="contact">
       <div class="contact-section-content container">
+        <div class="contact-badge-pill">
+          <i class="fa-solid fa-paper-plane"></i> Get In Touch
+        </div>
         <h2 class="contact-section-heading">Contact Me</h2>
-        <h3 class="contact-section-sub-heading">
-          Questions, thoughts, or just want to say hello? Let's connect!
-        </h3>
+        <p class="contact-section-sub-heading">
+          Available for Full-Stack Software Engineering (SDE) roles, university lectureship, and impactful technical collaborations
+        </p>
 
         <div class="contact-section-layout">
-          <!-- Quick contact cards -->
-          <div class="contact-info-cards">
-            <a href="https://wa.me/919875052329?text=Hi%20Smit%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect%21" target="_blank" class="contact-info-card">
-              <div class="contact-card-icon icon-whatsapp-bg">
-                <i class="fa-brands fa-whatsapp"></i>
-              </div>
-              <div>
-                <div class="contact-card-title">WhatsApp Chat</div>
-                <div class="contact-card-value">+91 9875052329</div>
-                <div class="contact-card-sub"><i class="fa-solid fa-comment-dots"></i> Click to chat instantly</div>
-              </div>
-            </a>
+          <!-- Left Column: Quick Contact Cards & Info -->
+          <div class="contact-left-box">
+            <div class="contact-box-header">
+              <h3 class="contact-box-title"><i class="fa-solid fa-address-card"></i> Let's Connect Directly</h3>
+              <p class="contact-box-desc">
+                Have an opportunity, tech query, or project? Reach out via WhatsApp, Email, or the message form on the right.
+              </p>
+            </div>
 
-            <a href="mailto:smitkumar09@gmail.com?subject=Inquiry%20from%20Portfolio&body=Hi%20Smit%2C" target="_blank" class="contact-info-card">
-              <div class="contact-card-icon icon-email-bg">
-                <i class="fa-regular fa-envelope"></i>
-              </div>
-              <div>
-                <div class="contact-card-title">Direct Email</div>
-                <div class="contact-card-value">smitkumar09@gmail.com</div>
-                <div class="contact-card-sub" style="color:var(--clr-orange);"><i class="fa-solid fa-paper-plane"></i> Quick response guaranteed</div>
-              </div>
-            </a>
+            <div class="contact-info-cards">
+              <!-- WhatsApp Card -->
+              <a href="https://wa.me/919875052329?text=Hi%20Smit%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect%21" target="_blank" class="contact-info-card card-whatsapp">
+                <div class="contact-card-icon icon-whatsapp-bg">
+                  <i class="fa-brands fa-whatsapp"></i>
+                </div>
+                <div class="contact-card-content">
+                  <div class="contact-card-title">WhatsApp Chat</div>
+                  <div class="contact-card-value">+91 9875052329</div>
+                  <div class="contact-card-sub"><span class="pulse-dot-green"></span> Instant chat &amp; fast response</div>
+                </div>
+                <div class="contact-card-arrow">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </div>
+              </a>
 
-            <div class="contact-info-card">
-              <div class="contact-card-icon icon-location-bg">
-                <i class="fa-solid fa-location-dot"></i>
+              <!-- Direct Email Card -->
+              <a href="mailto:smitkumar09@gmail.com?subject=Inquiry%20from%20Portfolio&body=Hi%20Smit%2C" target="_blank" class="contact-info-card card-email">
+                <div class="contact-card-icon icon-email-bg">
+                  <i class="fa-regular fa-envelope"></i>
+                </div>
+                <div class="contact-card-content">
+                  <div class="contact-card-title">Direct Email</div>
+                  <div class="contact-card-value">smitkumar09@gmail.com</div>
+                  <div class="contact-card-sub"><i class="fa-solid fa-paper-plane"></i> Quick response guaranteed</div>
+                </div>
+                <div class="contact-card-arrow">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </div>
+              </a>
+
+              <!-- Location Card -->
+              <div class="contact-info-card card-location">
+                <div class="contact-card-icon icon-location-bg">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div class="contact-card-content">
+                  <div class="contact-card-title">Location</div>
+                  <div class="contact-card-value">Vapi, Gujarat, India</div>
+                  <div class="contact-card-sub"><i class="fa-solid fa-building"></i> Open to Remote &amp; On-Site</div>
+                </div>
               </div>
-              <div>
-                <div class="contact-card-title">Location</div>
-                <div class="contact-card-value">Vapi, Gujarat, India</div>
-                <div class="contact-card-sub" style="color:#059669;"><i class="fa-solid fa-building"></i> Open to Remote &amp; On-Site</div>
-              </div>
+            </div>
+
+            <div class="contact-perks-row">
+              <span class="contact-perk"><i class="fa-solid fa-bolt"></i> Fast Reply</span>
+              <span class="contact-perk"><i class="fa-solid fa-shield-halved"></i> Reliable Communication</span>
+              <span class="contact-perk"><i class="fa-solid fa-clock"></i> Active 7 Days</span>
             </div>
           </div>
 
-          <!-- Contact Form -->
-          <form action="#" class="contact-form">
-            <div class="form-field">
-              <input type="text" 
-              placeholder="Enter your name" 
-              required/>
+          <!-- Right Column: Interactive Message Form -->
+          <div class="contact-right-box">
+            <div class="contact-box-header">
+              <h3 class="contact-box-title"><i class="fa-solid fa-envelope-open-text"></i> Send a Direct Message</h3>
+              <p class="contact-box-desc">
+                Fill out the details below. Your message will be delivered straight to <strong>smitkumar09@gmail.com</strong>.
+              </p>
             </div>
 
-            <div class="form-field">
-              <input type="email"
-               placeholder="Enter your email address"
-               required />
-            </div>
+            <form id="portfolio-contact-form" class="contact-form-modern" novalidate>
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="form-name" class="form-label"><i class="fa-solid fa-user"></i> Your Name <span class="required-star">*</span></label>
+                  <div class="input-wrap">
+                    <input type="text" id="form-name" name="name" class="form-input" placeholder="e.g. Rahul Sharma" required />
+                  </div>
+                </div>
 
-            <div class="form-field">
-              <input type="text" 
-              placeholder="Enter your subject"
-              required />
-            </div>
+                <div class="form-group">
+                  <label for="form-email" class="form-label"><i class="fa-solid fa-envelope"></i> Your Email Address <span class="required-star">*</span></label>
+                  <div class="input-wrap">
+                    <input type="email" id="form-email" name="email" class="form-input" placeholder="e.g. rahul@example.com" required />
+                  </div>
+                </div>
+              </div>
 
-            <div class="form-field">
-              <textarea
-                name=""
-                id="my-textarea"
-                cols="30"
-                rows="10"
-                placeholder="Enter your message"
-                required
-              ></textarea>
-            </div>
+              <div class="form-group">
+                <label for="form-subject" class="form-label"><i class="fa-solid fa-tag"></i> Subject <span class="required-star">*</span></label>
+                <div class="input-wrap">
+                  <input type="text" id="form-subject" name="subject" class="form-input" placeholder="e.g. SDE Opportunity / Project Discussion" required />
+                </div>
+              </div>
 
-            <div class="button-field">
-              <button type="submit" class="btn form-btn">
-                Send Message
-                <i class="fa-solid fa-paper-plane icon"></i>
-              </button>
-            </div>
-          </form>
+              <div class="form-group">
+                <label for="form-message" class="form-label"><i class="fa-solid fa-comment-dots"></i> Your Message <span class="required-star">*</span></label>
+                <div class="input-wrap">
+                  <textarea id="form-message" name="message" class="form-textarea" rows="4" placeholder="Write your message or inquiry here..." required></textarea>
+                </div>
+              </div>
+
+              <!-- Status Alert Banner -->
+              <div id="form-status-alert" class="form-status-alert" style="display: none;"></div>
+
+              <div class="form-button-row">
+                <button type="submit" id="form-submit-btn" class="form-btn-primary">
+                  <span class="btn-text">Send Message</span>
+                  <i class="fa-solid fa-paper-plane btn-icon"></i>
+                </button>
+                <button type="button" id="form-wa-btn" class="form-btn-whatsapp">
+                  <i class="fa-brands fa-whatsapp"></i>
+                  <span>Send via WhatsApp</span>
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- //////////// footer ///////////// -->
-    <footer>
-      <div class="footer-content container">
-        <div class="footer-fadded-text">smit</div>
+    <!-- //////////// Modern Footer ///////////// -->
+    <footer class="modern-footer">
+      <div class="footer-fadded-text">smit</div>
+      <div class="container footer-container">
+        <!-- Top Grid -->
+        <div class="footer-top-grid">
+          <!-- Col 1: Brand & Bio -->
+          <div class="footer-col-brand">
+            <div class="footer-logo">
+              <img src="images/userAsset/NavLogo.png" alt="Smit Logo" class="footer-logo-img" />
+              <span class="footer-logo-text">Smit Kumar Gupta</span>
+            </div>
+            <p class="footer-bio">
+              Full-Stack Software Development Engineer (SDE), 2x UGC NET Qualified Computer Scientist &amp; National Merit Achiever. Building scalable systems with Java, Spring Boot, React, and MERN.
+            </p>
+            <div class="footer-contact-inline">
+              <a href="mailto:smitkumar09@gmail.com"><i class="fa-regular fa-envelope"></i> smitkumar09@gmail.com</a>
+              <span>•</span>
+              <a href="https://wa.me/919875052329" target="_blank"><i class="fa-brands fa-whatsapp"></i> +91 9875052329</a>
+            </div>
+          </div>
 
-        <nav class="nav-div">
-          <ul>
-            <li><a href="#services">services</a></li>
-            <li><a href="#projects">projects</a></li>
-            <li><a href="#govt-exams">govt. exams</a></li>
-            <li><a href="#milestones">values &amp; impact</a></li>
-            <li><a href="#experience">experience</a></li>
-            <li><a href="#skills">skills</a></li>
-            <li><a href="#contact">contact me</a></li>
-          </ul>
-        </nav>
+          <!-- Col 2: Quick Links -->
+          <div class="footer-col-links">
+            <h4 class="footer-col-heading">Quick Navigation</h4>
+            <ul class="footer-nav-list">
+              <li><a href="#services"><i class="fa-solid fa-angle-right"></i> Services</a></li>
+              <li><a href="#projects"><i class="fa-solid fa-angle-right"></i> Projects</a></li>
+              <li><a href="#govt-exams"><i class="fa-solid fa-angle-right"></i> 30+ Govt. Exams</a></li>
+              <li><a href="#milestones"><i class="fa-solid fa-angle-right"></i> Values &amp; Sadhana</a></li>
+              <li><a href="#experience"><i class="fa-solid fa-angle-right"></i> Experience</a></li>
+              <li><a href="#skills"><i class="fa-solid fa-angle-right"></i> Tech Stack</a></li>
+              <li><a href="#contact"><i class="fa-solid fa-angle-right"></i> Contact Me</a></li>
+            </ul>
+          </div>
 
-        <div class="social-icons">
-          <a href="https://wa.me/919875052329?text=Hi%20Smit%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect%21" target="_blank" aria-label="whatsapp account" style="color: #25D366;">
-            <i class="fa-brands fa-whatsapp icon"></i>
-          </a>
+          <!-- Col 3: Social & Connect -->
+          <div class="footer-col-social">
+            <h4 class="footer-col-heading">Connect With Smit</h4>
+            <p class="footer-social-desc">Follow my journey, inspect open-source repos, or chat directly:</p>
+            <div class="footer-social-icons">
+              <a href="https://wa.me/919875052329?text=Hi%20Smit%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect%21" target="_blank" aria-label="WhatsApp" class="social-circle wa-icon">
+                <i class="fa-brands fa-whatsapp"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/smitkumar1/" target="_blank" aria-label="LinkedIn" class="social-circle in-icon">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+              <a href="https://github.com/onlinesmit" target="_blank" aria-label="GitHub" class="social-circle gh-icon">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a href="https://twitter.com/SmitOnlineSmit" target="_blank" aria-label="Twitter" class="social-circle tw-icon">
+                <i class="fa-brands fa-x-twitter"></i>
+              </a>
+              <a href="https://www.instagram.com/online_smitt" target="_blank" aria-label="Instagram" class="social-circle ig-icon">
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+              <a href="mailto:smitkumar09@gmail.com?subject=Inquiry%20from%20Portfolio&body=Hi%20Smit%2C" target="_blank" aria-label="Email" class="social-circle mail-icon">
+                <i class="fa-regular fa-envelope"></i>
+              </a>
+            </div>
 
-          <a href="https://www.linkedin.com/in/smitkumar1/" target="_blank" aria-label="linkedin account">
-            <i class="fa-brands fa-linkedin icon"></i>
-          </a>
+            <div class="footer-cta-card">
+              <i class="fa-solid fa-graduation-cap"></i>
+              <span>2x UGC NET Qualified • Asst. Professor Eligible</span>
+            </div>
+          </div>
+        </div>
 
-          <a href="https://github.com/onlinesmit" target="_blank" aria-label="github account">
-            <i class="fa-brands fa-github icon"></i>
-          </a>
-
-          <a href="https://twitter.com/SmitOnlineSmit" target="_blank" aria-label="twitter account">
-            <i class="fa-brands fa-twitter icon"></i>
-          </a>
-
-          <a href="https://www.instagram.com/online_smitt" target="_blank" aria-label="instagram account">
-            <i class="fa-brands fa-instagram icon"></i>
-          </a>
-
-          <a 
-          href="mailto:smitkumar09@gmail.com?subject=Inquiry%20from%20Portfolio&body=Hi%20Smit%2C"
-           target="_blank" aria-label="gmail">
-            <i class="fa-regular fa-envelope icon"></i>
+        <!-- Bottom Bar -->
+        <div class="footer-bottom-bar">
+          <div class="footer-copyright">
+            © 2026 <strong>Smit Kumar Gupta</strong>. All Rights Reserved.
+          </div>
+          <div class="footer-tagline">
+            Rooted in Sadhana, Engineering Rigor &amp; National Service.
+          </div>
+          <a href="#" class="footer-scroll-top-link" id="footer-scroll-top" aria-label="Scroll to top">
+            Back to top <i class="fa-solid fa-arrow-up"></i>
           </a>
         </div>
       </div>
@@ -1153,9 +1252,9 @@
       }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <script src="js/script.js?v=10"></script>
-    <script src="js/enhancements.js?v=10"></script>
-    <script src="js/ai-bot.js?v=10"></script>
+    <script src="js/script.js?v=11"></script>
+    <script src="js/enhancements.js?v=11"></script>
+    <script src="js/ai-bot.js?v=11"></script>
 
 
    
