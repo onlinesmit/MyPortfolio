@@ -136,14 +136,14 @@
         {
             keywords: ["experience", "internship", "bluestocks", "turtlemint", "fintech", "sde", "vvh&es", "vidya vikas", "teacher", "lecturer", "work", "job", "career"],
             reply: `💼 **Professional Experience (3+ Years)**:<br><br>
-            1. 🏢 **Operation Executive — Turtlemint**, Vapi (Mar 2025 – Present)<br>
-            - Managing operational workflows, process automation, and fintech operations.<br><br>
-            2. 💻 **Software Development Engineer (SDE) — Bluestocks Fintech** (Jul 2024 – Feb 2025)<br>
+            1. 🏫 **Computer Lecturer & Tech Lead — VVH&ES (Vidya Vikas Hindi & English School)**, Vapi (Sep 2025 – Present)<br>
+            - Leading computer science curriculum, instructional lectures, and digital laboratory infrastructure.<br>
+            - Built the official school web portal (<a href="https://vidyavikasschoolvapi.netlify.app/" target="_blank" style="color:#e84949;">vidyavikasschoolvapi.netlify.app</a>) with online admissions 2026-27.<br><br>
+            2. 🏢 **Operation Executive — Turtlemint**, Vapi (Mar 2025 – Aug 2025)<br>
+            - Managed operational workflows, process automation, digital integration, and fintech operations.<br><br>
+            3. 💻 **Software Development Engineer (SDE) — Bluestocks Fintech** (Jul 2024 – Feb 2025)<br>
             - Engineered scalable web applications using React.js and modern JavaScript.<br>
             - Built and consumed RESTful APIs, optimized database queries, and participated in agile sprints.<br><br>
-            3. 🏫 **Computer Lecturer & Tech Lead — VVH&ES**, Vapi (Nov 2024 – Present)<br>
-            - Head of computer science instruction and laboratory infrastructure.<br>
-            - Built the official school web portal (<a href="https://vidyavikasschoolvapi.netlify.app/" target="_blank" style="color:#e84949;">vidyavikasschoolvapi.netlify.app</a>) with online admissions 2026-27.<br><br>
             4. 🏆 **Team Lead — COAT IV Aptitude Test** (Leadership)<br>
             - Led a team of 20 to 50 volunteers for intercollegiate tech event, securing 3rd rank!`,
             actions: [
@@ -232,18 +232,17 @@
             ]
         },
         {
-            keywords: ["whatsapp", "phone", "number", "mobile", "contact", "call", "email", "reach", "baat", "message"],
-            reply: `📞 **Contact Smit Kumar Gupta Directly**:<br><br>
+            keywords: ["whatsapp", "phone", "number", "mobile", "contact", "email", "reach", "baat", "message"],
+            reply: `💬 **Contact Smit Kumar Gupta Directly**:<br><br>
             • 📱 **WhatsApp**: <a href="${WHATSAPP_LINK}" target="_blank" style="color:#25D366;font-weight:700;">+91 9875052329</a><br>
-            • 📞 **Direct Call**: <a href="tel:+919554839476" style="color:#2563eb;font-weight:700;">+91 9554839476</a><br>
             • ✉️ **Email**: <a href="mailto:smitkumar09@gmail.com" style="color:#6366f1;">smitkumar09@gmail.com</a><br>
             • 🔗 **LinkedIn**: <a href="${LINKEDIN_URL}" target="_blank" style="color:#0077b5;">linkedin.com/in/smitkumar1/</a><br>
             • 📍 **Location**: Vapi, Gujarat, India<br><br>
-            Feel free to ping on WhatsApp or call anytime!`,
+            Feel free to ping on WhatsApp or drop an email anytime!`,
             actions: [
                 { text: "💬 Open WhatsApp Chat", url: WHATSAPP_LINK, isWa: true },
-                { text: "📞 Call +91 9554839476", url: "tel:+919554839476" },
-                { text: "✉️ Send Email", url: "mailto:smitkumar09@gmail.com" }
+                { text: "✉️ Send Email", url: "mailto:smitkumar09@gmail.com" },
+                { text: "🔗 LinkedIn Profile", url: LINKEDIN_URL }
             ]
         },
         {
@@ -254,7 +253,7 @@
             ⭐ Hands-on experience at **Bluestocks Fintech (SDE)** & **Turtlemint**<br>
             ⭐ Full-stack expertise in **Spring Boot, Java, React.js, Node.js, and MySQL**<br>
             ⭐ Proven leadership (Led 20-50 volunteers; 3rd rank in COAT IV)<br><br>
-            Let's connect directly on WhatsApp: **+91 9875052329** or Phone: **+91 9554839476**!`,
+            Let's connect directly on WhatsApp: **+91 9875052329** or Email: **smitkumar09@gmail.com**!`,
             actions: [
                 { text: "🚀 Chat on WhatsApp (+91 9875052329)", url: WHATSAPP_LINK, isWa: true },
                 { text: "📄 View Resume", url: "assets/smit_resume.pdf" }
