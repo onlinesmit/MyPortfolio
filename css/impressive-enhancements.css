@@ -1316,21 +1316,231 @@ header.header-scrolled {
     }
 }
 
+/* ------------------- Life Milestones: Values, Sadhana & Social Leadership ------------------- */
+.milestones-section {
+    padding: 8.5rem 0 7.5rem 0;
+    background: linear-gradient(135deg, #090d16 0%, #151a30 50%, #090d16 100%);
+    position: relative;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+}
+.milestones-section .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.milestones-tag-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: rgba(245, 158, 11, 0.15);
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    color: #fbbf24;
+    padding: 0.65rem 2rem;
+    border-radius: 50px;
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin: 0 auto 1.5rem auto;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.15);
+}
+.milestones-title {
+    font-size: 5.5rem;
+    text-align: center;
+    color: #ffffff;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 1rem;
+}
+.milestones-subtitle {
+    font-size: 1.6rem;
+    text-align: center;
+    color: #94a3b8;
+    max-width: 780px;
+    line-height: 1.6;
+    margin-bottom: 4.5rem;
+}
+
+.milestones-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    width: 100%;
+}
+.milestone-card {
+    background: rgba(26, 33, 56, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 3.2rem 2.8rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    overflow: hidden;
+}
+.milestone-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #f59e0b, #e84949);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.milestone-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), 0 0 25px rgba(245, 158, 11, 0.15);
+    border-color: rgba(245, 158, 11, 0.5);
+}
+.milestone-card:hover::before {
+    opacity: 1;
+}
+
+.milestone-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.2rem;
+    margin-bottom: 1.8rem;
+}
+.milestone-icon-wrap {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.4rem;
+    flex-shrink: 0;
+}
+.icon-rss {
+    background: rgba(245, 158, 11, 0.18);
+    color: #fbbf24;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+.icon-vipassana {
+    background: rgba(16, 185, 129, 0.18);
+    color: #34d399;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+.icon-gita {
+    background: rgba(168, 85, 247, 0.18);
+    color: #c084fc;
+    border: 1px solid rgba(168, 85, 247, 0.3);
+}
+.icon-navodaya {
+    background: rgba(59, 130, 246, 0.18);
+    color: #60a5fa;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.milestone-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 1.3rem;
+    border-radius: 50px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+.status-rss-pill {
+    background: rgba(245, 158, 11, 0.15);
+    color: #fbbf24;
+    border: 1px solid rgba(245, 158, 11, 0.35);
+}
+.status-vipassana-pill {
+    background: rgba(16, 185, 129, 0.15);
+    color: #34d399;
+    border: 1px solid rgba(16, 185, 129, 0.35);
+}
+.status-gita-pill {
+    background: rgba(168, 85, 247, 0.15);
+    color: #c084fc;
+    border: 1px solid rgba(168, 85, 247, 0.35);
+}
+.status-navodaya-pill {
+    background: rgba(59, 130, 246, 0.15);
+    color: #60a5fa;
+    border: 1px solid rgba(59, 130, 246, 0.35);
+}
+
+.milestone-card-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+}
+.milestone-card-subtitle {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #fbbf24;
+    margin-bottom: 1.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+}
+.milestone-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin-bottom: 1.6rem;
+}
+.milestone-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.08);
+    color: #f1f5f9;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    padding: 0.45rem 1.1rem;
+    border-radius: 8px;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+.milestone-badge i {
+    font-size: 1.1rem;
+    color: #f59e0b;
+}
+.milestone-card-desc {
+    font-size: 1.42rem;
+    color: #cbd5e1;
+    line-height: 1.7;
+    margin-top: auto;
+}
+
+@media (max-width: 900px) {
+    .milestones-grid {
+        grid-template-columns: 1fr;
+        gap: 2.2rem;
+    }
+    .milestones-title {
+        font-size: 4rem;
+    }
+    .milestones-section {
+        padding: 6.5rem 0;
+    }
+}
 @media (max-width: 480px) {
-    .hero-stats-bar {
-        grid-template-columns: 1fr 1fr !important;
-        gap: 1rem !important;
+    .milestone-card {
+        padding: 2.2rem 1.8rem;
     }
-    .btn-whatsapp-hero {
-        font-size: 1.5rem !important;
-        padding: 1.1rem 2rem !important;
+    .milestone-card-title {
+        font-size: 1.9rem;
     }
-    .hero-btn-group .btn {
-        font-size: 1.5rem !important;
-        padding: 1.1rem 2.4rem !important;
-        text-align: center;
+    .milestones-title {
+        font-size: 3.2rem;
     }
-    .govt-card-top {
+    .milestone-top {
         flex-direction: column;
         align-items: flex-start;
         gap: 0.8rem;

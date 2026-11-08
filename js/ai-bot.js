@@ -12,12 +12,12 @@
     const KNOWLEDGE_BASE = [
         {
             keywords: ["hi", "hello", "hey", "namaste", "hlo", "kem cho", "kya haal", "hola", "start"],
-            reply: `👋 **Hello!** I am Smit's AI Assistant. How can I help you today?<br><br>You can ask me about his **Government Exam Clearances** (CBI, 2x UGC NET, UPSC, Navy SSR, NDA), **professional experience** (Turtlemint, Bluestocks Fintech, VVH&ES), **tech stack** (Spring Boot, React, Java, MERN), **projects**, or connect directly on **WhatsApp**!`,
+            reply: `👋 **Hello!** I am Smit's AI Assistant. How can I help you today?<br><br>You can ask me about his **Government Exam Clearances** (CBI, 2x UGC NET, UPSC, Navy SSR, NDA, 30+ exams), **Values & Social Leadership** (RSS Nagar Sharirik Pramukh, Vipassana Sadhana, Gita Olympiad, Navodaya), **tech stack** (Spring Boot, React, Java, MERN), or connect directly on **WhatsApp**!`,
             actions: [
-                { text: "🏛️ Govt. Exams", chip: "govt exams" },
+                { text: "🏛️ 30+ Govt Exams", chip: "govt exams" },
+                { text: "🚩 Values & RSS", chip: "values" },
                 { text: "🎓 2x UGC NET", chip: "net" },
                 { text: "💼 Experience", chip: "experience" },
-                { text: "🚀 Projects", chip: "projects" },
                 { text: "💬 WhatsApp (+91 9875052329)", url: WHATSAPP_LINK, isWa: true }
             ]
         },
@@ -25,22 +25,45 @@
             keywords: ["who is smit", "about", "bio", "background", "kaun hai", "smit kumar", "smit kumar gupta", "introduce"],
             reply: `👨‍💻 **About Smit Kumar Gupta**:<br>
             • **2x UGC NET Qualified (Assistant Professor & Ph.D. Admission)** in Computer Science & Applications.<br>
-            • **National Competitive Exam Achiever**: Cleared **CBI (Tier 1 & 2, Interview Stage)**, **UPSC (2x Prelims, 1x Mains)**, **Navy SSR (post-12th)**, and **NDA Exam 1**.<br>
-            • **Software Development Engineer & Computer Expert** with 3+ years of experience across fintech engineering and academic mentorship.<br>
-            • **Current Roles**: **Operation Executive at Turtlemint** (Mar 2025 – Present) & **Computer Lecturer / Tech Lead at VVH&ES** (Nov 2024 – Present).<br>
-            • **Previous Role**: **Software Development Engineer (SDE) at Bluestocks Fintech** (Jul 2024 – Feb 2025).<br>
-            • **Education**: MCA from GL Bajaj (AKTU, CGPA: 7.1/10) & B.Sc (Maths & CS, 85.6% Distinction) from University of Allahabad.<br>
-            • **Location**: Vapi, Gujarat, India.`,
+            • **National Competitive Exam Track Record**: Cleared **CBI (Tier 1 & 2, Interview Stage)**, **UPSC (2x Prelims, 1x Mains)**, **Navy SSR (post-12th)**, **NDA Exam 1**, and appeared in **30+ Government Examinations**.<br>
+            • **Values & Social Leadership**: Serving as **Nagar Sharirik Pramukh (RSS)**, completed *Sangh Shiksha Varga*, *Prathmik Varga*, and *Prarambhik Varga*; active Shikshak & social worker.<br>
+            • **Spiritual Sadhana**: Completed 10-day residential **Vipassana Meditation** in Jalgaon, Maharashtra; represented at **International Gita Olympiad** in Kurukshetra.<br>
+            • **Early Foundation**: Cleared **Navodaya Vidyalaya** & **Ekikrit Examination** post-8th grade, stepping out independently for city education.<br>
+            • **Software Development Engineer & Tech Lead**: Ex-SDE @ Bluestocks Fintech, Operation Executive @ Turtlemint, Computer Lecturer @ VVH&ES.<br>
+            • **Education**: MCA from GL Bajaj (CGPA: 7.1/10) & B.Sc (Maths & CS, 85.6% Distinction) from University of Allahabad.`,
             actions: [
                 { text: "🏛️ View Govt Exams", chip: "govt exams" },
+                { text: "🚩 Values & Leadership", chip: "values" },
                 { text: "🔗 LinkedIn Profile", url: LINKEDIN_URL },
-                { text: "📄 Download Resume", url: "assets/smit_resume.pdf" },
-                { text: "📱 WhatsApp: 9875052329", url: WHATSAPP_LINK, isWa: true }
+                { text: "📄 Download Resume", url: "assets/smit_resume.pdf" }
             ]
         },
         {
-            keywords: ["govt exams", "govt exam", "government exams", "upsc", "cbi", "navy", "nda", "sarkari", "competitive exams", "exams cleared", "exam clear"],
-            reply: `🏛️ **Smit's Government & National Exam Clearances**:<br><br>
+            keywords: ["values", "rss", "nagar sharirik pramukh", "sangh", "shiksha varga", "prarambhik", "prathmik", "shikshak", "social work", "vipassana", "meditation", "geeta", "gita", "olympiad", "kurukshetra", "navodaya", "ekikrit", "spiritual"],
+            reply: `🚩 **Leadership, Spiritual Sadhana & Life Milestones**:<br><br>
+            1. 🚩 **RSS — Nagar Sharirik Pramukh & Social Service**:<br>
+            • Completed intensive residential cadre training away from home: **Prarambhik Varga**, **Prathmik Varga**, and **Sangh Shiksha Varga**.<br>
+            • Serving as **Nagar Sharirik Pramukh** (City Drill & Discipline Head), building physical fitness, martial discipline, and moral character in youth.<br>
+            • Active as a **Shikshak** (Instructor) and dedicated volunteer in community welfare and social service.<br><br>
+            2. 🧘 **Vipassana Meditation Sadhana (Jalgaon, Maharashtra)**:<br>
+            • Underwent the transformative 10-day residential silent meditation retreat in Jalgaon.<br>
+            • Maintained complete **Noble Silence (Arya Mauna)** and 10+ daily hours of mindfulness, mastering emotional equanimity, razor-sharp focus, and internal peace.<br><br>
+            3. 🕉️ **International Gita Olympiad (Kurukshetra, Haryana)**:<br>
+            • Participated and resided on the sacred historic soil of Kurukshetra, Haryana.<br>
+            • Deeply immersed in the teachings of the *Bhagavad Gita* — internalizing **Nishkama Karma** (duty without anxiety for fruits) and principled leadership.<br><br>
+            4. 🎒 **Navodaya & Ekikrit Scholar (From 8th Grade)**:<br>
+            • Qualified both **Jawahar Navodaya Vidyalaya** and **Ekikrit Merit Exams** right after class 8.<br>
+            • Left village hometown at a young age to pursue city schooling from class 9 onwards, building lifelong self-reliance and academic grit.`,
+            actions: [
+                { text: "🏛️ 30+ Govt Exams", chip: "govt exams" },
+                { text: "📄 View Resume", url: "assets/smit_resume.pdf" },
+                { text: "💬 Chat on WhatsApp", url: WHATSAPP_LINK, isWa: true }
+            ]
+        },
+        {
+            keywords: ["govt exams", "govt exam", "government exams", "upsc", "cbi", "navy", "nda", "sarkari", "competitive exams", "exams cleared", "exam clear", "30+"],
+            reply: `🏛️ **Smit's 30+ Government & National Exam Clearances**:<br><br>
+            • **Total Exams**: Appeared in **30+ prestigious Government & National Examinations**!<br><br>
             1. ⚖️ **CBI Examination (Central Bureau of Investigation)**:<br>
             • **Exam 1 (Tier 1) Cleared** & **Exam 2 (Tier 2) Cleared**.<br>
             • Shortlisted & Qualified for the final **Personality Interview stage**!<br><br>
@@ -54,9 +77,10 @@
             • **Cleared right after 12th standard** with top merit in science and mathematics.<br><br>
             5. 🎖️ **NDA (National Defence Academy) Examination**:<br>
             • **Exam 1 Cleared** (Conducted by UPSC).<br><br>
-            6. 🧠 **Extensive National Exam Portfolio**:<br>
-            • Appeared in and prepared across 10+ prestigious national examinations, developing elite logical deduction, quantitative precision, and disciplined composure under high pressure.`,
+            6. 🎒 **Navodaya Vidyalaya & Ekikrit Examination**:<br>
+            • Both cleared right after 8th class, moving independently to the city for higher studies.`,
             actions: [
+                { text: "🚩 Values & Leadership", chip: "values" },
                 { text: "🎓 2x UGC NET Details", chip: "net" },
                 { text: "📄 Download Resume", url: "assets/smit_resume.pdf" },
                 { text: "💬 Chat on WhatsApp", url: WHATSAPP_LINK, isWa: true }

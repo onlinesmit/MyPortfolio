@@ -37,16 +37,19 @@ var typeData = new Typed(".role", {
     strings: [
       "Software Development Engineer",
       "2x UGC NET Qualified (Asst. Prof & PhD)",
+      "RSS Nagar Sharirik Pramukh",
       "UPSC & CBI Merit Achiever",
+      "Vipassana Meditation Practitioner",
       "Computer Lecturer @ VVH&ES",
       "Full Stack Developer (Spring Boot & MERN)",
       "Ex-SDE @ Bluestocks Fintech",
       "Operation Executive @ Turtlemint",
-      "Navy SSR & NDA Qualified"
+      "Navy SSR & NDA Qualified",
+      "30+ Govt. Exams Experienced"
     ],
     loop: true,
-    typeSpeed: 70,
-    backSpeed: 50,
+    typeSpeed: 65,
+    backSpeed: 45,
     backDelay: 1300,
   });
 
