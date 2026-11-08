@@ -754,6 +754,19 @@ header.header-scrolled {
     right: 30px;
     z-index: 9999;
     font-family: 'Be Vietnam Pro', sans-serif;
+    animation: floatBob 3s ease-in-out infinite;
+}
+#ai-bot-container:hover,
+#ai-bot-container:has(.open) {
+    animation-play-state: paused;
+}
+@keyframes floatBob {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
 }
 
 /* Launcher Button */
@@ -777,6 +790,10 @@ header.header-scrolled {
 .ai-bot-launcher:hover {
     transform: scale(1.08) rotate(-5deg);
     box-shadow: 0 14px 30px rgba(99, 102, 241, 0.5);
+}
+.ai-bot-launcher.active {
+    background: linear-gradient(135deg, #6366f1, #e84949);
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.6);
 }
 .ai-badge {
     position: absolute;

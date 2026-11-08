@@ -264,10 +264,9 @@
             reply: `📄 **Smit's Official Resume** has been updated with his latest credentials (UGC NET Dec 2024, Turtlemint, Bluestocks Fintech, Code Sync, Spring Boot). Click below to view or download:`,
             actions: [
                 { text: "📥 Download Official Resume PDF", url: "assets/smit_resume.pdf" },
-                { text: "💬 WhatsApp Smit", url: WHATSAPP_LINK, isWa: true }
+                { text: "💬 WhatsApp SK", url: WHATSAPP_LINK, isWa: true }
             ]
         }
-    ];
     ];
 
     // Sound chime via Web Audio API
@@ -308,35 +307,65 @@
 
         let isOpen = false;
 
-        function toggleChat() {
-            isOpen = !isOpen;
-            if (isOpen) {
-                windowEl.classList.add("open");
-                launcher.style.transform = "scale(0.85)";
-                inputField.focus();
-                // If body is empty, add welcome message
-                if (chatBody.children.length === 0) {
-                    sendBotWelcome();
-                }
-            } else {
-                windowEl.classList.remove("open");
-                launcher.style.transform = "";
+        function openChat() {
+            isOpen = true;
+            windowEl.classList.add("open");
+            launcher.classList.add("active");
+            launcher.style.transform = "scale(0.9)";
+            setTimeout(() => {
+                if (inputField) inputField.focus();
+            }, 100);
+            if (chatBody && chatBody.children.length === 0) {
+                sendBotWelcome();
             }
         }
 
-        launcher.addEventListener("click", toggleChat);
-        closeBtn.addEventListener("click", toggleChat);
+        function closeChat() {
+            isOpen = false;
+            windowEl.classList.remove("open");
+            launcher.classList.remove("active");
+            launcher.style.transform = "";
+        }
 
-        clearBtn.addEventListener("click", () => {
-            chatBody.innerHTML = "";
-            sendBotWelcome();
+        function toggleChat(e) {
+            if (e) e.stopPropagation();
+            if (isOpen) {
+                closeChat();
+            } else {
+                openChat();
+            }
+        }
+
+        if (launcher) launcher.addEventListener("click", toggleChat);
+        if (closeBtn) closeBtn.addEventListener("click", toggleChat);
+
+        // Click outside closes the chat window
+        document.addEventListener("click", (e) => {
+            if (isOpen && container && !container.contains(e.target)) {
+                closeChat();
+            }
         });
+
+        // Escape closes the chat window
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && isOpen) {
+                closeChat();
+            }
+        });
+
+        if (clearBtn) {
+            clearBtn.addEventListener("click", () => {
+                if (chatBody) chatBody.innerHTML = "";
+                sendBotWelcome();
+            });
+        }
 
         // Welcome message
         function sendBotWelcome() {
             appendBotMessage(
-                `👋 <strong>Hi! I'm Smit's AI Assistant.</strong><br>Ask me anything about Smit's projects, tech stack, experience, or hire him directly on WhatsApp!`,
+                `👋 <strong>Hi! I'm SK's AI Assistant.</strong><br>Ask me anything about SK's **30+ Govt. Exams**, **2x UGC NET**, fintech experience, tech stack, or connect on WhatsApp!`,
                 [
+                    { text: "🏛️ 30+ Govt Exams", chip: "govt exams" },
                     { text: "🚀 Projects", chip: "projects" },
                     { text: "⚡ Tech Stack", chip: "skills" },
                     { text: "💬 WhatsApp (9875052329)", url: WHATSAPP_LINK, isWa: true }

@@ -433,8 +433,7 @@ header{
     .project-container .project-card{
         width: 90%;
         height: 55rem;
-        background-color: #afafaf;
-        background-image: url('../images/projects/tic-tac-toe.webp');
+        background-color: #1e293b;
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -442,16 +441,22 @@ header{
         position: relative;
     }
 
+    .project-container #project-1{
+        background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 60%, #312e81 100%);
+    }
+
     .project-container #project-2{
-        background-image: url('../images/projects/vidya-vikas-school.png');
+        background: linear-gradient(135deg, #064e3b 0%, #0f172a 60%, #047857 100%);
     }
 
     .project-container #project-3{
-        background-image: url('../images/projects/counter-app.webp');
+        background-image: url('../images/projects/vidya-vikas-school.png');
+        background-size: cover;
+        background-position: center;
     }
 
     .project-container #project-4{
-        background-image: url('../images/projects/profile-share.webp');
+        background: linear-gradient(135deg, #78350f 0%, #0f172a 60%, #b45309 100%);
     }
 
     .project-card:nth-child(even){
