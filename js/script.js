@@ -36,16 +36,17 @@ if (contactForm) {
 var typeData = new Typed(".role", {
     strings: [
       "Software Development Engineer",
-      "UGC NET Qualified (Dec 2024)",
+      "2x UGC NET Qualified (Asst. Prof & PhD)",
+      "UPSC & CBI Merit Achiever",
       "Computer Lecturer @ VVH&ES",
       "Full Stack Developer (Spring Boot & MERN)",
       "Ex-SDE @ Bluestocks Fintech",
       "Operation Executive @ Turtlemint",
-      "Java & React Specialist"
+      "Navy SSR & NDA Qualified"
     ],
     loop: true,
-    typeSpeed: 75,
-    backSpeed: 55,
+    typeSpeed: 70,
+    backSpeed: 50,
     backDelay: 1300,
   });
 

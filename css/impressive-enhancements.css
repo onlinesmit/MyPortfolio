@@ -1054,8 +1054,285 @@ header.header-scrolled {
     object-fit: contain;
 }
 
+/* ------------------- Section Tag Pill ------------------- */
+.section-tag-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: rgba(99, 102, 241, 0.12);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    color: #4f46e5;
+    padding: 0.6rem 1.8rem;
+    border-radius: 50px;
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin: 0 auto 1.5rem auto;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+/* ------------------- Government & Competitive Exams Section ------------------- */
+.govt-exams-section {
+    padding: 8rem 0 7rem 0;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    position: relative;
+    border-top: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+}
+.govt-exams-section .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.govt-exams-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.8rem;
+    margin-top: 4.5rem;
+    width: 100%;
+}
+
+.govt-exam-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    padding: 2.8rem 2.4rem;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    overflow: hidden;
+}
+.govt-exam-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #6366f1, #e84949);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.govt-exam-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 16px 36px rgba(52, 61, 104, 0.12);
+    border-color: #cbd5e1;
+}
+.govt-exam-card:hover::before {
+    opacity: 1;
+}
+
+.govt-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.2rem;
+    margin-bottom: 1.8rem;
+}
+.govt-card-icon-wrap {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    flex-shrink: 0;
+}
+.icon-cbi {
+    background: rgba(30, 64, 175, 0.1);
+    color: #1e40af;
+}
+.icon-ugc {
+    background: rgba(16, 185, 129, 0.12);
+    color: #059669;
+}
+.icon-upsc {
+    background: rgba(147, 51, 234, 0.12);
+    color: #7e22ce;
+}
+.icon-navy {
+    background: rgba(14, 165, 233, 0.12);
+    color: #0284c7;
+}
+.icon-nda {
+    background: rgba(239, 68, 68, 0.12);
+    color: #dc2626;
+}
+.icon-merit {
+    background: rgba(245, 158, 11, 0.12);
+    color: #d97706;
+}
+
+.govt-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.45rem 1.2rem;
+    border-radius: 50px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+.status-interview {
+    background: #eff6ff;
+    color: #1d4ed8;
+    border: 1px solid #bfdbfe;
+}
+.status-qualified {
+    background: #ecfdf5;
+    color: #047857;
+    border: 1px solid #a7f3d0;
+}
+.status-mains {
+    background: #faf5ff;
+    color: #6b21a8;
+    border: 1px solid #e9d5ff;
+}
+.status-cleared {
+    background: #f0f9ff;
+    color: #0369a1;
+    border: 1px solid #bae6fd;
+}
+.status-merit {
+    background: #fefce8;
+    color: #854d0e;
+    border: 1px solid #fef08a;
+}
+
+.govt-card-title {
+    font-size: 2.1rem;
+    font-weight: 800;
+    color: var(--clr-dark-blue);
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+}
+.govt-card-subtitle {
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #64748b;
+    margin-bottom: 1.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.govt-card-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin-bottom: 1.6rem;
+}
+.govt-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #f1f5f9;
+    color: #334155;
+    border: 1px solid #e2e8f0;
+    padding: 0.4rem 1rem;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+.govt-badge i {
+    font-size: 1.1rem;
+    color: #10b981;
+}
+
+.govt-card-desc {
+    font-size: 1.4rem;
+    color: #475569;
+    line-height: 1.65;
+    margin-top: auto;
+}
+
+/* ------------------- Enhanced Responsive Styles (Mobile & Laptop) ------------------- */
+@media (max-width: 1100px) {
+    .govt-exams-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.2rem;
+    }
+}
+
 @media (max-width: 900px) {
     .timeline-grid {
         grid-template-columns: 1fr;
+    }
+    .govt-exams-section {
+        padding: 6rem 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .govt-exams-grid {
+        grid-template-columns: 1fr;
+        gap: 1.8rem;
+    }
+    .govt-exam-card {
+        padding: 2.2rem 1.8rem;
+    }
+    .govt-card-title {
+        font-size: 1.9rem;
+    }
+    .section-tag-pill {
+        font-size: 1.2rem;
+        padding: 0.5rem 1.4rem;
+    }
+    .hero-stats-bar {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1.2rem !important;
+        padding: 1.6rem 1.2rem !important;
+        margin: 2.5rem auto !important;
+    }
+    .stat-card {
+        padding: 1rem !important;
+    }
+    .stat-card .stat-number {
+        font-size: 2.2rem !important;
+    }
+    .stat-card .stat-label {
+        font-size: 1.15rem !important;
+    }
+    .project-container .project-card {
+        width: 100% !important;
+        min-height: 33rem !important;
+        height: auto !important;
+        padding: 2.5rem 1.8rem !important;
+    }
+    .hero-status-pill {
+        font-size: 1.2rem !important;
+        padding: 0.5rem 1.2rem !important;
+        white-space: normal !important;
+        line-height: 1.4 !important;
+    }
+    .ai-chat-window {
+        width: min(360px, calc(100vw - 24px)) !important;
+        right: -8px !important;
+        bottom: 74px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-stats-bar {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 1rem !important;
+    }
+    .btn-whatsapp-hero {
+        font-size: 1.5rem !important;
+        padding: 1.1rem 2rem !important;
+    }
+    .hero-btn-group .btn {
+        font-size: 1.5rem !important;
+        padding: 1.1rem 2.4rem !important;
+        text-align: center;
+    }
+    .govt-card-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
     }
 }

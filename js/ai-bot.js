@@ -12,11 +12,11 @@
     const KNOWLEDGE_BASE = [
         {
             keywords: ["hi", "hello", "hey", "namaste", "hlo", "kem cho", "kya haal", "hola", "start"],
-            reply: `👋 **Hello!** I am Smit's AI Assistant. How can I help you today?<br><br>You can ask me about his **experience** (Turtlemint, Bluestocks Fintech, VVH&ES), **UGC NET Dec 2024 qualification**, **education**, **tech stack** (Spring Boot, React, Java, MERN), **projects** (Code Sync, CRUD App, School Portal), or connect directly on **WhatsApp** or **Calling**!`,
+            reply: `👋 **Hello!** I am Smit's AI Assistant. How can I help you today?<br><br>You can ask me about his **Government Exam Clearances** (CBI, 2x UGC NET, UPSC, Navy SSR, NDA), **professional experience** (Turtlemint, Bluestocks Fintech, VVH&ES), **tech stack** (Spring Boot, React, Java, MERN), **projects**, or connect directly on **WhatsApp**!`,
             actions: [
-                { text: "🎓 UGC NET Dec 2024", chip: "net" },
+                { text: "🏛️ Govt. Exams", chip: "govt exams" },
+                { text: "🎓 2x UGC NET", chip: "net" },
                 { text: "💼 Experience", chip: "experience" },
-                { text: "⚡ Tech Stack", chip: "skills" },
                 { text: "🚀 Projects", chip: "projects" },
                 { text: "💬 WhatsApp (+91 9875052329)", url: WHATSAPP_LINK, isWa: true }
             ]
@@ -24,26 +24,55 @@
         {
             keywords: ["who is smit", "about", "bio", "background", "kaun hai", "smit kumar", "smit kumar gupta", "introduce"],
             reply: `👨‍💻 **About Smit Kumar Gupta**:<br>
-            • **UGC NET Qualified (Dec 2024)** in Computer Science & Applications.<br>
+            • **2x UGC NET Qualified (Assistant Professor & Ph.D. Admission)** in Computer Science & Applications.<br>
+            • **National Competitive Exam Achiever**: Cleared **CBI (Tier 1 & 2, Interview Stage)**, **UPSC (2x Prelims, 1x Mains)**, **Navy SSR (post-12th)**, and **NDA Exam 1**.<br>
             • **Software Development Engineer & Computer Expert** with 3+ years of experience across fintech engineering and academic mentorship.<br>
             • **Current Roles**: **Operation Executive at Turtlemint** (Mar 2025 – Present) & **Computer Lecturer / Tech Lead at VVH&ES** (Nov 2024 – Present).<br>
             • **Previous Role**: **Software Development Engineer (SDE) at Bluestocks Fintech** (Jul 2024 – Feb 2025).<br>
             • **Education**: MCA from GL Bajaj (AKTU, CGPA: 7.1/10) & B.Sc (Maths & CS, 85.6% Distinction) from University of Allahabad.<br>
-            • **Certifications**: Applied Cloud Computing (Microsoft & SAP India), Google Generative AI.<br>
             • **Location**: Vapi, Gujarat, India.`,
             actions: [
+                { text: "🏛️ View Govt Exams", chip: "govt exams" },
                 { text: "🔗 LinkedIn Profile", url: LINKEDIN_URL },
                 { text: "📄 Download Resume", url: "assets/smit_resume.pdf" },
                 { text: "📱 WhatsApp: 9875052329", url: WHATSAPP_LINK, isWa: true }
             ]
         },
         {
-            keywords: ["net", "ugc net", "ugc", "assistant professor", "exam", "qualification"],
-            reply: `🎓 **UGC NET Qualified (December 2024)**:<br>
-            • **Exam**: National Eligibility Test (UGC NET Dec 2024) conducted by National Testing Agency (NTA).<br>
-            • **Subject**: Computer Science and Applications.<br>
-            • **Significance**: National certification establishing eligibility for Assistant Professorship and deep domain mastery in Algorithms, Data Structures, Operating Systems, DBMS, Software Engineering, and Computer Networks.`,
+            keywords: ["govt exams", "govt exam", "government exams", "upsc", "cbi", "navy", "nda", "sarkari", "competitive exams", "exams cleared", "exam clear"],
+            reply: `🏛️ **Smit's Government & National Exam Clearances**:<br><br>
+            1. ⚖️ **CBI Examination (Central Bureau of Investigation)**:<br>
+            • **Exam 1 (Tier 1) Cleared** & **Exam 2 (Tier 2) Cleared**.<br>
+            • Shortlisted & Qualified for the final **Personality Interview stage**!<br><br>
+            2. 🎓 **UGC NET (2 Times Qualified)**:<br>
+            • Officially qualified for **Assistant Professorship** nationwide.<br>
+            • Awarded direct eligibility & **admission to Ph.D.** research in Computer Science & Applications.<br><br>
+            3. 🏛️ **UPSC Civil Services Examination**:<br>
+            • **2 Times UPSC Prelims Cleared** (General Studies & CSAT merit).<br>
+            • **1 Time UPSC Mains Qualified & Written**.<br><br>
+            4. ⚓ **Indian Navy (SSR - Senior Secondary Recruit)**:<br>
+            • **Cleared right after 12th standard** with top merit in science and mathematics.<br><br>
+            5. 🎖️ **NDA (National Defence Academy) Examination**:<br>
+            • **Exam 1 Cleared** (Conducted by UPSC).<br><br>
+            6. 🧠 **Extensive National Exam Portfolio**:<br>
+            • Appeared in and prepared across 10+ prestigious national examinations, developing elite logical deduction, quantitative precision, and disciplined composure under high pressure.`,
             actions: [
+                { text: "🎓 2x UGC NET Details", chip: "net" },
+                { text: "📄 Download Resume", url: "assets/smit_resume.pdf" },
+                { text: "💬 Chat on WhatsApp", url: WHATSAPP_LINK, isWa: true }
+            ]
+        },
+        {
+            keywords: ["net", "ugc net", "ugc", "assistant professor", "phd", "exam", "qualification"],
+            reply: `🎓 **UGC NET (2 Times Qualified)**:<br>
+            • **Conducting Body**: National Testing Agency (NTA) on behalf of UGC.<br>
+            • **Subject**: Computer Science and Applications.<br>
+            • **Achievements**:<br>
+              1. **Qualified for Assistant Professor** across Indian Universities.<br>
+              2. **Qualified for Admission to Ph.D.** doctoral programs.<br>
+              3. **2 Times Qualified**, demonstrating deep mastery in Data Structures, Algorithms, DBMS, Operating Systems, Computer Architecture, and Theory of Computation.`,
+            actions: [
+                { text: "🏛️ Other Govt Exams", chip: "govt exams" },
                 { text: "📄 Download Resume", url: "assets/smit_resume.pdf" },
                 { text: "🔗 LinkedIn Profile", url: LINKEDIN_URL }
             ]
