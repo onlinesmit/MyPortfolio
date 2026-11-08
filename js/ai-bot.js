@@ -62,28 +62,58 @@
         },
         {
             keywords: ["govt exams", "govt exam", "government exams", "upsc", "cbi", "navy", "nda", "sarkari", "competitive exams", "exams cleared", "exam clear", "30+"],
-            reply: `🏛️ **Smit's 30+ Government & National Exam Clearances**:<br><br>
-            • **Total Exams**: Appeared in **30+ prestigious Government & National Examinations**!<br><br>
+            reply: `🏛️ **Smit's 30+ Government & National Exam Track Record**:<br><br>
+            • **Total Exams**: Competed in **30+ prestigious Government & National Examinations**!<br><br>
             1. ⚖️ **CBI Examination (Central Bureau of Investigation)**:<br>
             • **Exam 1 (Tier 1) Cleared** & **Exam 2 (Tier 2) Cleared**.<br>
             • Shortlisted & Qualified for the final **Personality Interview stage**!<br><br>
             2. 🎓 **UGC NET (2 Times Qualified)**:<br>
             • Officially qualified for **Assistant Professorship** nationwide.<br>
-            • Awarded direct eligibility & **admission to Ph.D.** research in Computer Science & Applications.<br><br>
+            • Awarded direct eligibility & **admission to Ph.D.** in Computer Science & Applications.<br>
+            • Received Assistant Professor offers from **Teerthanker Mahaveer University (TMU)** and **Bhagwan Mahavir University (BMU)**.<br><br>
             3. 🏛️ **UPSC Civil Services Examination**:<br>
             • **2 Times UPSC Prelims Cleared** (General Studies & CSAT merit).<br>
             • **1 Time UPSC Mains Qualified & Written**.<br><br>
-            4. ⚓ **Indian Navy (SSR - Senior Secondary Recruit)**:<br>
+            4. 📡 **Recent Examinations Appeared**:<br>
+            • **IMD Scientist** (Ministry of Earth Sciences) & **EPFO Officer** (UPSC).<br><br>
+            5. ⚓ **Indian Navy (SSR - Senior Secondary Recruit)**:<br>
             • **Cleared right after 12th standard** with top merit in science and mathematics.<br><br>
-            5. 🎖️ **NDA (National Defence Academy) Examination**:<br>
+            6. 🎖️ **NDA (National Defence Academy) Examination**:<br>
             • **Exam 1 Cleared** (Conducted by UPSC).<br><br>
-            6. 🎒 **Navodaya Vidyalaya & Ekikrit Examination**:<br>
+            7. 🎒 **Navodaya Vidyalaya & Ekikrit Examination**:<br>
             • Both cleared right after 8th class, moving independently to the city for higher studies.`,
             actions: [
+                { text: "📡 Recent Exams (IMD/EPFO)", chip: "imd" },
                 { text: "🚩 Values & Leadership", chip: "values" },
                 { text: "🎓 2x UGC NET Details", chip: "net" },
                 { text: "📄 Download Resume", url: "assets/smit_resume.pdf" },
                 { text: "💬 Chat on WhatsApp", url: WHATSAPP_LINK, isWa: true }
+            ]
+        },
+        {
+            keywords: ["imd", "scientist", "imd scientist", "epfo", "epfo officer", "recent exam", "recent exams"],
+            reply: `📡 **Recent Competitive Examinations Appeared**:<br><br>
+            • 🛰️ **IMD Scientist (India Meteorological Department)**:<br>
+            Recently appeared in this prestigious national technical exam under the Ministry of Earth Sciences, demonstrating advanced computing, physics, and atmospheric data modeling capabilities.<br><br>
+            • 💼 **EPFO Officer Examination (UPSC)**:<br>
+            Recently appeared for the Enforcement Officer / Accounts Officer exam conducted by the Union Public Service Commission (UPSC), testing national administration, social security, economics, and Indian governance.<br><br>
+            Smit actively tests and sharpens his analytical edge, standing among top national contenders across 30+ competitive exams!`,
+            actions: [
+                { text: "🏛️ 30+ Govt Exams", chip: "govt exams" },
+                { text: "🎓 2x UGC NET", chip: "net" },
+                { text: "💬 Chat on WhatsApp", url: WHATSAPP_LINK, isWa: true }
+            ]
+        },
+        {
+            keywords: ["teerthanker", "bhagwan mahaveer", "bhagwan mahavir", "tmu", "bmu", "assistant professor offer", "professor offer", "university offer", "why not join professor"],
+            reply: `🎓 **Assistant Professor Appointment Offers (TMU & BMU)**:<br><br>
+            • With his **2x UGC NET qualification** (certifying national Assistant Professorship eligibility and Ph.D. admission), Smit was offered Assistant Professor faculty positions by prestigious institutions including **Teerthanker Mahaveer University (TMU)** and **Bhagwan Mahavir University (BMU)**.<br><br>
+            • **Why deferred?**<br>
+            Smit consciously chose not to take up university lecturing at that point in order to focus wholeheartedly on building production-grade fintech software architectures (Ex-SDE @ Bluestocks Fintech, Turtlemint) and competing in India's top administrative and scientific cadres (UPSC, CBI, IMD Scientist, EPFO).`,
+            actions: [
+                { text: "🎓 UGC NET Details", chip: "net" },
+                { text: "💼 Tech Experience", chip: "experience" },
+                { text: "🔗 LinkedIn Profile", url: LINKEDIN_URL }
             ]
         },
         {
@@ -92,11 +122,13 @@
             • **Conducting Body**: National Testing Agency (NTA) on behalf of UGC.<br>
             • **Subject**: Computer Science and Applications.<br>
             • **Achievements**:<br>
-              1. **Qualified for Assistant Professor** across Indian Universities.<br>
+              1. **Qualified for Assistant Professor** across Indian Universities nationwide.<br>
               2. **Qualified for Admission to Ph.D.** doctoral programs.<br>
-              3. **2 Times Qualified**, demonstrating deep mastery in Data Structures, Algorithms, DBMS, Operating Systems, Computer Architecture, and Theory of Computation.`,
+              3. **2 Times Qualified**, demonstrating deep mastery in Data Structures, Algorithms, DBMS, Operating Systems, Computer Architecture, and Theory of Computation.<br>
+              4. **Offers Received**: Offered Assistant Professor roles by reputed universities (Teerthanker Mahaveer University & Bhagwan Mahavir University), which he deferred to focus on scalable fintech engineering and central competitive cadres.`,
             actions: [
-                { text: "🏛️ Other Govt Exams", chip: "govt exams" },
+                { text: "🏛️ 30+ Govt Exams", chip: "govt exams" },
+                { text: "🏫 Professor Offers", chip: "tmu" },
                 { text: "📄 Download Resume", url: "assets/smit_resume.pdf" },
                 { text: "🔗 LinkedIn Profile", url: LINKEDIN_URL }
             ]
