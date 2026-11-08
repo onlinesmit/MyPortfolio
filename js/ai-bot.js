@@ -182,16 +182,27 @@
             ]
         },
         {
-            keywords: ["project", "projects", "work", "portfolio", "websites", "code sync", "ai resume", "resume builder", "kya banaya", "apps"],
+            keywords: ["project", "projects", "work", "portfolio", "websites", "delight media", "ai resume", "resume builder", "kya banaya", "apps"],
             reply: `🚀 **Smit's Top Projects**:<br><br>
-            1. 💻 **Code Sync (2024)**: Real-time code collaboration platform allowing multiple programmers to code together in live synchronization. Built with React.js, Node.js, Express.js, and WebSockets.<br><br>
+            1. 🚀 **Delight Media Agency**: Premier digital growth powerhouse portal (<a href="https://delightmedia.netlify.app/" target="_blank" style="color:#e84949;">delightmedia.netlify.app</a>) with service showcases, SEO, Web/App dev consulting, and instant quote booking.<br><br>
             2. 🤖 **Smit AI Resume Builder**: Real-time intelligent resume builder integrated with Supabase Cloud persistence, ATS Classic & Modern 2-column styles, custom accent themes, and 1-click PDF export (<a href="https://onlinesmit.github.io/smit_AI_resume/" target="_blank" style="color:#e84949;">Try App</a>).<br><br>
             3. 🏫 **Vidya Vikas School Web Portal**: Official live responsive site for Vidya Vikas Hindi & English School, Vapi (<a href="https://vidyavikasschoolvapi.netlify.app/" target="_blank" style="color:#e84949;">vidyavikasschoolvapi.netlify.app</a>) with Admissions 2026-27 notice popup.<br><br>
             4. 🛒 **Online Shopping System**: E-commerce website with store opening/closing automation built using HTML5, CSS3, JavaScript, PHP, and MySQL.`,
             actions: [
+                { text: "🚀 Delight Media", url: "https://delightmedia.netlify.app/" },
                 { text: "🤖 Try AI Resume Builder", url: "https://onlinesmit.github.io/smit_AI_resume/" },
                 { text: "🏫 Visit School Website", url: "https://vidyavikasschoolvapi.netlify.app/" },
                 { text: "💻 GitHub Projects", url: "https://github.com/onlinesmit" }
+            ]
+        },
+        {
+            keywords: ["delight media", "delight", "growth agency", "delightmedia"],
+            reply: `🚀 **Delight Media - Digital Growth Agency Portal**:<br>
+            • Live URL: <a href="https://delightmedia.netlify.app/" target="_blank" style="color:#e84949;text-decoration:underline;">delightmedia.netlify.app</a><br>
+            • Capabilities: Digital brand growth platform serving global clients with Web/App Development, high-impact SEO, Brand Consulting, 3D Design, direct quote consultation workflows, and WhatsApp integration.<br>
+            • Tech: Modern Responsive UI, HTML5, CSS3, JavaScript, Tailwind CSS.`,
+            actions: [
+                { text: "🌐 Visit Delight Media", url: "https://delightmedia.netlify.app/" }
             ]
         },
         {

@@ -442,7 +442,9 @@ header{
     }
 
     .project-container #project-1{
-        background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 60%, #312e81 100%);
+        background-image: url('../images/projects/delight-media.png');
+        background-size: cover;
+        background-position: center;
     }
 
     .project-container #project-2{

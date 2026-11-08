@@ -1,4 +1,4 @@
-const CACHE_NAME = "smit-portfolio-v15";
+const CACHE_NAME = "smit-portfolio-v16";
 
 self.addEventListener("install", e => {
     self.skipWaiting();
