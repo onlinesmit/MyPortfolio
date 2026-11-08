@@ -1104,6 +1104,12 @@ header.header-scrolled {
     position: relative;
     overflow: hidden;
 }
+.govt-exam-card-full {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+    border: 1.5px solid #bfdbfe;
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.06);
+}
 .govt-exam-card::before {
     content: '';
     position: absolute;
@@ -1365,7 +1371,7 @@ header.header-scrolled {
 
 .milestones-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 3rem;
     width: 100%;
 }
