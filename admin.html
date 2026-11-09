@@ -17,589 +17,560 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --bg-dark: #070b14;
-      --card-bg: #0f172a;
-      --card-border: rgba(255, 255, 255, 0.1);
-      --primary: #f59e0b;
-      --primary-glow: rgba(245, 158, 11, 0.35);
-      --emerald: #10b981;
-      --indigo: #6366f1;
-      --cyan: #06b6d4;
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
+    /* ================= GLOBAL RESETS & COLOR PALETTE ================= */
+    html {
+      font-size: 16px;
+      -webkit-text-size-adjust: 100%;
     }
-
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
-
     body {
-      background: radial-gradient(circle at 50% 10%, #1e1b4b 0%, #070b14 60%, #030712 100%);
-      color: var(--text-main);
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #070b14;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(245, 158, 11, 0.1) 0px, transparent 50%),
+        radial-gradient(at 50% 100%, #030712 0px, transparent 100%);
+      color: #f8fafc;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       min-height: 100vh;
+      line-height: 1.5;
       overflow-x: hidden;
-      display: flex;
-      flex-direction: column;
     }
 
-    /* Auth Gate Screen */
+    /* ================= PIN SECURITY GATE ================= */
     #auth-gate {
       position: fixed;
       inset: 0;
-      background: rgba(3, 7, 18, 0.95);
-      backdrop-filter: blur(15px);
+      background: rgba(3, 7, 18, 0.94);
+      backdrop-filter: blur(16px);
       display: flex;
       align-items: center;
       justify-content: center;
       z-index: 99999;
-      padding: 2rem;
+      padding: 20px;
     }
-
     .auth-card {
       width: 100%;
-      max-width: 440px;
-      background: var(--card-bg);
-      border: 1.5px solid var(--primary);
-      box-shadow: 0 25px 60px rgba(0,0,0,0.7), 0 0 35px var(--primary-glow);
-      border-radius: 24px;
-      padding: 3.5rem 3rem;
+      max-width: 400px;
+      background: #0f172a;
+      border: 1.5px solid rgba(245, 158, 11, 0.4);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 35px rgba(245, 158, 11, 0.18);
+      border-radius: 20px;
+      padding: 36px 30px;
       text-align: center;
-      position: relative;
     }
-
     .auth-icon {
-      width: 68px;
-      height: 68px;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
       background: linear-gradient(135deg, #f59e0b, #ea580c);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2.8rem;
-      margin: 0 auto 1.8rem;
+      font-size: 26px;
+      margin: 0 auto 16px;
       color: #fff;
-      box-shadow: 0 10px 25px rgba(245, 158, 11, 0.4);
+      box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
     }
-
     .auth-title {
-      font-size: 2.2rem;
+      font-size: 22px;
       font-weight: 800;
-      margin-bottom: 0.6rem;
+      margin-bottom: 6px;
       color: #fff;
     }
-
     .auth-subtitle {
-      font-size: 1.35rem;
-      color: var(--text-muted);
+      font-size: 13px;
+      color: #94a3b8;
       line-height: 1.5;
-      margin-bottom: 2.5rem;
+      margin-bottom: 24px;
     }
-
-    .auth-form {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .pin-input-wrap {
-      position: relative;
-    }
-
     .pin-input {
       width: 100%;
       background: #030712;
-      border: 1.5px solid rgba(255, 255, 255, 0.2);
-      border-radius: 12px;
-      padding: 1.3rem 1.6rem;
-      font-size: 1.6rem;
+      border: 1.5px solid rgba(255, 255, 255, 0.16);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 20px;
       color: #fff;
       text-align: center;
-      letter-spacing: 4px;
+      letter-spacing: 6px;
       outline: none;
       transition: all 0.25s ease;
+      margin-bottom: 14px;
     }
-
     .pin-input:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.25);
+      border-color: #f59e0b;
+      box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.2);
     }
-
     .btn-auth-unlock {
       width: 100%;
       background: linear-gradient(135deg, #f59e0b, #d97706);
       color: #fff;
       border: none;
-      border-radius: 12px;
-      padding: 1.3rem;
-      font-size: 1.55rem;
+      border-radius: 10px;
+      padding: 13px;
+      font-size: 15px;
       font-weight: 700;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.8rem;
-      box-shadow: 0 8px 25px rgba(245, 158, 11, 0.35);
-      transition: all 0.3s ease;
+      gap: 8px;
+      box-shadow: 0 8px 20px rgba(245, 158, 11, 0.35);
+      transition: all 0.25s ease;
     }
-
     .btn-auth-unlock:hover {
       transform: translateY(-2px);
-      box-shadow: 0 12px 30px rgba(245, 158, 11, 0.5);
-      filter: brightness(1.1);
+      box-shadow: 0 10px 25px rgba(245, 158, 11, 0.45);
     }
-
     .auth-err-msg {
       color: #f87171;
-      font-size: 1.3rem;
+      font-size: 13px;
       display: none;
-      margin-top: 0.5rem;
+      margin-top: 10px;
     }
-
     .auth-back-link {
       display: inline-block;
-      margin-top: 2rem;
-      font-size: 1.35rem;
-      color: var(--text-muted);
+      margin-top: 20px;
+      font-size: 13px;
+      color: #94a3b8;
       text-decoration: none;
       transition: color 0.2s ease;
     }
-
     .auth-back-link:hover {
       color: #fff;
     }
 
-    /* Dashboard Shell */
+    /* ================= MAIN DASHBOARD SHELL ================= */
     #dashboard-view {
       display: none;
-      flex: 1;
-      padding: 2.5rem 3rem 4rem;
-      max-width: 1400px;
+      max-width: 1340px;
       width: 100%;
       margin: 0 auto;
+      padding: 24px 28px 48px;
     }
 
-    /* Top Nav */
+    /* ================= HEADER BAR ================= */
     .admin-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 2rem;
-      padding-bottom: 2.2rem;
-      margin-bottom: 3rem;
-      border-bottom: 1px solid var(--card-border);
-      flex-wrap: wrap;
+      gap: 16px;
+      padding: 16px 20px;
+      background: #0f172a;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
     }
-
     .admin-brand {
       display: flex;
       align-items: center;
-      gap: 1.4rem;
+      gap: 12px;
     }
-
     .admin-logo-img {
-      width: 48px;
-      height: 48px;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      object-fit: contain;
+      background: #fff;
+      padding: 2px;
     }
-
     .admin-title-wrap h1 {
-      font-size: 2.4rem;
+      font-size: 18px;
       font-weight: 800;
-      letter-spacing: -0.5px;
+      color: #ffffff;
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 10px;
+      letter-spacing: -0.3px;
     }
-
-    .badge-status {
+    .badge-live {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 5px;
       background: rgba(16, 185, 129, 0.15);
       border: 1px solid rgba(16, 185, 129, 0.35);
-      color: var(--emerald);
-      padding: 0.3rem 0.9rem;
-      border-radius: 50px;
-      font-size: 1.15rem;
+      color: #34d399;
+      font-size: 11px;
       font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 20px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
-
     .pulse-dot {
-      width: 7px;
-      height: 7px;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
-      background: var(--emerald);
-      box-shadow: 0 0 8px var(--emerald);
+      background: #34d399;
+      box-shadow: 0 0 6px #34d399;
       animation: livePulse 1.6s infinite;
     }
-
     @keyframes livePulse {
       0% { transform: scale(0.9); opacity: 0.8; }
       50% { transform: scale(1.4); opacity: 1; }
       100% { transform: scale(0.9); opacity: 0.8; }
     }
-
     .admin-title-wrap p {
-      font-size: 1.35rem;
-      color: var(--text-muted);
-      margin-top: 0.3rem;
+      font-size: 12px;
+      color: #94a3b8;
+      margin-top: 2px;
     }
-
     .admin-actions {
       display: flex;
       align-items: center;
-      gap: 1.2rem;
+      gap: 8px;
       flex-wrap: wrap;
     }
-
     .btn-action {
+      height: 36px;
+      padding: 0 14px;
       background: rgba(255, 255, 255, 0.08);
-      border: 1px solid var(--card-border);
-      color: #fff;
-      padding: 0.9rem 1.6rem;
-      border-radius: 10px;
-      font-size: 1.35rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      border-radius: 8px;
+      font-size: 13px;
       font-weight: 600;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 6px;
       text-decoration: none;
-      transition: all 0.25s ease;
+      transition: all 0.2s ease;
+      white-space: nowrap;
     }
-
     .btn-action:hover {
-      background: rgba(255, 255, 255, 0.15);
-      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.14);
+      transform: translateY(-1px);
     }
-
     .btn-action-primary {
       background: linear-gradient(135deg, #f59e0b, #d97706);
       border: none;
-      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+      box-shadow: 0 3px 12px rgba(245, 158, 11, 0.35);
     }
-
     .btn-action-primary:hover {
-      box-shadow: 0 8px 20px rgba(245, 158, 11, 0.45);
+      box-shadow: 0 5px 16px rgba(245, 158, 11, 0.5);
     }
-
     .btn-logout {
-      background: rgba(239, 68, 68, 0.15);
-      border: 1px solid rgba(239, 68, 68, 0.35);
+      background: rgba(239, 68, 68, 0.14);
+      border: 1px solid rgba(239, 68, 68, 0.3);
       color: #f87171;
     }
-
     .btn-logout:hover {
-      background: rgba(239, 68, 68, 0.3);
+      background: rgba(239, 68, 68, 0.25);
       color: #fff;
     }
 
-    /* Metric Cards Grid */
+    /* ================= METRIC CARDS (4 COLUMNS) ================= */
     .metrics-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 2rem;
-      margin-bottom: 3.5rem;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
     }
-
     .metric-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 18px;
-      padding: 2.2rem;
+      background: #0f172a;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 16px 18px;
       display: flex;
       align-items: center;
-      gap: 1.8rem;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-      transition: all 0.3s ease;
+      gap: 14px;
+      min-width: 0;
+      overflow: hidden;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s ease, border-color 0.2s ease;
     }
-
     .metric-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(245, 158, 11, 0.3);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.4), 0 0 25px rgba(245, 158, 11, 0.1);
+      transform: translateY(-2px);
+      border-color: rgba(245, 158, 11, 0.35);
     }
-
     .metric-icon-box {
-      width: 5.6rem;
-      height: 5.6rem;
-      border-radius: 14px;
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2.4rem;
+      font-size: 18px;
       flex-shrink: 0;
     }
-
-    .metric-data h3 {
-      font-size: 3rem;
+    .metric-data {
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+    }
+    .metric-data .stat-val {
+      font-size: 20px;
       font-weight: 800;
-      color: #fff;
-      line-height: 1.1;
-      margin-bottom: 0.4rem;
+      color: #ffffff;
+      line-height: 1.2;
+      margin-bottom: 3px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .metric-data .stat-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
-    .metric-data p {
-      font-size: 1.3rem;
-      color: var(--text-muted);
-      font-weight: 500;
-    }
-
-    /* Tabs Bar */
+    /* ================= TABS BAR ================= */
     .admin-tabs-bar {
       display: flex;
-      gap: 1rem;
-      border-bottom: 1px solid var(--card-border);
-      margin-bottom: 2.5rem;
-      flex-wrap: wrap;
+      gap: 6px;
+      background: #0f172a;
+      padding: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      margin-bottom: 20px;
+      width: fit-content;
     }
-
     .tab-btn {
-      background: none;
+      background: transparent;
       border: none;
-      border-bottom: 2px solid transparent;
-      color: var(--text-muted);
-      padding: 1rem 1.8rem;
-      font-size: 1.5rem;
-      font-weight: 700;
+      color: #94a3b8;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 8px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 0.8rem;
+      gap: 8px;
       transition: all 0.2s ease;
     }
-
     .tab-btn:hover {
-      color: #fff;
+      color: #ffffff;
     }
-
     .tab-btn.active {
-      color: var(--primary);
-      border-bottom-color: var(--primary);
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #ffffff;
+      box-shadow: 0 2px 10px rgba(245, 158, 11, 0.3);
+    }
+    .tab-badge {
+      background: rgba(0, 0, 0, 0.25);
+      padding: 1px 7px;
+      border-radius: 10px;
+      font-size: 11px;
     }
 
-    /* Content Panels */
+    /* Tab Panels */
     .tab-panel {
       display: none;
     }
-
     .tab-panel.active {
       display: block;
     }
 
-    /* Search & Filter Bar */
+    /* ================= SEARCH & FILTERS ================= */
     .filter-panel {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1.5rem;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      padding: 1.4rem 2rem;
-      margin-bottom: 2rem;
+      gap: 12px;
+      background: #0f172a;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 12px 16px;
+      margin-bottom: 16px;
       flex-wrap: wrap;
     }
-
     .search-input-wrap {
       flex: 1;
-      min-width: 260px;
+      min-width: 240px;
       position: relative;
     }
-
     .search-input-wrap i {
       position: absolute;
-      left: 1.4rem;
+      left: 12px;
       top: 50%;
       transform: translateY(-50%);
-      color: var(--text-muted);
-      font-size: 1.4rem;
+      color: #64748b;
+      font-size: 13px;
     }
-
     .search-input {
       width: 100%;
-      background: #030712;
-      border: 1px solid var(--card-border);
-      border-radius: 10px;
-      padding: 1rem 1.4rem 1rem 3.8rem;
-      font-size: 1.4rem;
-      color: #fff;
+      height: 38px;
+      background: #070b14;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 0 12px 0 34px;
+      font-size: 13px;
+      color: #ffffff;
       outline: none;
-      transition: border-color 0.2s ease;
+      transition: border-color 0.2s;
     }
-
     .search-input:focus {
-      border-color: var(--primary);
+      border-color: #f59e0b;
     }
-
     .filter-dropdowns {
       display: flex;
-      gap: 1rem;
+      gap: 8px;
     }
-
     .filter-select {
-      background: #030712;
-      border: 1px solid var(--card-border);
-      border-radius: 10px;
-      padding: 0.9rem 1.4rem;
-      color: #fff;
-      font-size: 1.35rem;
+      height: 38px;
+      background: #070b14;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 0 12px;
+      color: #ffffff;
+      font-size: 13px;
       outline: none;
       cursor: pointer;
     }
 
-    /* Table Styling */
+    /* ================= TABLE CONTAINER ================= */
     .table-container {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 18px;
+      background: #0f172a;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
       overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     }
-
     .table-responsive {
       overflow-x: auto;
     }
-
     table {
       width: 100%;
       border-collapse: collapse;
       text-align: left;
+      font-size: 13px;
     }
-
-    thead {
-      background: rgba(3, 7, 18, 0.7);
-      border-bottom: 1px solid var(--card-border);
-    }
-
-    th {
-      padding: 1.6rem 2rem;
-      font-size: 1.3rem;
+    thead th {
+      background: #070b14;
+      color: #94a3b8;
+      font-size: 11px;
       font-weight: 700;
-      color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       white-space: nowrap;
     }
-
-    td {
-      padding: 1.6rem 2rem;
-      font-size: 1.4rem;
+    tbody td {
+      padding: 12px 16px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      vertical-align: middle;
+      color: #e2e8f0;
       white-space: nowrap;
+      vertical-align: middle;
     }
-
     tbody tr:hover {
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(255, 255, 255, 0.025);
     }
-
     .geo-pill {
-      display: inline-flex;
+      display: flex;
       align-items: center;
-      gap: 0.8rem;
+      gap: 8px;
       font-weight: 600;
       color: #fff;
     }
-
     .geo-flag {
-      font-size: 1.8rem;
+      font-size: 16px;
     }
-
     .ip-code {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 1.25rem;
+      font-size: 12px;
       background: rgba(255, 255, 255, 0.06);
-      padding: 0.2rem 0.6rem;
-      border-radius: 6px;
+      padding: 2px 6px;
+      border-radius: 4px;
       color: #38bdf8;
     }
-
     .device-badge {
       display: inline-flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 5px;
       background: rgba(99, 102, 241, 0.15);
       border: 1px solid rgba(99, 102, 241, 0.3);
       color: #a5b4fc;
-      padding: 0.4rem 1rem;
-      border-radius: 8px;
-      font-size: 1.25rem;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 12px;
       font-weight: 600;
     }
-
     .source-badge {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.35rem 0.9rem;
-      border-radius: 50px;
-      font-size: 1.2rem;
+      gap: 5px;
+      padding: 3px 9px;
+      border-radius: 20px;
+      font-size: 11.5px;
       font-weight: 600;
     }
-
     .src-linkedin { background: rgba(14, 118, 168, 0.2); color: #38bdf8; border: 1px solid rgba(14, 118, 168, 0.4); }
     .src-whatsapp { background: rgba(37, 211, 102, 0.2); color: #4ade80; border: 1px solid rgba(37, 211, 102, 0.4); }
     .src-direct { background: rgba(148, 163, 184, 0.2); color: #cbd5e1; border: 1px solid rgba(148, 163, 184, 0.4); }
     .src-google { background: rgba(234, 67, 53, 0.2); color: #f87171; border: 1px solid rgba(234, 67, 53, 0.4); }
+    .src-github { background: rgba(147, 51, 234, 0.2); color: #c084fc; border: 1px solid rgba(147, 51, 234, 0.4); }
 
     .empty-state {
-      padding: 6rem 2rem;
+      padding: 48px 20px;
       text-align: center;
-      color: var(--text-muted);
+      color: #94a3b8;
     }
-
     .empty-state i {
-      font-size: 4rem;
-      margin-bottom: 1.5rem;
+      font-size: 36px;
+      margin-bottom: 12px;
       color: rgba(255, 255, 255, 0.2);
     }
 
-    /* Settings Tab */
+    /* ================= SETTINGS CARDS ================= */
     .settings-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 2.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
     }
-
     .settings-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 18px;
-      padding: 2.5rem;
+      background: #0f172a;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 22px;
     }
-
     .settings-card h3 {
-      font-size: 1.8rem;
+      font-size: 16px;
       font-weight: 700;
-      color: #fff;
-      margin-bottom: 0.8rem;
+      color: #ffffff;
+      margin-bottom: 6px;
       display: flex;
       align-items: center;
-      gap: 0.8rem;
+      gap: 8px;
     }
-
     .settings-card p {
-      font-size: 1.35rem;
-      color: var(--text-muted);
+      font-size: 13px;
+      color: #94a3b8;
       line-height: 1.5;
-      margin-bottom: 2rem;
+      margin-bottom: 16px;
     }
 
-    /* Responsive */
+    /* ================= RESPONSIVE LAYOUTS ================= */
+    @media (max-width: 1100px) {
+      .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
     @media (max-width: 768px) {
       #dashboard-view {
-        padding: 2rem 1.6rem;
+        padding: 16px;
       }
-      .admin-title-wrap h1 {
-        font-size: 2rem;
+      .admin-header {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .admin-actions {
+        justify-content: flex-start;
+      }
+      .metrics-grid {
+        grid-template-columns: 1fr;
       }
       .filter-panel {
         flex-direction: column;
@@ -607,6 +578,10 @@
       }
       .filter-dropdowns {
         flex-direction: column;
+      }
+      .admin-tabs-bar {
+        width: 100%;
+        overflow-x: auto;
       }
     }
   </style>
@@ -624,18 +599,16 @@
         Enter your secure Admin PIN to access private visitor telemetry, live geolocation tracking, and review moderation.
       </p>
 
-      <form id="admin-pin-form" class="auth-form">
-        <div class="pin-input-wrap">
-          <input
-            type="password"
-            id="admin-pin-input"
-            class="pin-input"
-            placeholder="••••••••"
-            autocomplete="current-password"
-            required
-            autofocus
-          />
-        </div>
+      <form id="admin-pin-form">
+        <input
+          type="password"
+          id="admin-pin-input"
+          class="pin-input"
+          placeholder="••••••••"
+          autocomplete="current-password"
+          required
+          autofocus
+        />
         <button type="submit" class="btn-auth-unlock">
           <i class="fa-solid fa-key"></i> Unlock Dashboard
         </button>
@@ -650,16 +623,16 @@
     </div>
   </div>
 
-  <!-- ================= ADMIN DASHBOARD ================= -->
+  <!-- ================= MAIN ADMIN DASHBOARD ================= -->
   <div id="dashboard-view">
-    <!-- Top Header -->
+    <!-- Top Header Bar -->
     <header class="admin-header">
       <div class="admin-brand">
         <img src="images/userAsset/NavLogo.png" alt="Smit Logo" class="admin-logo-img" />
         <div class="admin-title-wrap">
           <h1>
             Visitor Intelligence &amp; Geolocation
-            <span class="badge-status"><span class="pulse-dot"></span> Live Tracking</span>
+            <span class="badge-live"><span class="pulse-dot"></span> Live Tracking</span>
           </h1>
           <p>Real-time analytics, city/country tracking, and device telemetry for Smit's Portfolio</p>
         </div>
@@ -684,59 +657,63 @@
       </div>
     </header>
 
-    <!-- Top Metrics Overview -->
+    <!-- 4 Metric Cards Overview -->
     <section class="metrics-grid">
+      <!-- 1. Total Visits -->
       <div class="metric-card">
         <div class="metric-icon-box" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24;">
           <i class="fa-solid fa-users"></i>
         </div>
         <div class="metric-data">
-          <h3 id="stat-total-visits">0</h3>
-          <p>Total Visits Tracked</p>
+          <div class="stat-val" id="stat-total-visits">0</div>
+          <div class="stat-label">Total Visits Tracked</div>
         </div>
       </div>
 
+      <!-- 2. Top Location -->
       <div class="metric-card">
         <div class="metric-icon-box" style="background: rgba(16, 185, 129, 0.15); color: #34d399;">
           <i class="fa-solid fa-earth-americas"></i>
         </div>
         <div class="metric-data">
-          <h3 id="stat-top-country">India 🇮🇳</h3>
-          <p>Top Geographic Region</p>
+          <div class="stat-val" id="stat-top-country">India 🇮🇳</div>
+          <div class="stat-label">Top Location</div>
         </div>
       </div>
 
+      <!-- 3. Primary Device -->
       <div class="metric-card">
         <div class="metric-icon-box" style="background: rgba(99, 102, 241, 0.15); color: #818cf8;">
           <i class="fa-solid fa-mobile-screen"></i>
         </div>
         <div class="metric-data">
-          <h3 id="stat-device-ratio">100%</h3>
-          <p>Primary Device Type</p>
+          <div class="stat-val" id="stat-device-ratio">Desktop</div>
+          <div class="stat-label">Primary Device</div>
         </div>
       </div>
 
+      <!-- 4. Top Traffic Source -->
       <div class="metric-card">
         <div class="metric-icon-box" style="background: rgba(6, 182, 212, 0.15); color: #22d3ee;">
           <i class="fa-solid fa-link"></i>
         </div>
         <div class="metric-data">
-          <h3 id="stat-top-source">Direct / LinkedIn</h3>
-          <p>Primary Traffic Source</p>
+          <div class="stat-val" id="stat-top-source">Direct / Web</div>
+          <div class="stat-label">Top Traffic Source</div>
         </div>
       </div>
     </section>
 
-    <!-- Navigation Tabs -->
+    <!-- Navigation Tabs Bar -->
     <div class="admin-tabs-bar">
       <button class="tab-btn active" data-tab="tab-visitors">
-        <i class="fa-solid fa-location-dot"></i> Live Visitor Logs (<span id="tab-count-visitors">0</span>)
+        <i class="fa-solid fa-location-dot"></i> Live Visitor Logs <span class="tab-badge" id="tab-count-visitors">0</span>
       </button>
       <button class="tab-btn" data-tab="tab-reviews">
-        <i class="fa-solid fa-star"></i> Review Moderation (<span id="tab-count-reviews">0</span>)
+        <i class="fa-solid fa-star"></i> Review Moderation <span class="tab-badge" id="tab-count-reviews">0</span>
       </button>
       <button class="tab-btn" data-tab="tab-settings">
-        <i class="fa-solid fa-gear"></i> Admin &amp; Alert Settings
+        <i class="fa-solid fa-gear"></i> Admin Settings
       </button>
     </div>
 
@@ -766,13 +743,14 @@
             <option value="LinkedIn">LinkedIn</option>
             <option value="WhatsApp">WhatsApp</option>
             <option value="Telegram">Telegram</option>
+            <option value="GitHub">GitHub</option>
             <option value="Google">Google Search</option>
             <option value="Direct">Direct / Bookmark</option>
           </select>
         </div>
       </div>
 
-      <!-- Logs Table -->
+      <!-- Visitor Logs Table -->
       <div class="table-container">
         <div class="table-responsive">
           <table>
@@ -786,7 +764,7 @@
               </tr>
             </thead>
             <tbody id="visitor-table-body">
-              <!-- Dynamic rows rendered here -->
+              <!-- Dynamically populated -->
             </tbody>
           </table>
         </div>
@@ -809,45 +787,48 @@
               </tr>
             </thead>
             <tbody id="reviews-table-body">
-              <!-- Dynamic visitor reviews -->
+              <!-- Dynamically populated -->
             </tbody>
           </table>
         </div>
       </div>
     </div>
 
-    <!-- TAB 3: SETTINGS -->
+    <!-- TAB 3: ADMIN SETTINGS -->
     <div id="tab-settings" class="tab-panel">
       <div class="settings-grid">
+        <!-- Change PIN Card -->
         <div class="settings-card">
-          <h3><i class="fa-solid fa-key" style="color:var(--primary);"></i> Change Admin Security PIN</h3>
+          <h3><i class="fa-solid fa-key" style="color:#f59e0b;"></i> Change Admin Security PIN</h3>
           <p>Update the private passcode required to unlock this dashboard.</p>
-          <form id="change-pin-form" style="display:flex; flex-direction:column; gap:1.2rem;">
+          <form id="change-pin-form" style="display:flex; flex-direction:column; gap:10px;">
             <input
               type="password"
               id="new-pin-input"
               class="search-input"
-              placeholder="Enter new 6+ char PIN..."
+              placeholder="Enter new 4+ char PIN..."
               required
             />
             <button type="submit" class="btn-action btn-action-primary" style="justify-content:center;">
               <i class="fa-solid fa-check"></i> Save New PIN
             </button>
-            <span id="pin-change-status" style="font-size:1.3rem; color:var(--emerald); display:none;">
+            <span id="pin-change-status" style="font-size:12px; color:#34d399; display:none;">
               PIN updated successfully!
             </span>
           </form>
         </div>
 
+        <!-- Real-Time Email Notifications -->
         <div class="settings-card">
           <h3><i class="fa-solid fa-envelope" style="color:#38bdf8;"></i> Real-Time Email Notifications</h3>
-          <p>Sends an instant email to <strong>smitkumar09@gmail.com</strong> when someone visits your portfolio.</p>
-          <label style="display:flex; align-items:center; gap:1rem; cursor:pointer; font-size:1.45rem; font-weight:600;">
-            <input type="checkbox" id="toggle-email-alerts" style="width:20px; height:20px; accent-color:var(--primary);" checked />
+          <p>Sends an instant notification to <strong>smitkumar09@gmail.com</strong> when someone visits your portfolio.</p>
+          <label style="display:flex; align-items:center; gap:10px; cursor:pointer; font-size:14px; font-weight:600;">
+            <input type="checkbox" id="toggle-email-alerts" style="width:18px; height:18px; accent-color:#f59e0b;" checked />
             Enable Instant Visit Email Alerts
           </label>
         </div>
 
+        <!-- Clear Logs -->
         <div class="settings-card">
           <h3><i class="fa-solid fa-trash-can" style="color:#f87171;"></i> Clear Visitor Logs</h3>
           <p>Delete all logged visitor sessions from local memory.</p>
@@ -859,6 +840,7 @@
     </div>
   </div>
 
+  <!-- ================= JAVASCRIPT LOGIC ================= -->
   <script>
     (function() {
       const STORAGE_LOGS = "smit_portfolio_visitor_logs";
@@ -880,17 +862,16 @@
       const btnTestVisit = document.getElementById("btn-test-visit");
       const btnClearLogs = document.getElementById("btn-clear-logs");
 
-      // Check current PIN
       function getAdminPIN() {
         return localStorage.getItem(PIN_KEY) || DEFAULT_PIN;
       }
 
-      // Check auth state
+      // Check current session auth state
       if (sessionStorage.getItem(AUTH_SESSION_KEY) === "true") {
         unlockDashboard();
       }
 
-      // PIN Submit Handler
+      // Submit PIN
       pinForm.addEventListener("submit", (e) => {
         e.preventDefault();
         const entered = pinInput.value.trim();
@@ -947,6 +928,13 @@
         }
       }
 
+      function cleanCountryDisplay(country, flag) {
+        if (!country) return "India 🇮🇳";
+        // Clean any double flag or country code prefixes
+        let clean = country.replace(/^[A-Z]{2}\s+/, '').trim();
+        return `${clean} ${flag || '🇮🇳'}`;
+      }
+
       function updateMetrics() {
         const logs = getLogs();
         const totalVisitsEl = document.getElementById("stat-total-visits");
@@ -959,24 +947,38 @@
         tabCountVisitors.textContent = logs.length;
 
         if (logs.length > 0) {
-          // Top country
-          const countryCounts = {};
+          // 1. Top Country / City
+          const locCounts = {};
           logs.forEach(l => {
-            const k = `${l.flag || '🌍'} ${l.country || 'Unknown'}`;
-            countryCounts[k] = (countryCounts[k] || 0) + 1;
+            const locName = l.city && l.city !== "Unknown City" ? `${l.city}, ${l.country}` : (l.country || "India");
+            locCounts[locName] = (locCounts[locName] || 0) + 1;
           });
-          const topC = Object.entries(countryCounts).sort((a,b) => b[1] - a[1])[0];
-          if (topC) topCountryEl.textContent = `${topC[0]} (${topC[1]})`;
+          const topL = Object.entries(locCounts).sort((a,b) => b[1] - a[1])[0];
+          if (topL) {
+            topCountryEl.textContent = `${topL[0]}`;
+          }
 
-          // Device ratio
+          // 2. Device Breakdown
           const mobileCount = logs.filter(l => l.device === "Mobile").length;
-          const pctMobile = Math.round((mobileCount / logs.length) * 100);
-          deviceRatioEl.textContent = pctMobile > 50 ? `${pctMobile}% Mobile` : `${100 - pctMobile}% Desktop`;
+          const desktopCount = logs.filter(l => l.device === "Desktop").length;
+          if (mobileCount > desktopCount) {
+            const pct = Math.round((mobileCount / logs.length) * 100);
+            deviceRatioEl.textContent = `${pct}% Mobile`;
+          } else {
+            const pct = Math.round((desktopCount / logs.length) * 100);
+            deviceRatioEl.textContent = `${pct}% Desktop`;
+          }
 
-          // Top source
+          // 3. Top Source
           const srcCounts = {};
           logs.forEach(l => {
-            const s = l.referrer || "Direct";
+            let s = l.referrer || "Direct";
+            if (s.includes("LinkedIn")) s = "LinkedIn";
+            else if (s.includes("WhatsApp")) s = "WhatsApp";
+            else if (s.includes("Telegram")) s = "Telegram";
+            else if (s.includes("GitHub")) s = "GitHub";
+            else if (s.includes("Google")) s = "Google";
+            else if (s.includes("Direct")) s = "Direct / Web";
             srcCounts[s] = (srcCounts[s] || 0) + 1;
           });
           const topS = Object.entries(srcCounts).sort((a,b) => b[1] - a[1])[0];
@@ -1016,7 +1018,7 @@
             <tr>
               <td colspan="5" class="empty-state">
                 <i class="fa-solid fa-earth-asia"></i>
-                <h3 style="font-size:1.8rem;color:#fff;margin-bottom:0.6rem;">No Visitor Logs Found</h3>
+                <h3 style="font-size:16px;color:#fff;margin-bottom:6px;">No Visitor Logs Found</h3>
                 <p>When someone opens your portfolio, their city, country, device, and network appear here automatically.</p>
               </td>
             </tr>
@@ -1028,39 +1030,42 @@
           let srcClass = "src-direct";
           if (log.referrer && log.referrer.includes("LinkedIn")) srcClass = "src-linkedin";
           if (log.referrer && log.referrer.includes("WhatsApp")) srcClass = "src-whatsapp";
+          if (log.referrer && log.referrer.includes("GitHub")) srcClass = "src-github";
           if (log.referrer && log.referrer.includes("Google")) srcClass = "src-google";
 
           const deviceIcon = log.device === "Mobile" ? "fa-mobile-screen" : (log.device === "Tablet" ? "fa-tablet-screen-button" : "fa-laptop");
+
+          const locTitle = (log.city && log.city !== "Unknown City") ? `${log.city}, ${log.region || log.country}` : (log.country || 'India');
 
           return `
             <tr>
               <td>
                 <div style="font-weight:700;color:#fff;">${escapeHtml(log.readableTime || 'Just now')}</div>
-                <div style="font-size:1.2rem;color:var(--text-muted);">${escapeHtml(log.timezone || '')}</div>
+                <div style="font-size:11px;color:#94a3b8;">${escapeHtml(log.timezone || '')}</div>
               </td>
               <td>
                 <div class="geo-pill">
-                  <span class="geo-flag">${log.flag || '🌍'}</span>
+                  <span class="geo-flag">${log.flag || '🇮🇳'}</span>
                   <div>
-                    <div style="font-size:1.5rem;font-weight:700;color:#fff;">${escapeHtml(log.city || 'Unknown')}, ${escapeHtml(log.region || '')}</div>
-                    <div style="font-size:1.25rem;color:var(--text-muted);">${escapeHtml(log.country || 'India')}</div>
+                    <div style="font-size:13px;font-weight:700;color:#fff;">${escapeHtml(locTitle)}</div>
+                    <div style="font-size:11px;color:#94a3b8;">${escapeHtml(log.country || 'India')}</div>
                   </div>
                 </div>
               </td>
               <td>
                 <div><span class="ip-code">${escapeHtml(log.ip || 'Hidden')}</span></div>
-                <div style="font-size:1.2rem;color:var(--text-muted);margin-top:0.3rem;">${escapeHtml(log.isp || 'Network')}</div>
+                <div style="font-size:11px;color:#94a3b8;margin-top:2px;">${escapeHtml(log.isp || 'Network')}</div>
               </td>
               <td>
                 <div class="device-badge">
                   <i class="fa-solid ${deviceIcon}"></i>
                   ${escapeHtml(log.device || 'Desktop')} • ${escapeHtml(log.os || 'OS')}
                 </div>
-                <div style="font-size:1.2rem;color:var(--text-muted);margin-top:0.3rem;">${escapeHtml(log.browser || '')} (${escapeHtml(log.screen || '')})</div>
+                <div style="font-size:11px;color:#94a3b8;margin-top:2px;">${escapeHtml(log.browser || '')} (${escapeHtml(log.screen || '')})</div>
               </td>
               <td>
                 <span class="source-badge ${srcClass}">
-                  <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:1rem;"></i>
+                  <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:10px;"></i>
                   ${escapeHtml(log.referrer || 'Direct')}
                 </span>
               </td>
@@ -1086,7 +1091,7 @@
             <tr>
               <td colspan="6" class="empty-state">
                 <i class="fa-solid fa-comment-dots"></i>
-                <h3 style="font-size:1.8rem;color:#fff;margin-bottom:0.6rem;">No Visitor Reviews Yet</h3>
+                <h3 style="font-size:16px;color:#fff;margin-bottom:6px;">No Visitor Reviews Yet</h3>
                 <p>When visitors submit feedback via "Rate My Work", their submissions appear here for you to inspect or moderate.</p>
               </td>
             </tr>
@@ -1098,11 +1103,11 @@
           <tr>
             <td><strong>${escapeHtml(rev.author)}</strong></td>
             <td>${escapeHtml(rev.role)}</td>
-            <td><span class="badge-status">${escapeHtml(rev.category || 'visitor')}</span></td>
-            <td><strong style="color:var(--primary);">${rev.rating} ⭐</strong></td>
-            <td style="max-width:350px;white-space:normal;line-height:1.4;">${escapeHtml(rev.message)}</td>
+            <td><span class="badge-live">${escapeHtml(rev.category || 'visitor')}</span></td>
+            <td><strong style="color:#f59e0b;">${rev.rating} ⭐</strong></td>
+            <td style="max-width:320px;white-space:normal;line-height:1.4;">${escapeHtml(rev.message)}</td>
             <td>
-              <button type="button" class="btn-action btn-logout" onclick="deleteReview(${idx})" style="padding:0.6rem 1rem;font-size:1.2rem;">
+              <button type="button" class="btn-action btn-logout" onclick="deleteReview(${idx})" style="height:30px;padding:0 10px;font-size:11.5px;">
                 <i class="fa-solid fa-trash-can"></i> Delete
               </button>
             </td>
@@ -1122,7 +1127,7 @@
         } catch (e) {}
       };
 
-      // Search and Filter Listeners
+      // Search & Filters Listeners
       document.getElementById("log-search-input").addEventListener("input", renderVisitorLogs);
       document.getElementById("filter-device").addEventListener("change", renderVisitorLogs);
       document.getElementById("filter-source").addEventListener("change", renderVisitorLogs);
@@ -1132,45 +1137,70 @@
         btnRefresh.innerHTML = '<i class="fa-solid fa-check"></i> Refreshed!';
         setTimeout(() => {
           btnRefresh.innerHTML = '<i class="fa-solid fa-rotate-right"></i> Refresh';
-        }, 1200);
+        }, 1000);
       });
 
-      // Test tracking button
+      // Test Tracking Button
       btnTestVisit.addEventListener("click", async () => {
         btnTestVisit.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Tracking...';
-        sessionStorage.removeItem("smit_portfolio_session_tracked");
-        if (window.trackVisitor) {
-          await window.trackVisitor();
-        } else {
-          // Manual sample visit
-          const sample = {
-            id: "visit_" + Date.now(),
-            timestamp: new Date().toISOString(),
-            readableTime: new Date().toLocaleString(),
-            ip: "103.21.144.12",
-            city: "Vapi",
-            region: "Gujarat",
-            country: "India",
-            flag: "🇮🇳",
-            isp: "Reliance Jio Infocomm",
-            device: "Desktop",
-            os: "Windows 11",
-            browser: "Chrome",
-            screen: `${window.screen.width}x${window.screen.height}`,
-            referrer: "Direct / Admin Test",
-            page: "/"
-          };
-          const logs = getLogs();
-          logs.unshift(sample);
-          localStorage.setItem(STORAGE_LOGS, JSON.stringify(logs));
-        }
+        
+        let testCity = "Vapi";
+        let testRegion = "Gujarat";
+        let testCountry = "India";
+        let testFlag = "🇮🇳";
+        let testIP = "103.21.144.12";
+        let testISP = "Reliance Jio Infocomm";
+
+        try {
+          const res = await fetch("https://ipwho.is/", { cache: "no-store" });
+          const data = await res.json();
+          if (data && data.success) {
+            testCity = data.city || testCity;
+            testRegion = data.region || testRegion;
+            testCountry = data.country || testCountry;
+            testFlag = data.flag?.emoji || testFlag;
+            testIP = data.ip || testIP;
+            testISP = data.connection?.isp || testISP;
+          }
+        } catch (e) {}
+
+        const sample = {
+          id: "visit_" + Date.now(),
+          timestamp: new Date().toISOString(),
+          readableTime: new Date().toLocaleString("en-IN", {
+            day: "2-digit",
+            month: "short",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: true
+          }),
+          ip: testIP,
+          city: testCity,
+          region: testRegion,
+          country: testCountry,
+          flag: testFlag,
+          isp: testISP,
+          device: "Desktop",
+          os: "Windows 11",
+          browser: "Chrome",
+          screen: `${window.screen.width}x${window.screen.height}`,
+          referrer: "Direct / Admin Test",
+          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || "Asia/Kolkata",
+          page: "/"
+        };
+
+        const logs = getLogs();
+        logs.unshift(sample);
+        localStorage.setItem(STORAGE_LOGS, JSON.stringify(logs));
+
         setTimeout(() => {
           loadDashboardData();
-          btnTestVisit.innerHTML = '<i class="fa-solid fa-check"></i> Test Logged!';
+          btnTestVisit.innerHTML = '<i class="fa-solid fa-check"></i> Logged!';
           setTimeout(() => {
             btnTestVisit.innerHTML = '<i class="fa-solid fa-location-crosshairs"></i> Test Tracking';
-          }, 1500);
-        }, 800);
+          }, 1200);
+        }, 500);
       });
 
       // Export CSV
@@ -1206,7 +1236,7 @@
         document.body.removeChild(link);
       });
 
-      // Clear logs
+      // Clear Logs
       btnClearLogs.addEventListener("click", () => {
         if (confirm("Are you sure you want to permanently clear all visitor logs?")) {
           localStorage.removeItem(STORAGE_LOGS);
@@ -1230,7 +1260,7 @@
         setTimeout(() => status.style.display = "none", 3000);
       });
 
-      // Email Alert Toggle
+      // Toggle Email Alert
       const toggleEmail = document.getElementById("toggle-email-alerts");
       const currentSettings = JSON.parse(localStorage.getItem(STORAGE_SETTINGS) || '{"emailAlerts": true}');
       toggleEmail.checked = !!currentSettings.emailAlerts;
