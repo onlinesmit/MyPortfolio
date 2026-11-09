@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Intelligence &amp; Visitor Logs | Smit Portfolio</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #070b14;
+      --card-bg: #0f172a;
+      --card-border: rgba(255, 255, 255, 0.1);
+      --primary: #f59e0b;
+      --primary-glow: rgba(245, 158, 11, 0.35);
+      --emerald: #10b981;
+      --indigo: #6366f1;
+      --cyan: #06b6d4;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: radial-gradient(circle at 50% 10%, #1e1b4b 0%, #070b14 60%, #030712 100%);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Auth Gate Screen */
+    #auth-gate {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 7, 18, 0.95);
+      backdrop-filter: blur(15px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 99999;
+      padding: 2rem;
+    }
+
+    .auth-card {
+      width: 100%;
+      max-width: 440px;
+      background: var(--card-bg);
+      border: 1.5px solid var(--primary);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.7), 0 0 35px var(--primary-glow);
+      border-radius: 24px;
+      padding: 3.5rem 3rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .auth-icon {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f59e0b, #ea580c);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.8rem;
+      margin: 0 auto 1.8rem;
+      color: #fff;
+      box-shadow: 0 10px 25px rgba(245, 158, 11, 0.4);
+    }
+
+    .auth-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 0.6rem;
+      color: #fff;
+    }
+
+    .auth-subtitle {
+      font-size: 1.35rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 2.5rem;
+    }
+
+    .auth-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .pin-input-wrap {
+      position: relative;
+    }
+
+    .pin-input {
+      width: 100%;
+      background: #030712;
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 1.3rem 1.6rem;
+      font-size: 1.6rem;
+      color: #fff;
+      text-align: center;
+      letter-spacing: 4px;
+      outline: none;
+      transition: all 0.25s ease;
+    }
+
+    .pin-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.25);
+    }
+
+    .btn-auth-unlock {
+      width: 100%;
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 1.3rem;
+      font-size: 1.55rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      box-shadow: 0 8px 25px rgba(245, 158, 11, 0.35);
+      transition: all 0.3s ease;
+    }
+
+    .btn-auth-unlock:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(245, 158, 11, 0.5);
+      filter: brightness(1.1);
+    }
+
+    .auth-err-msg {
+      color: #f87171;
+      font-size: 1.3rem;
+      display: none;
+      margin-top: 0.5rem;
+    }
+
+    .auth-back-link {
+      display: inline-block;
+      margin-top: 2rem;
+      font-size: 1.35rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .auth-back-link:hover {
+      color: #fff;
+    }
+
+    /* Dashboard Shell */
+    #dashboard-view {
+      display: none;
+      flex: 1;
+      padding: 2.5rem 3rem 4rem;
+      max-width: 1400px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    /* Top Nav */
+    .admin-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      padding-bottom: 2.2rem;
+      margin-bottom: 3rem;
+      border-bottom: 1px solid var(--card-border);
+      flex-wrap: wrap;
+    }
+
+    .admin-brand {
+      display: flex;
+      align-items: center;
+      gap: 1.4rem;
+    }
+
+    .admin-logo-img {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    }
+
+    .admin-title-wrap h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .badge-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      color: var(--emerald);
+      padding: 0.3rem 0.9rem;
+      border-radius: 50px;
+      font-size: 1.15rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--emerald);
+      box-shadow: 0 0 8px var(--emerald);
+      animation: livePulse 1.6s infinite;
+    }
+
+    @keyframes livePulse {
+      0% { transform: scale(0.9); opacity: 0.8; }
+      50% { transform: scale(1.4); opacity: 1; }
+      100% { transform: scale(0.9); opacity: 0.8; }
+    }
+
+    .admin-title-wrap p {
+      font-size: 1.35rem;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+    }
+
+    .admin-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-action {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--card-border);
+      color: #fff;
+      padding: 0.9rem 1.6rem;
+      border-radius: 10px;
+      font-size: 1.35rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .btn-action:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .btn-action-primary {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      border: none;
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+    }
+
+    .btn-action-primary:hover {
+      box-shadow: 0 8px 20px rgba(245, 158, 11, 0.45);
+    }
+
+    .btn-logout {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      color: #f87171;
+    }
+
+    .btn-logout:hover {
+      background: rgba(239, 68, 68, 0.3);
+      color: #fff;
+    }
+
+    /* Metric Cards Grid */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .metric-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 2.2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+    }
+
+    .metric-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(245, 158, 11, 0.3);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.4), 0 0 25px rgba(245, 158, 11, 0.1);
+    }
+
+    .metric-icon-box {
+      width: 5.6rem;
+      height: 5.6rem;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.4rem;
+      flex-shrink: 0;
+    }
+
+    .metric-data h3 {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 0.4rem;
+    }
+
+    .metric-data p {
+      font-size: 1.3rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Tabs Bar */
+    .admin-tabs-bar {
+      display: flex;
+      gap: 1rem;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--text-muted);
+      padding: 1rem 1.8rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn:hover {
+      color: #fff;
+    }
+
+    .tab-btn.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+    }
+
+    /* Content Panels */
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    /* Search & Filter Bar */
+    .filter-panel {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 1.4rem 2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .search-input-wrap {
+      flex: 1;
+      min-width: 260px;
+      position: relative;
+    }
+
+    .search-input-wrap i {
+      position: absolute;
+      left: 1.4rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 1.4rem;
+    }
+
+    .search-input {
+      width: 100%;
+      background: #030712;
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 1rem 1.4rem 1rem 3.8rem;
+      font-size: 1.4rem;
+      color: #fff;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .search-input:focus {
+      border-color: var(--primary);
+    }
+
+    .filter-dropdowns {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .filter-select {
+      background: #030712;
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 0.9rem 1.4rem;
+      color: #fff;
+      font-size: 1.35rem;
+      outline: none;
+      cursor: pointer;
+    }
+
+    /* Table Styling */
+    .table-container {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .table-responsive {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    thead {
+      background: rgba(3, 7, 18, 0.7);
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    th {
+      padding: 1.6rem 2rem;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 1.6rem 2rem;
+      font-size: 1.4rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+
+    tbody tr:hover {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .geo-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .geo-flag {
+      font-size: 1.8rem;
+    }
+
+    .ip-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.25rem;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      color: #38bdf8;
+    }
+
+    .device-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      color: #a5b4fc;
+      padding: 0.4rem 1rem;
+      border-radius: 8px;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .source-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .src-linkedin { background: rgba(14, 118, 168, 0.2); color: #38bdf8; border: 1px solid rgba(14, 118, 168, 0.4); }
+    .src-whatsapp { background: rgba(37, 211, 102, 0.2); color: #4ade80; border: 1px solid rgba(37, 211, 102, 0.4); }
+    .src-direct { background: rgba(148, 163, 184, 0.2); color: #cbd5e1; border: 1px solid rgba(148, 163, 184, 0.4); }
+    .src-google { background: rgba(234, 67, 53, 0.2); color: #f87171; border: 1px solid rgba(234, 67, 53, 0.4); }
+
+    .empty-state {
+      padding: 6rem 2rem;
+      text-align: center;
+      color: var(--text-muted);
+    }
+
+    .empty-state i {
+      font-size: 4rem;
+      margin-bottom: 1.5rem;
+      color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Settings Tab */
+    .settings-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .settings-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 2.5rem;
+    }
+
+    .settings-card h3 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .settings-card p {
+      font-size: 1.35rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 2rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      #dashboard-view {
+        padding: 2rem 1.6rem;
+      }
+      .admin-title-wrap h1 {
+        font-size: 2rem;
+      }
+      .filter-panel {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .filter-dropdowns {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= AUTH SECURITY GATE ================= -->
+  <div id="auth-gate">
+    <div class="auth-card">
+      <div class="auth-icon">
+        <i class="fa-solid fa-shield-halved"></i>
+      </div>
+      <h2 class="auth-title">Restricted Admin Access</h2>
+      <p class="auth-subtitle">
+        Enter your secure Admin PIN to access private visitor telemetry, live geolocation tracking, and review moderation.
+      </p>
+
+      <form id="admin-pin-form" class="auth-form">
+        <div class="pin-input-wrap">
+          <input
+            type="password"
+            id="admin-pin-input"
+            class="pin-input"
+            placeholder="••••••••"
+            autocomplete="current-password"
+            required
+            autofocus
+          />
+        </div>
+        <button type="submit" class="btn-auth-unlock">
+          <i class="fa-solid fa-key"></i> Unlock Dashboard
+        </button>
+        <p id="auth-error-msg" class="auth-err-msg">
+          <i class="fa-solid fa-circle-exclamation"></i> Incorrect PIN. Please try again.
+        </p>
+      </form>
+
+      <a href="index.html" class="auth-back-link">
+        <i class="fa-solid fa-arrow-left"></i> Return to Public Portfolio
+      </a>
+    </div>
+  </div>
+
+  <!-- ================= ADMIN DASHBOARD ================= -->
+  <div id="dashboard-view">
+    <!-- Top Header -->
+    <header class="admin-header">
+      <div class="admin-brand">
+        <img src="images/userAsset/NavLogo.png" alt="Smit Logo" class="admin-logo-img" />
+        <div class="admin-title-wrap">
+          <h1>
+            Visitor Intelligence &amp; Geolocation
+            <span class="badge-status"><span class="pulse-dot"></span> Live Tracking</span>
+          </h1>
+          <p>Real-time analytics, city/country tracking, and device telemetry for Smit's Portfolio</p>
+        </div>
+      </div>
+
+      <div class="admin-actions">
+        <button type="button" id="btn-refresh" class="btn-action" title="Refresh Live Logs">
+          <i class="fa-solid fa-rotate-right"></i> Refresh
+        </button>
+        <button type="button" id="btn-export-csv" class="btn-action" title="Download Excel/CSV">
+          <i class="fa-solid fa-file-arrow-down"></i> Export CSV
+        </button>
+        <button type="button" id="btn-test-visit" class="btn-action btn-action-primary" title="Record a test visit">
+          <i class="fa-solid fa-location-crosshairs"></i> Test Tracking
+        </button>
+        <a href="index.html" class="btn-action" title="Open Public Site">
+          <i class="fa-solid fa-globe"></i> View Site
+        </a>
+        <button type="button" id="btn-logout" class="btn-action btn-logout" title="Lock Console">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> Lock
+        </button>
+      </div>
+    </header>
+
+    <!-- Top Metrics Overview -->
+    <section class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-icon-box" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24;">
+          <i class="fa-solid fa-users"></i>
+        </div>
+        <div class="metric-data">
+          <h3 id="stat-total-visits">0</h3>
+          <p>Total Visits Tracked</p>
+        </div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-icon-box" style="background: rgba(16, 185, 129, 0.15); color: #34d399;">
+          <i class="fa-solid fa-earth-americas"></i>
+        </div>
+        <div class="metric-data">
+          <h3 id="stat-top-country">India 🇮🇳</h3>
+          <p>Top Geographic Region</p>
+        </div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-icon-box" style="background: rgba(99, 102, 241, 0.15); color: #818cf8;">
+          <i class="fa-solid fa-mobile-screen"></i>
+        </div>
+        <div class="metric-data">
+          <h3 id="stat-device-ratio">100%</h3>
+          <p>Primary Device Type</p>
+        </div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-icon-box" style="background: rgba(6, 182, 212, 0.15); color: #22d3ee;">
+          <i class="fa-solid fa-link"></i>
+        </div>
+        <div class="metric-data">
+          <h3 id="stat-top-source">Direct / LinkedIn</h3>
+          <p>Primary Traffic Source</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation Tabs -->
+    <div class="admin-tabs-bar">
+      <button class="tab-btn active" data-tab="tab-visitors">
+        <i class="fa-solid fa-location-dot"></i> Live Visitor Logs (<span id="tab-count-visitors">0</span>)
+      </button>
+      <button class="tab-btn" data-tab="tab-reviews">
+        <i class="fa-solid fa-star"></i> Review Moderation (<span id="tab-count-reviews">0</span>)
+      </button>
+      <button class="tab-btn" data-tab="tab-settings">
+        <i class="fa-solid fa-gear"></i> Admin &amp; Alert Settings
+      </button>
+    </div>
+
+    <!-- TAB 1: VISITOR LOGS -->
+    <div id="tab-visitors" class="tab-panel active">
+      <!-- Search & Filters -->
+      <div class="filter-panel">
+        <div class="search-input-wrap">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input
+            type="text"
+            id="log-search-input"
+            class="search-input"
+            placeholder="Search by city, country, IP address, device, or source..."
+          />
+        </div>
+
+        <div class="filter-dropdowns">
+          <select id="filter-device" class="filter-select">
+            <option value="all">All Devices</option>
+            <option value="Mobile">Mobile Only</option>
+            <option value="Desktop">Desktop Only</option>
+            <option value="Tablet">Tablet Only</option>
+          </select>
+          <select id="filter-source" class="filter-select">
+            <option value="all">All Traffic Sources</option>
+            <option value="LinkedIn">LinkedIn</option>
+            <option value="WhatsApp">WhatsApp</option>
+            <option value="Telegram">Telegram</option>
+            <option value="Google">Google Search</option>
+            <option value="Direct">Direct / Bookmark</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Logs Table -->
+      <div class="table-container">
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>Time &amp; Date</th>
+                <th>Location &amp; City</th>
+                <th>IP Address &amp; ISP</th>
+                <th>Device &amp; Browser</th>
+                <th>Traffic Source</th>
+              </tr>
+            </thead>
+            <tbody id="visitor-table-body">
+              <!-- Dynamic rows rendered here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: REVIEWS MODERATION -->
+    <div id="tab-reviews" class="tab-panel">
+      <div class="table-container">
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>Reviewer Name</th>
+                <th>Role &amp; Org</th>
+                <th>Category</th>
+                <th>Rating</th>
+                <th>Feedback Message</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="reviews-table-body">
+              <!-- Dynamic visitor reviews -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: SETTINGS -->
+    <div id="tab-settings" class="tab-panel">
+      <div class="settings-grid">
+        <div class="settings-card">
+          <h3><i class="fa-solid fa-key" style="color:var(--primary);"></i> Change Admin Security PIN</h3>
+          <p>Update the private passcode required to unlock this dashboard.</p>
+          <form id="change-pin-form" style="display:flex; flex-direction:column; gap:1.2rem;">
+            <input
+              type="password"
+              id="new-pin-input"
+              class="search-input"
+              placeholder="Enter new 6+ char PIN..."
+              required
+            />
+            <button type="submit" class="btn-action btn-action-primary" style="justify-content:center;">
+              <i class="fa-solid fa-check"></i> Save New PIN
+            </button>
+            <span id="pin-change-status" style="font-size:1.3rem; color:var(--emerald); display:none;">
+              PIN updated successfully!
+            </span>
+          </form>
+        </div>
+
+        <div class="settings-card">
+          <h3><i class="fa-solid fa-envelope" style="color:#38bdf8;"></i> Real-Time Email Notifications</h3>
+          <p>Sends an instant email to <strong>smitkumar09@gmail.com</strong> when someone visits your portfolio.</p>
+          <label style="display:flex; align-items:center; gap:1rem; cursor:pointer; font-size:1.45rem; font-weight:600;">
+            <input type="checkbox" id="toggle-email-alerts" style="width:20px; height:20px; accent-color:var(--primary);" checked />
+            Enable Instant Visit Email Alerts
+          </label>
+        </div>
+
+        <div class="settings-card">
+          <h3><i class="fa-solid fa-trash-can" style="color:#f87171;"></i> Clear Visitor Logs</h3>
+          <p>Delete all logged visitor sessions from local memory.</p>
+          <button type="button" id="btn-clear-logs" class="btn-action btn-logout">
+            <i class="fa-solid fa-trash-can"></i> Clear All Visitor Logs
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const STORAGE_LOGS = "smit_portfolio_visitor_logs";
+      const STORAGE_REVIEWS = "smit_portfolio_user_reviews";
+      const STORAGE_SETTINGS = "smit_portfolio_analytics_settings";
+      const PIN_KEY = "smit_admin_pin";
+      const AUTH_SESSION_KEY = "smit_admin_authenticated";
+
+      const DEFAULT_PIN = "smit@2026";
+
+      const authGate = document.getElementById("auth-gate");
+      const pinForm = document.getElementById("admin-pin-form");
+      const pinInput = document.getElementById("admin-pin-input");
+      const authErrorMsg = document.getElementById("auth-error-msg");
+      const dashboardView = document.getElementById("dashboard-view");
+      const btnLogout = document.getElementById("btn-logout");
+      const btnRefresh = document.getElementById("btn-refresh");
+      const btnExport = document.getElementById("btn-export-csv");
+      const btnTestVisit = document.getElementById("btn-test-visit");
+      const btnClearLogs = document.getElementById("btn-clear-logs");
+
+      // Check current PIN
+      function getAdminPIN() {
+        return localStorage.getItem(PIN_KEY) || DEFAULT_PIN;
+      }
+
+      // Check auth state
+      if (sessionStorage.getItem(AUTH_SESSION_KEY) === "true") {
+        unlockDashboard();
+      }
+
+      // PIN Submit Handler
+      pinForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const entered = pinInput.value.trim();
+        const correct = getAdminPIN();
+
+        if (entered === correct) {
+          sessionStorage.setItem(AUTH_SESSION_KEY, "true");
+          authErrorMsg.style.display = "none";
+          unlockDashboard();
+        } else {
+          authErrorMsg.style.display = "block";
+          pinInput.value = "";
+          pinInput.focus();
+        }
+      });
+
+      function unlockDashboard() {
+        authGate.style.display = "none";
+        dashboardView.style.display = "block";
+        loadDashboardData();
+      }
+
+      btnLogout.addEventListener("click", () => {
+        sessionStorage.removeItem(AUTH_SESSION_KEY);
+        window.location.reload();
+      });
+
+      // Tab Switching
+      document.querySelectorAll(".tab-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+          document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
+
+          btn.classList.add("active");
+          const target = btn.getAttribute("data-tab");
+          const panel = document.getElementById(target);
+          if (panel) panel.classList.add("active");
+        });
+      });
+
+      // Load & Render Dashboard Data
+      function loadDashboardData() {
+        renderVisitorLogs();
+        renderVisitorReviews();
+        updateMetrics();
+      }
+
+      function getLogs() {
+        try {
+          const raw = localStorage.getItem(STORAGE_LOGS);
+          return raw ? JSON.parse(raw) : [];
+        } catch (e) {
+          return [];
+        }
+      }
+
+      function updateMetrics() {
+        const logs = getLogs();
+        const totalVisitsEl = document.getElementById("stat-total-visits");
+        const topCountryEl = document.getElementById("stat-top-country");
+        const deviceRatioEl = document.getElementById("stat-device-ratio");
+        const topSourceEl = document.getElementById("stat-top-source");
+        const tabCountVisitors = document.getElementById("tab-count-visitors");
+
+        totalVisitsEl.textContent = logs.length;
+        tabCountVisitors.textContent = logs.length;
+
+        if (logs.length > 0) {
+          // Top country
+          const countryCounts = {};
+          logs.forEach(l => {
+            const k = `${l.flag || '🌍'} ${l.country || 'Unknown'}`;
+            countryCounts[k] = (countryCounts[k] || 0) + 1;
+          });
+          const topC = Object.entries(countryCounts).sort((a,b) => b[1] - a[1])[0];
+          if (topC) topCountryEl.textContent = `${topC[0]} (${topC[1]})`;
+
+          // Device ratio
+          const mobileCount = logs.filter(l => l.device === "Mobile").length;
+          const pctMobile = Math.round((mobileCount / logs.length) * 100);
+          deviceRatioEl.textContent = pctMobile > 50 ? `${pctMobile}% Mobile` : `${100 - pctMobile}% Desktop`;
+
+          // Top source
+          const srcCounts = {};
+          logs.forEach(l => {
+            const s = l.referrer || "Direct";
+            srcCounts[s] = (srcCounts[s] || 0) + 1;
+          });
+          const topS = Object.entries(srcCounts).sort((a,b) => b[1] - a[1])[0];
+          if (topS) topSourceEl.textContent = topS[0];
+        } else {
+          topCountryEl.textContent = "Awaiting Visits";
+          deviceRatioEl.textContent = "—";
+          topSourceEl.textContent = "—";
+        }
+      }
+
+      function renderVisitorLogs() {
+        const logs = getLogs();
+        const tbody = document.getElementById("visitor-table-body");
+        const searchVal = document.getElementById("log-search-input").value.toLowerCase().trim();
+        const deviceVal = document.getElementById("filter-device").value;
+        const sourceVal = document.getElementById("filter-source").value;
+
+        const filtered = logs.filter(log => {
+          const matchSearch = !searchVal || 
+            (log.city && log.city.toLowerCase().includes(searchVal)) ||
+            (log.country && log.country.toLowerCase().includes(searchVal)) ||
+            (log.region && log.region.toLowerCase().includes(searchVal)) ||
+            (log.ip && log.ip.toLowerCase().includes(searchVal)) ||
+            (log.device && log.device.toLowerCase().includes(searchVal)) ||
+            (log.browser && log.browser.toLowerCase().includes(searchVal)) ||
+            (log.referrer && log.referrer.toLowerCase().includes(searchVal));
+
+          const matchDevice = deviceVal === "all" || log.device === deviceVal;
+          const matchSource = sourceVal === "all" || (log.referrer && log.referrer.includes(sourceVal));
+
+          return matchSearch && matchDevice && matchSource;
+        });
+
+        if (filtered.length === 0) {
+          tbody.innerHTML = `
+            <tr>
+              <td colspan="5" class="empty-state">
+                <i class="fa-solid fa-earth-asia"></i>
+                <h3 style="font-size:1.8rem;color:#fff;margin-bottom:0.6rem;">No Visitor Logs Found</h3>
+                <p>When someone opens your portfolio, their city, country, device, and network appear here automatically.</p>
+              </td>
+            </tr>
+          `;
+          return;
+        }
+
+        tbody.innerHTML = filtered.map(log => {
+          let srcClass = "src-direct";
+          if (log.referrer && log.referrer.includes("LinkedIn")) srcClass = "src-linkedin";
+          if (log.referrer && log.referrer.includes("WhatsApp")) srcClass = "src-whatsapp";
+          if (log.referrer && log.referrer.includes("Google")) srcClass = "src-google";
+
+          const deviceIcon = log.device === "Mobile" ? "fa-mobile-screen" : (log.device === "Tablet" ? "fa-tablet-screen-button" : "fa-laptop");
+
+          return `
+            <tr>
+              <td>
+                <div style="font-weight:700;color:#fff;">${escapeHtml(log.readableTime || 'Just now')}</div>
+                <div style="font-size:1.2rem;color:var(--text-muted);">${escapeHtml(log.timezone || '')}</div>
+              </td>
+              <td>
+                <div class="geo-pill">
+                  <span class="geo-flag">${log.flag || '🌍'}</span>
+                  <div>
+                    <div style="font-size:1.5rem;font-weight:700;color:#fff;">${escapeHtml(log.city || 'Unknown')}, ${escapeHtml(log.region || '')}</div>
+                    <div style="font-size:1.25rem;color:var(--text-muted);">${escapeHtml(log.country || 'India')}</div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div><span class="ip-code">${escapeHtml(log.ip || 'Hidden')}</span></div>
+                <div style="font-size:1.2rem;color:var(--text-muted);margin-top:0.3rem;">${escapeHtml(log.isp || 'Network')}</div>
+              </td>
+              <td>
+                <div class="device-badge">
+                  <i class="fa-solid ${deviceIcon}"></i>
+                  ${escapeHtml(log.device || 'Desktop')} • ${escapeHtml(log.os || 'OS')}
+                </div>
+                <div style="font-size:1.2rem;color:var(--text-muted);margin-top:0.3rem;">${escapeHtml(log.browser || '')} (${escapeHtml(log.screen || '')})</div>
+              </td>
+              <td>
+                <span class="source-badge ${srcClass}">
+                  <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:1rem;"></i>
+                  ${escapeHtml(log.referrer || 'Direct')}
+                </span>
+              </td>
+            </tr>
+          `;
+        }).join("");
+      }
+
+      // Review Moderation Tab
+      function renderVisitorReviews() {
+        const tbody = document.getElementById("reviews-table-body");
+        const tabCountReviews = document.getElementById("tab-count-reviews");
+        let reviews = [];
+        try {
+          const raw = localStorage.getItem(STORAGE_REVIEWS);
+          reviews = raw ? JSON.parse(raw) : [];
+        } catch (e) {}
+
+        tabCountReviews.textContent = reviews.length;
+
+        if (reviews.length === 0) {
+          tbody.innerHTML = `
+            <tr>
+              <td colspan="6" class="empty-state">
+                <i class="fa-solid fa-comment-dots"></i>
+                <h3 style="font-size:1.8rem;color:#fff;margin-bottom:0.6rem;">No Visitor Reviews Yet</h3>
+                <p>When visitors submit feedback via "Rate My Work", their submissions appear here for you to inspect or moderate.</p>
+              </td>
+            </tr>
+          `;
+          return;
+        }
+
+        tbody.innerHTML = reviews.map((rev, idx) => `
+          <tr>
+            <td><strong>${escapeHtml(rev.author)}</strong></td>
+            <td>${escapeHtml(rev.role)}</td>
+            <td><span class="badge-status">${escapeHtml(rev.category || 'visitor')}</span></td>
+            <td><strong style="color:var(--primary);">${rev.rating} ⭐</strong></td>
+            <td style="max-width:350px;white-space:normal;line-height:1.4;">${escapeHtml(rev.message)}</td>
+            <td>
+              <button type="button" class="btn-action btn-logout" onclick="deleteReview(${idx})" style="padding:0.6rem 1rem;font-size:1.2rem;">
+                <i class="fa-solid fa-trash-can"></i> Delete
+              </button>
+            </td>
+          </tr>
+        `).join("");
+      }
+
+      window.deleteReview = function(idx) {
+        if (!confirm("Are you sure you want to delete this visitor review?")) return;
+        try {
+          const raw = localStorage.getItem(STORAGE_REVIEWS);
+          const reviews = raw ? JSON.parse(raw) : [];
+          reviews.splice(idx, 1);
+          localStorage.setItem(STORAGE_REVIEWS, JSON.stringify(reviews));
+          renderVisitorReviews();
+          alert("Review deleted successfully!");
+        } catch (e) {}
+      };
+
+      // Search and Filter Listeners
+      document.getElementById("log-search-input").addEventListener("input", renderVisitorLogs);
+      document.getElementById("filter-device").addEventListener("change", renderVisitorLogs);
+      document.getElementById("filter-source").addEventListener("change", renderVisitorLogs);
+
+      btnRefresh.addEventListener("click", () => {
+        loadDashboardData();
+        btnRefresh.innerHTML = '<i class="fa-solid fa-check"></i> Refreshed!';
+        setTimeout(() => {
+          btnRefresh.innerHTML = '<i class="fa-solid fa-rotate-right"></i> Refresh';
+        }, 1200);
+      });
+
+      // Test tracking button
+      btnTestVisit.addEventListener("click", async () => {
+        btnTestVisit.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Tracking...';
+        sessionStorage.removeItem("smit_portfolio_session_tracked");
+        if (window.trackVisitor) {
+          await window.trackVisitor();
+        } else {
+          // Manual sample visit
+          const sample = {
+            id: "visit_" + Date.now(),
+            timestamp: new Date().toISOString(),
+            readableTime: new Date().toLocaleString(),
+            ip: "103.21.144.12",
+            city: "Vapi",
+            region: "Gujarat",
+            country: "India",
+            flag: "🇮🇳",
+            isp: "Reliance Jio Infocomm",
+            device: "Desktop",
+            os: "Windows 11",
+            browser: "Chrome",
+            screen: `${window.screen.width}x${window.screen.height}`,
+            referrer: "Direct / Admin Test",
+            page: "/"
+          };
+          const logs = getLogs();
+          logs.unshift(sample);
+          localStorage.setItem(STORAGE_LOGS, JSON.stringify(logs));
+        }
+        setTimeout(() => {
+          loadDashboardData();
+          btnTestVisit.innerHTML = '<i class="fa-solid fa-check"></i> Test Logged!';
+          setTimeout(() => {
+            btnTestVisit.innerHTML = '<i class="fa-solid fa-location-crosshairs"></i> Test Tracking';
+          }, 1500);
+        }, 800);
+      });
+
+      // Export CSV
+      btnExport.addEventListener("click", () => {
+        const logs = getLogs();
+        if (logs.length === 0) {
+          alert("No logs to export!");
+          return;
+        }
+
+        const headers = ["Time", "City", "Region", "Country", "IP", "ISP", "Device", "OS", "Browser", "Screen", "Referrer"];
+        const rows = logs.map(l => [
+          `"${l.readableTime || ''}"`,
+          `"${l.city || ''}"`,
+          `"${l.region || ''}"`,
+          `"${l.country || ''}"`,
+          `"${l.ip || ''}"`,
+          `"${l.isp || ''}"`,
+          `"${l.device || ''}"`,
+          `"${l.os || ''}"`,
+          `"${l.browser || ''}"`,
+          `"${l.screen || ''}"`,
+          `"${l.referrer || ''}"`
+        ]);
+
+        const csvContent = "data:text/csv;charset=utf-8," + [headers.join(","), ...rows.map(e => e.join(","))].join("\n");
+        const encodedUri = encodeURI(csvContent);
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", `smit_portfolio_visitors_${Date.now()}.csv`);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      });
+
+      // Clear logs
+      btnClearLogs.addEventListener("click", () => {
+        if (confirm("Are you sure you want to permanently clear all visitor logs?")) {
+          localStorage.removeItem(STORAGE_LOGS);
+          loadDashboardData();
+          alert("All visitor logs cleared.");
+        }
+      });
+
+      // Change PIN
+      document.getElementById("change-pin-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const newPin = document.getElementById("new-pin-input").value.trim();
+        if (newPin.length < 4) {
+          alert("PIN must be at least 4 characters long.");
+          return;
+        }
+        localStorage.setItem(PIN_KEY, newPin);
+        const status = document.getElementById("pin-change-status");
+        status.style.display = "block";
+        document.getElementById("new-pin-input").value = "";
+        setTimeout(() => status.style.display = "none", 3000);
+      });
+
+      // Email Alert Toggle
+      const toggleEmail = document.getElementById("toggle-email-alerts");
+      const currentSettings = JSON.parse(localStorage.getItem(STORAGE_SETTINGS) || '{"emailAlerts": true}');
+      toggleEmail.checked = !!currentSettings.emailAlerts;
+      toggleEmail.addEventListener("change", () => {
+        localStorage.setItem(STORAGE_SETTINGS, JSON.stringify({ emailAlerts: toggleEmail.checked }));
+      });
+
+      function escapeHtml(str) {
+        return String(str || "")
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
+      }
+    })();
+  </script>
+</body>
+</html>

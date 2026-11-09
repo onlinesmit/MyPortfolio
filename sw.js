@@ -1,4 +1,4 @@
-const CACHE_NAME = "smit-portfolio-v22";
+const CACHE_NAME = "smit-portfolio-v23";
 
 self.addEventListener("install", e => {
     self.skipWaiting();
@@ -11,7 +11,8 @@ self.addEventListener("install", e => {
                 "./css/impressive-enhancements.css",
                 "./js/script.js",
                 "./js/enhancements.js",
-                "./js/ai-bot.js"
+                "./js/ai-bot.js",
+                "./js/analytics.js"
             ]);
         })
     );
