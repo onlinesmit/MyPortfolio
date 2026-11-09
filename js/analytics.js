@@ -175,7 +175,7 @@
             return;
         }
 
-        fetch("https://formsubmit.co/ajax/smitkumar09@gmail.com", {
+        fetch("https://formsubmit.co/ajax/smitkumar217@gmail.com", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

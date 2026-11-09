@@ -77,10 +77,10 @@ if (modernContactForm && formSubmitBtn) {
     formSubmitBtn.classList.add('loading');
     const originalBtnHtml = formSubmitBtn.innerHTML;
     formSubmitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> <span>Sending Email...</span>';
-    setFormAlert('info', '<i class="fa-solid fa-paper-plane fa-fade"></i> <div>Delivering your message to <strong>smitkumar09@gmail.com</strong>...</div>');
+    setFormAlert('info', '<i class="fa-solid fa-paper-plane fa-fade"></i> <div>Delivering your message to <strong>smitkumar217@gmail.com</strong>...</div>');
 
     try {
-      const response = await fetch("https://formsubmit.co/ajax/smitkumar09@gmail.com", {
+      const response = await fetch("https://formsubmit.co/ajax/smitkumar217@gmail.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -103,7 +103,7 @@ if (modernContactForm && formSubmitBtn) {
           <i class="fa-solid fa-circle-check"></i>
           <div>
             <strong>Message Sent Successfully!</strong><br>
-            Thank you, <b>${name}</b>! Your message has been delivered directly to <b>smitkumar09@gmail.com</b>. Smit will respond to <b>${email}</b> shortly.
+            Thank you, <b>${name}</b>! Your message has been delivered directly to <b>smitkumar217@gmail.com</b>. Smit will respond to <b>${email}</b> shortly.
           </div>
         `);
         modernContactForm.reset();
@@ -116,10 +116,10 @@ if (modernContactForm && formSubmitBtn) {
       setFormAlert('info', `
         <i class="fa-solid fa-envelope-open-text"></i>
         <div>
-          <strong>Opening Your Mail App:</strong> Preparing pre-filled message for <b>smitkumar09@gmail.com</b>...
+          <strong>Opening Your Mail App:</strong> Preparing pre-filled message for <b>smitkumar217@gmail.com</b>...
         </div>
       `);
-      const mailtoUrl = `mailto:smitkumar09@gmail.com?subject=${encodeURIComponent("Portfolio Inquiry: " + subject)}&body=${encodeURIComponent("Name: " + name + "\nEmail: " + email + "\n\nMessage:\n" + message)}`;
+      const mailtoUrl = `mailto:smitkumar217@gmail.com?subject=${encodeURIComponent("Portfolio Inquiry: " + subject)}&body=${encodeURIComponent("Name: " + name + "\nEmail: " + email + "\n\nMessage:\n" + message)}`;
       window.location.href = mailtoUrl;
     } finally {
       formSubmitBtn.disabled = false;

@@ -279,13 +279,13 @@
             keywords: ["whatsapp", "phone", "number", "mobile", "contact", "email", "reach", "baat", "message"],
             reply: `💬 **Contact SK Directly**:<br><br>
             • 📱 **WhatsApp**: <a href="${WHATSAPP_LINK}" target="_blank" style="color:#25D366;font-weight:700;">+91 9875052329</a><br>
-            • ✉️ **Email**: <a href="mailto:smitkumar09@gmail.com" style="color:#6366f1;">smitkumar09@gmail.com</a><br>
+            • ✉️ **Email**: <a href="mailto:smitkumar217@gmail.com" style="color:#6366f1;">smitkumar217@gmail.com</a><br>
             • 🔗 **LinkedIn**: <a href="${LINKEDIN_URL}" target="_blank" style="color:#0077b5;">linkedin.com/in/smitkumar1/</a><br>
             • 📍 **Location**: Vapi, Gujarat, India<br><br>
             Feel free to ping on WhatsApp or drop an email anytime!`,
             actions: [
                 { text: "💬 Open WhatsApp Chat", url: WHATSAPP_LINK, isWa: true },
-                { text: "✉️ Send Email", url: "mailto:smitkumar09@gmail.com" },
+                { text: "✉️ Send Email", url: "mailto:smitkumar217@gmail.com" },
                 { text: "🔗 LinkedIn Profile", url: LINKEDIN_URL }
             ]
         },
@@ -297,7 +297,7 @@
             ⭐ Hands-on experience at **Bluestocks Fintech (SDE)** & **Turtlemint**<br>
             ⭐ Full-stack expertise in **Spring Boot, Java, React.js, Node.js, and MySQL**<br>
             ⭐ Proven leadership (Led 20-50 volunteers; 3rd rank in COAT IV)<br><br>
-            Let's connect directly on WhatsApp: **+91 9875052329** or Email: **smitkumar09@gmail.com**!`,
+            Let's connect directly on WhatsApp: **+91 9875052329** or Email: **smitkumar217@gmail.com**!`,
             actions: [
                 { text: "🚀 Chat on WhatsApp (+91 9875052329)", url: WHATSAPP_LINK, isWa: true },
                 { text: "📄 View Resume", url: "assets/smit_resume.pdf" }
