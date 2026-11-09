@@ -416,6 +416,11 @@ document.addEventListener("DOMContentLoaded", () => {
             // Show toast notification
             showReviewToast(author, rating);
 
+            // Trigger immediate floating toast for newly submitted review
+            if (window.triggerImmediateReviewToast) {
+                window.triggerImmediateReviewToast(author, role, rating, message);
+            }
+
             // Scroll to reviews section
             const reviewsSection = document.getElementById("reviews");
             if (reviewsSection) {
@@ -452,5 +457,232 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
             });
         });
+    }
+
+    // -----------------------------------------------------------------
+    // 4. Floating Live Reviews Ticker (Social Proof Popups - Aata Jata Rhe)
+    // -----------------------------------------------------------------
+    const floatingToastContainer = document.getElementById("floating-review-toast");
+
+    const SEED_FLOATING_REVIEWS = [
+        {
+            name: "Senior Engineering Lead",
+            role: "Bluestocks Fintech • SDE Team",
+            rating: 5,
+            quote: "Smit was a standout Software Engineer at Bluestocks. Built scalable React.js frontend interfaces and delivered features ahead of sprint schedules.",
+            avatarBg: "linear-gradient(135deg, #6366f1, #4338ca)",
+            icon: "fa-chart-line",
+            badge: "Verified Fintech Partner"
+        },
+        {
+            name: "Delight Media Agency",
+            role: "Founder & Operations Head",
+            rating: 5,
+            quote: "The digital agency portal built by Smit helped us convert 30%+ higher inbound clients. Truly top-tier full-stack talent.",
+            avatarBg: "linear-gradient(135deg, #f43f5e, #be123c)",
+            icon: "fa-rocket",
+            badge: "Agency Client"
+        },
+        {
+            name: "Turtlemint Hub",
+            role: "Operations & Tech Associate",
+            rating: 5,
+            quote: "Smit brings tremendous precision to workflow automation and operations. High problem-solving velocity during critical sprints.",
+            avatarBg: "linear-gradient(135deg, #10b981, #047857)",
+            icon: "fa-shield-halved",
+            badge: "InsurTech Colleague"
+        },
+        {
+            name: "Priyanka S. (MCA)",
+            role: "UGC NET Computer Science Aspirant",
+            rating: 5,
+            quote: "Smit Sir's mentorship for UGC NET Computer Science simplified the toughest topics. Having cracked NET twice, his guidance is invaluable!",
+            avatarBg: "linear-gradient(135deg, #f59e0b, #b45309)",
+            icon: "fa-graduation-cap",
+            badge: "Verified Mentee"
+        },
+        {
+            name: "Aditya V.",
+            role: "Collaborator • AI Resume Project",
+            rating: 5,
+            quote: "Clean architecture, intelligent Supabase state synchronization, and rock-solid PDF generation. Smit writes clean, maintainable code.",
+            avatarBg: "linear-gradient(135deg, #8b5cf6, #6d28d9)",
+            icon: "fa-laptop-code",
+            badge: "Project Collaborator"
+        }
+    ];
+
+    if (floatingToastContainer) {
+        let currentIndex = 0;
+        let toastTimer = null;
+        let isHovered = false;
+
+        function getAllReviewsForTicker() {
+            let visitorList = [];
+            try {
+                const raw = localStorage.getItem(STORAGE_KEY);
+                if (raw) {
+                    const parsed = JSON.parse(raw);
+                    visitorList = parsed.map(v => ({
+                        name: v.author,
+                        role: v.role,
+                        rating: v.rating || 5,
+                        quote: v.message,
+                        avatarBg: "linear-gradient(135deg, #10b981, #059669)",
+                        letter: (v.author && v.author.trim()[0]) ? v.author.trim()[0].toUpperCase() : "U",
+                        badge: "✨ Verified Visitor Review"
+                    }));
+                }
+            } catch (e) {
+                // local storage catch
+            }
+
+            return [...visitorList, ...SEED_FLOATING_REVIEWS];
+        }
+
+        function renderFloatingToast(review) {
+            const stars = Array.from({ length: 5 }, (_, i) => 
+                `<i class="${i < review.rating ? 'fa-solid' : 'fa-regular'} fa-star"></i>`
+            ).join('');
+
+            const avatarContent = review.letter ? 
+                `<span>${escapeHtml(review.letter)}</span>` : 
+                `<i class="fa-solid ${review.icon || 'fa-user'}"></i>`;
+
+            floatingToastContainer.innerHTML = `
+                <div class="floating-review-card" title="Click to view all reviews on portfolio">
+                    <div class="live-pill-row">
+                        <span class="live-tag">
+                            <span class="pulse-dot"></span>
+                            ${escapeHtml(review.badge || "Verified Review")}
+                        </span>
+                        <button type="button" class="close-toast-btn" aria-label="Close notification" title="Dismiss">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                    <div class="review-main-row">
+                        <div class="reviewer-avatar" style="background: ${review.avatarBg || 'linear-gradient(135deg, #f59e0b, #ea580c)'}">
+                            ${avatarContent}
+                        </div>
+                        <div class="reviewer-info">
+                            <div class="reviewer-name">${escapeHtml(review.name)}</div>
+                            <div class="reviewer-role">${escapeHtml(review.role)}</div>
+                        </div>
+                    </div>
+                    <div class="review-stars-row">
+                        ${stars}
+                        <span class="review-score">${review.rating}.0/5.0</span>
+                    </div>
+                    <p class="review-snippet">"${escapeHtml(review.quote)}"</p>
+                    <div class="toast-progress-bar"></div>
+                </div>
+            `;
+
+            // Card click scrolls to #reviews
+            const card = floatingToastContainer.querySelector(".floating-review-card");
+            if (card) {
+                card.addEventListener("click", (e) => {
+                    if (e.target.closest(".close-toast-btn")) return;
+                    const reviewsSec = document.getElementById("reviews");
+                    if (reviewsSec) {
+                        reviewsSec.scrollIntoView({ behavior: "smooth", block: "start" });
+                    }
+                });
+            }
+
+            // Close button
+            const closeBtn = floatingToastContainer.querySelector(".close-toast-btn");
+            if (closeBtn) {
+                closeBtn.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    hideToast();
+                });
+            }
+
+            // Hover pause
+            floatingToastContainer.onmouseenter = () => { isHovered = true; };
+            floatingToastContainer.onmouseleave = () => { isHovered = false; };
+        }
+
+        function showNextToast() {
+            const list = getAllReviewsForTicker();
+            if (list.length === 0) return;
+
+            if (currentIndex >= list.length) currentIndex = 0;
+            const review = list[currentIndex];
+            currentIndex = (currentIndex + 1) % list.length;
+
+            renderFloatingToast(review);
+
+            // Animate in
+            floatingToastContainer.classList.remove("hide");
+            floatingToastContainer.classList.add("show");
+
+            // Progress bar animation
+            const bar = floatingToastContainer.querySelector(".toast-progress-bar");
+            if (bar) {
+                bar.style.transition = "none";
+                bar.style.transform = "scaleX(1)";
+                setTimeout(() => {
+                    bar.style.transition = "transform 5.5s linear";
+                    bar.style.transform = "scaleX(0)";
+                }, 50);
+            }
+
+            // Schedule hide after 5.5s
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => {
+                checkAndHideToast();
+            }, 5500);
+        }
+
+        function checkAndHideToast() {
+            if (isHovered) {
+                toastTimer = setTimeout(checkAndHideToast, 1000);
+            } else {
+                hideToast();
+            }
+        }
+
+        function hideToast() {
+            floatingToastContainer.classList.remove("show");
+            floatingToastContainer.classList.add("hide");
+
+            clearTimeout(toastTimer);
+            // Wait 4s before showing next review
+            toastTimer = setTimeout(() => {
+                showNextToast();
+            }, 4000);
+        }
+
+        // Trigger immediate toast when user submits a new review
+        window.triggerImmediateReviewToast = function(author, role, rating, message) {
+            const newRev = {
+                name: author,
+                role: role,
+                rating: rating,
+                quote: message,
+                avatarBg: "linear-gradient(135deg, #10b981, #059669)",
+                letter: (author && author.trim()[0]) ? author.trim()[0].toUpperCase() : "U",
+                badge: "🎉 Just Reviewed!"
+            };
+            clearTimeout(toastTimer);
+            floatingToastContainer.classList.remove("show");
+            floatingToastContainer.classList.add("hide");
+
+            setTimeout(() => {
+                renderFloatingToast(newRev);
+                floatingToastContainer.classList.remove("hide");
+                floatingToastContainer.classList.add("show");
+                toastTimer = setTimeout(() => {
+                    checkAndHideToast();
+                }, 6000);
+            }, 500);
+        };
+
+        // Start floating social proof ticker after 3.5s
+        setTimeout(() => {
+            showNextToast();
+        }, 3500);
     }
 });

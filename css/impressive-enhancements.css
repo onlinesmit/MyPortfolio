@@ -3676,3 +3676,201 @@ header .logo-div:hover img {
         font-size: 1.4rem;
     }
 }
+
+/* ==========================================================================
+   FLOATING LIVE REVIEWS TICKER (SOCIAL PROOF POPUPS - AATA JATA RHE)
+   ========================================================================== */
+.floating-review-toast {
+    position: fixed;
+    bottom: 25px;
+    left: 105px;
+    z-index: 940;
+    max-width: 385px;
+    width: calc(100vw - 140px);
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(25px) scale(0.96);
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.floating-review-toast.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+.floating-review-toast.hide {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    pointer-events: none;
+}
+.floating-review-card {
+    background: rgba(15, 23, 42, 0.94);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1.5px solid rgba(245, 158, 11, 0.4);
+    border-radius: 18px;
+    padding: 1.4rem 1.8rem 1.3rem;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(245, 158, 11, 0.16);
+    color: #f8fafc;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.floating-review-card:hover {
+    transform: translateY(-3px);
+    border-color: #f59e0b;
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.6), 0 0 35px rgba(245, 158, 11, 0.3);
+}
+.floating-review-card .live-pill-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.9rem;
+}
+.floating-review-card .live-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(16, 185, 129, 0.16);
+    border: 1px solid rgba(16, 185, 129, 0.35);
+    color: #34d399;
+    padding: 0.25rem 0.85rem;
+    border-radius: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 1.05rem;
+}
+.floating-review-card .live-tag .pulse-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #34d399;
+    box-shadow: 0 0 8px #34d399;
+    animation: livePulse 1.6s infinite;
+}
+@keyframes livePulse {
+    0% { transform: scale(0.9); opacity: 0.8; }
+    50% { transform: scale(1.4); opacity: 1; }
+    100% { transform: scale(0.9); opacity: 0.8; }
+}
+.floating-review-card .close-toast-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: all 0.2s ease;
+}
+.floating-review-card .close-toast-btn:hover {
+    background: rgba(239, 68, 68, 0.2);
+    color: #f87171;
+}
+.floating-review-card .review-main-row {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-bottom: 0.8rem;
+}
+.floating-review-card .reviewer-avatar {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.7rem;
+    color: #ffffff;
+    font-weight: 800;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+.floating-review-card .reviewer-info {
+    flex: 1;
+    min-width: 0;
+}
+.floating-review-card .reviewer-name {
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 0.2rem;
+}
+.floating-review-card .reviewer-role {
+    font-size: 1.2rem;
+    color: #94a3b8;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.floating-review-card .review-stars-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1.3rem;
+    color: #fbbf24;
+    margin-bottom: 0.6rem;
+}
+.floating-review-card .review-stars-row i {
+    text-shadow: 0 0 8px rgba(251, 191, 36, 0.4);
+}
+.floating-review-card .review-score {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #f1f5f9;
+    margin-left: 0.4rem;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 0.15rem 0.6rem;
+    border-radius: 4px;
+}
+.floating-review-card .review-snippet {
+    font-size: 1.32rem;
+    color: #cbd5e1;
+    line-height: 1.5;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.floating-review-card .toast-progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background: linear-gradient(90deg, #f59e0b, #fbbf24);
+    transform-origin: left;
+}
+
+/* Mobile Responsiveness for Floating Toast */
+@media (max-width: 768px) {
+    .floating-review-toast {
+        left: 16px;
+        right: 16px;
+        bottom: 84px; /* Positioned directly above bottom floating buttons */
+        max-width: calc(100% - 32px);
+        width: calc(100% - 32px);
+        margin: 0 auto;
+    }
+    .floating-review-card {
+        padding: 1.2rem 1.4rem 1.1rem;
+        border-radius: 14px;
+    }
+    .floating-review-card .reviewer-name {
+        font-size: 1.35rem;
+    }
+    .floating-review-card .review-snippet {
+        font-size: 1.22rem;
+        -webkit-line-clamp: 2;
+    }
+}
