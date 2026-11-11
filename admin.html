@@ -468,6 +468,54 @@
     tbody tr:hover {
       background: rgba(255, 255, 255, 0.025);
     }
+    /* Visitor Identity Badges */
+    .visitor-id-cell {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .visitor-name-row {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .visitor-name-text {
+      font-size: 13.5px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .visitor-name-text.identified-name {
+      color: #38bdf8;
+    }
+    .visitor-name-text.guest-name {
+      color: #e2e8f0;
+    }
+    .badge-source-verified {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      color: #34d399;
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 1px 7px;
+      border-radius: 12px;
+      width: fit-content;
+    }
+    .badge-source-anon {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(148, 163, 184, 0.12);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      color: #94a3b8;
+      font-size: 10.5px;
+      font-weight: 600;
+      padding: 1px 7px;
+      border-radius: 12px;
+      width: fit-content;
+    }
     .geo-pill {
       display: flex;
       align-items: center;
@@ -666,7 +714,7 @@
         </div>
         <div class="metric-data">
           <div class="stat-val" id="stat-total-visits">0</div>
-          <div class="stat-label">Total Visits Tracked</div>
+          <div class="stat-label" id="stat-total-label">Total Visits Tracked</div>
         </div>
       </div>
 
@@ -727,11 +775,16 @@
             type="text"
             id="log-search-input"
             class="search-input"
-            placeholder="Search by city, country, IP address, device, or source..."
+            placeholder="Search by visitor name, city, country, IP address, device, or source..."
           />
         </div>
 
         <div class="filter-dropdowns">
+          <select id="filter-identity" class="filter-select">
+            <option value="all">All Visitors</option>
+            <option value="identified">👤 Identified Only</option>
+            <option value="guests">🔍 Guests Only</option>
+          </select>
           <select id="filter-device" class="filter-select">
             <option value="all">All Devices</option>
             <option value="Mobile">Mobile Only</option>
@@ -757,6 +810,7 @@
             <thead>
               <tr>
                 <th>Time &amp; Date</th>
+                <th>Visitor / Name</th>
                 <th>Location &amp; City</th>
                 <th>IP Address &amp; ISP</th>
                 <th>Device &amp; Browser</th>
@@ -938,6 +992,7 @@
       function updateMetrics() {
         const logs = getLogs();
         const totalVisitsEl = document.getElementById("stat-total-visits");
+        const totalLabel = document.getElementById("stat-total-label");
         const topCountryEl = document.getElementById("stat-top-country");
         const deviceRatioEl = document.getElementById("stat-device-ratio");
         const topSourceEl = document.getElementById("stat-top-source");
@@ -945,6 +1000,12 @@
 
         totalVisitsEl.textContent = logs.length;
         tabCountVisitors.textContent = logs.length;
+
+        // Calculate Identified count
+        const identifiedCount = logs.filter(l => l.identified || (l.visitorName && l.visitorName !== "Guest Visitor" && !l.visitorName.includes("Anonymous"))).length;
+        if (totalLabel) {
+          totalLabel.textContent = identifiedCount > 0 ? `${identifiedCount} Identified • Total Visits` : "Total Visits Tracked";
+        }
 
         if (logs.length > 0) {
           // 1. Top Country / City
@@ -994,11 +1055,17 @@
         const logs = getLogs();
         const tbody = document.getElementById("visitor-table-body");
         const searchVal = document.getElementById("log-search-input").value.toLowerCase().trim();
+        const identityVal = document.getElementById("filter-identity") ? document.getElementById("filter-identity").value : "all";
         const deviceVal = document.getElementById("filter-device").value;
         const sourceVal = document.getElementById("filter-source").value;
 
         const filtered = logs.filter(log => {
+          const isIdentified = log.identified || (log.visitorName && log.visitorName !== "Guest Visitor" && !log.visitorName.includes("Anonymous"));
+          const matchIdentity = identityVal === "all" || (identityVal === "identified" && isIdentified) || (identityVal === "guests" && !isIdentified);
+
           const matchSearch = !searchVal || 
+            (log.visitorName && log.visitorName.toLowerCase().includes(searchVal)) ||
+            (log.nameSource && log.nameSource.toLowerCase().includes(searchVal)) ||
             (log.city && log.city.toLowerCase().includes(searchVal)) ||
             (log.country && log.country.toLowerCase().includes(searchVal)) ||
             (log.region && log.region.toLowerCase().includes(searchVal)) ||
@@ -1010,13 +1077,13 @@
           const matchDevice = deviceVal === "all" || log.device === deviceVal;
           const matchSource = sourceVal === "all" || (log.referrer && log.referrer.includes(sourceVal));
 
-          return matchSearch && matchDevice && matchSource;
+          return matchSearch && matchDevice && matchSource && matchIdentity;
         });
 
         if (filtered.length === 0) {
           tbody.innerHTML = `
             <tr>
-              <td colspan="5" class="empty-state">
+              <td colspan="6" class="empty-state">
                 <i class="fa-solid fa-earth-asia"></i>
                 <h3 style="font-size:16px;color:#fff;margin-bottom:6px;">No Visitor Logs Found</h3>
                 <p>When someone opens your portfolio, their city, country, device, and network appear here automatically.</p>
@@ -1034,14 +1101,29 @@
           if (log.referrer && log.referrer.includes("Google")) srcClass = "src-google";
 
           const deviceIcon = log.device === "Mobile" ? "fa-mobile-screen" : (log.device === "Tablet" ? "fa-tablet-screen-button" : "fa-laptop");
-
           const locTitle = (log.city && log.city !== "Unknown City") ? `${log.city}, ${log.region || log.country}` : (log.country || 'India');
+          const isIdentified = log.identified || (log.visitorName && log.visitorName !== "Guest Visitor" && !log.visitorName.includes("Anonymous"));
 
           return `
             <tr>
               <td>
                 <div style="font-weight:700;color:#fff;">${escapeHtml(log.readableTime || 'Just now')}</div>
                 <div style="font-size:11px;color:#94a3b8;">${escapeHtml(log.timezone || '')}</div>
+              </td>
+              <td>
+                <div class="visitor-id-cell">
+                  <div class="visitor-name-row">
+                    <i class="fa-solid ${isIdentified ? 'fa-circle-check' : 'fa-circle-user'}" style="color:${isIdentified ? '#10b981' : '#64748b'};font-size:13px;"></i>
+                    <span class="visitor-name-text ${isIdentified ? 'identified-name' : 'guest-name'}">
+                      ${escapeHtml(log.visitorName || 'Guest Visitor')}
+                    </span>
+                  </div>
+                  <div class="visitor-source-badge">
+                    ${isIdentified 
+                      ? `<span class="badge-source-verified"><i class="fa-solid fa-tag"></i> ${escapeHtml(log.nameSource || 'Verified')}</span>` 
+                      : `<span class="badge-source-anon"><i class="fa-regular fa-clock"></i> Awaiting Intro / Form</span>`}
+                  </div>
+                </div>
               </td>
               <td>
                 <div class="geo-pill">
@@ -1129,6 +1211,9 @@
 
       // Search & Filters Listeners
       document.getElementById("log-search-input").addEventListener("input", renderVisitorLogs);
+      if (document.getElementById("filter-identity")) {
+        document.getElementById("filter-identity").addEventListener("change", renderVisitorLogs);
+      }
       document.getElementById("filter-device").addEventListener("change", renderVisitorLogs);
       document.getElementById("filter-source").addEventListener("change", renderVisitorLogs);
 
@@ -1175,6 +1260,9 @@
             minute: "2-digit",
             hour12: true
           }),
+          visitorName: "Smit Kumar (Admin)",
+          nameSource: "Admin Dashboard Test",
+          identified: true,
           ip: testIP,
           city: testCity,
           region: testRegion,
@@ -1211,9 +1299,11 @@
           return;
         }
 
-        const headers = ["Time", "City", "Region", "Country", "IP", "ISP", "Device", "OS", "Browser", "Screen", "Referrer"];
+        const headers = ["Time", "Visitor Name", "Identity Source", "City", "Region", "Country", "IP", "ISP", "Device", "OS", "Browser", "Screen", "Referrer"];
         const rows = logs.map(l => [
           `"${l.readableTime || ''}"`,
+          `"${l.visitorName || 'Guest Visitor'}"`,
+          `"${l.nameSource || 'Unidentified'}"`,
           `"${l.city || ''}"`,
           `"${l.region || ''}"`,
           `"${l.country || ''}"`,

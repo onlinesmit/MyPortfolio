@@ -367,6 +367,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.error("Storage error:", err);
             }
 
+            // Register visitor identity in analytics telemetry
+            if (window.identifyVisitor && author) {
+                window.identifyVisitor(author, "Rating & Review");
+            }
+
             // Background notification to Smit via FormSubmit
             fetch("https://formsubmit.co/ajax/smitkumar217@gmail.com", {
                 method: "POST",

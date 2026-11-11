@@ -1,11 +1,14 @@
 /**
  * Smit's Portfolio - Privacy-Friendly Visitor Intelligence & Geolocation Engine
- * Tracks City, Country, Device, Referrer, and logs to Admin storage + optional Email alerts
+ * Tracks City, Country, Device, Referrer, and Visitor Identity / Name
+ * Logs to Admin storage + optional Real-Time Email alerts
  */
 (function() {
     const STORAGE_KEY = "smit_portfolio_visitor_logs";
     const SESSION_KEY = "smit_portfolio_session_tracked";
     const SETTINGS_KEY = "smit_portfolio_analytics_settings";
+    const IDENTITY_KEY = "smit_visitor_identity";
+    const CURRENT_VISIT_ID_KEY = "smit_current_visit_id";
 
     // Detect Device Type
     function getDeviceType() {
@@ -59,13 +62,145 @@
         }
     }
 
-    // Geolocation and visitor logging
-    async function trackVisitor() {
-        // Prevent duplicate tracking in the same session
-        if (sessionStorage.getItem(SESSION_KEY)) {
+    // -------------------------------------------------------------
+    // VISITOR IDENTITY ENGINE
+    // -------------------------------------------------------------
+    function getVisitorIdentity() {
+        // 1. Check URL parameters (?name=Rahul or ?v=Priya or ?for=Google_Recruiter)
+        try {
+            const params = new URLSearchParams(window.location.search);
+            const urlName = params.get("name") || params.get("v") || params.get("visitor") || params.get("for") || params.get("client") || params.get("ref");
+            if (urlName && urlName.trim()) {
+                const cleanName = decodeURIComponent(urlName.trim().replace(/[_+]/g, ' '));
+                let sourceDesc = "Shared Portfolio Link";
+                if (params.get("for")) sourceDesc = `Custom Link (For: ${cleanName})`;
+                else if (params.get("client")) sourceDesc = `Client Link (${cleanName})`;
+                else if (params.get("ref")) sourceDesc = `Referral Link (${cleanName})`;
+
+                const identity = {
+                    name: cleanName,
+                    source: sourceDesc,
+                    timestamp: Date.now()
+                };
+                localStorage.setItem(IDENTITY_KEY, JSON.stringify(identity));
+                return identity;
+            }
+        } catch (e) {}
+
+        // 2. Check localStorage for previously recognized visitor
+        try {
+            const saved = localStorage.getItem(IDENTITY_KEY);
+            if (saved) {
+                const parsed = JSON.parse(saved);
+                if (parsed && parsed.name) {
+                    return parsed;
+                }
+            }
+        } catch (e) {}
+
+        return null;
+    }
+
+    // Global Identity Registration API
+    window.identifyVisitor = function(name, source) {
+        if (!name || typeof name !== "string" || !name.trim()) return;
+        const cleanName = name.trim();
+        const cleanSource = source || "Direct Input";
+
+        const identity = {
+            name: cleanName,
+            source: cleanSource,
+            timestamp: Date.now()
+        };
+
+        try {
+            localStorage.setItem(IDENTITY_KEY, JSON.stringify(identity));
+
+            // Backfill current session visit and all local logs
+            const rawLogs = localStorage.getItem(STORAGE_KEY);
+            if (rawLogs) {
+                const logs = JSON.parse(rawLogs);
+                const currentId = sessionStorage.getItem(CURRENT_VISIT_ID_KEY);
+                let updated = false;
+
+                logs.forEach(l => {
+                    if (currentId && l.id === currentId) {
+                        l.visitorName = cleanName;
+                        l.nameSource = cleanSource;
+                        l.identified = true;
+                        updated = true;
+                    }
+                });
+
+                // If currentId wasn't found, update the most recent log
+                if (!updated && logs.length > 0) {
+                    logs[0].visitorName = cleanName;
+                    logs[0].nameSource = cleanSource;
+                    logs[0].identified = true;
+                }
+
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(logs));
+            }
+        } catch (e) {
+            console.error("Identity update error:", e);
+        }
+
+        // Broadcast DOM event
+        window.dispatchEvent(new CustomEvent("smit:visitor-identified", { detail: identity }));
+
+        // Update UI greetings on the page
+        updateVisitorUI(cleanName);
+
+        // Send instant alert email to Smit for this identified visitor
+        sendIdentifiedVisitorAlert(identity);
+    };
+
+    window.getVisitorIdentity = getVisitorIdentity;
+
+    // Send instant alert email when visitor identifies themselves
+    function sendIdentifiedVisitorAlert(identity) {
+        const alertSentKey = "smit_alert_sent_" + identity.name.toLowerCase().replace(/[^a-z0-9]/g, '_');
+        if (sessionStorage.getItem(alertSentKey)) return;
+
+        // Skip sending on local development
+        if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
             return;
         }
 
+        const settings = JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{"emailAlerts": true}');
+        if (!settings.emailAlerts) return;
+
+        let latestLog = {};
+        try {
+            const logs = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+            if (logs.length > 0) latestLog = logs[0];
+        } catch (e) {}
+
+        fetch("https://formsubmit.co/ajax/smitkumar217@gmail.com", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                _subject: `👤 Identified Visitor: ${identity.name} (${identity.source}) is on your Portfolio!`,
+                _template: "table",
+                Visitor_Name: identity.name,
+                Identification_Source: identity.source,
+                Location: latestLog.city ? `${latestLog.flag || ''} ${latestLog.city}, ${latestLog.region || ''}, ${latestLog.country || ''}` : "Detected on site",
+                Device: latestLog.device || "Desktop",
+                Operating_System: latestLog.os || "Unknown",
+                Browser: latestLog.browser || "Unknown",
+                Traffic_Source: latestLog.referrer || "Direct",
+                Identified_At: new Date().toLocaleString("en-IN")
+            })
+        }).then(() => {
+            sessionStorage.setItem(alertSentKey, "true");
+        }).catch(() => {});
+    }
+
+    // Geolocation and visitor logging
+    async function trackVisitor() {
         const device = getDeviceType();
         const os = getOS();
         const browser = getBrowser();
@@ -81,6 +216,11 @@
             minute: "2-digit",
             hour12: true
         });
+
+        const activeIdentity = getVisitorIdentity();
+        const visitorName = activeIdentity ? activeIdentity.name : "Guest Visitor";
+        const nameSource = activeIdentity ? activeIdentity.source : "";
+        const identified = !!activeIdentity;
 
         let geoData = {
             ip: "Private / Hidden",
@@ -108,7 +248,6 @@
                 };
             }
         } catch (err) {
-            // Fallback to ipapi.co if ipwho fails
             try {
                 const res2 = await fetch("https://ipapi.co/json/", { cache: "no-store" });
                 const data2 = await res2.json();
@@ -123,15 +262,19 @@
                         isp: data2.org || "Network"
                     };
                 }
-            } catch (err2) {
-                // If offline / adblocked, keep default
-            }
+            } catch (err2) {}
         }
 
+        const visitId = "visit_" + Date.now() + "_" + Math.floor(Math.random() * 1000);
+        sessionStorage.setItem(CURRENT_VISIT_ID_KEY, visitId);
+
         const visitRecord = {
-            id: "visit_" + Date.now() + "_" + Math.floor(Math.random() * 1000),
+            id: visitId,
             timestamp: timestamp,
             readableTime: readableTime,
+            visitorName: visitorName,
+            nameSource: nameSource,
+            identified: identified,
             ip: geoData.ip,
             city: geoData.city,
             region: geoData.region,
@@ -158,15 +301,19 @@
             console.error("Storage error:", e);
         }
 
-        // Mark session as tracked
-        sessionStorage.setItem(SESSION_KEY, "true");
+        // Prevent duplicate tracking in the same session
+        if (!sessionStorage.getItem(SESSION_KEY)) {
+            sessionStorage.setItem(SESSION_KEY, "true");
+            sendVisitorEmailNotification(visitRecord);
+        }
 
-        // Send real-time email notification to Smit (rate-limited to 1 per visitor session)
-        sendVisitorEmailNotification(visitRecord);
+        // Update UI greetings if visitor already has a known name
+        if (activeIdentity) {
+            updateVisitorUI(activeIdentity.name);
+        }
     }
 
     function sendVisitorEmailNotification(visit) {
-        // Check if email alerts are enabled (default: true)
         const settings = JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{"emailAlerts": true}');
         if (!settings.emailAlerts) return;
 
@@ -175,6 +322,10 @@
             return;
         }
 
+        const subjectTitle = visit.identified 
+            ? `👤 ${visit.visitorName} visited your Portfolio (${visit.city}, ${visit.country})`
+            : `🌍 Portfolio Visit: ${visit.city}, ${visit.country} (${visit.device} via ${visit.referrer})`;
+
         fetch("https://formsubmit.co/ajax/smitkumar217@gmail.com", {
             method: "POST",
             headers: {
@@ -182,8 +333,9 @@
                 "Accept": "application/json"
             },
             body: JSON.stringify({
-                _subject: `🌍 Portfolio Visit: ${visit.city}, ${visit.country} (${visit.device} via ${visit.referrer})`,
+                _subject: subjectTitle,
                 _template: "table",
+                Visitor_Name: visit.identified ? `${visit.visitorName} (${visit.nameSource || 'Verified'})` : "Guest Visitor (Unidentified)",
                 Location: `${visit.flag} ${visit.city}, ${visit.region}, ${visit.country}`,
                 IP_Address: visit.ip,
                 ISP_Network: visit.isp,
@@ -195,16 +347,115 @@
                 Timestamp: visit.readableTime,
                 Page: visit.page
             })
-        }).catch(() => {
-            // Background silent catch
-        });
+        }).catch(() => {});
+    }
+
+    // Update Visitor UI on page
+    function updateVisitorUI(name) {
+        if (!name) return;
+        const passBtn = document.getElementById("btn-hero-visitor-pass");
+        const passText = document.getElementById("hero-pass-text");
+        if (passBtn && passText) {
+            passBtn.classList.add("is-identified");
+            passText.innerHTML = `👋 Welcome, <strong>${escapeHTML(name)}</strong>!`;
+            passBtn.title = `You are checked in as ${name}. Click to update your name or title.`;
+        }
+    }
+
+    function escapeHTML(str) {
+        return String(str).replace(/[&<>'"]/g, tag => ({
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            "'": '&#39;',
+            '"': '&quot;'
+        }[tag] || tag));
+    }
+
+    // -------------------------------------------------------------
+    // ATTACH AUTO-DETECTION LISTENERS
+    // -------------------------------------------------------------
+    function attachIdentityListeners() {
+        // 1. Contact Form - Name input blur
+        const contactNameInput = document.getElementById("form-name");
+        if (contactNameInput) {
+            contactNameInput.addEventListener("blur", () => {
+                const val = contactNameInput.value.trim();
+                if (val.length >= 2) {
+                    window.identifyVisitor(val, "Contact Form");
+                }
+            });
+        }
+
+        // 2. Rating Modal - Name input blur
+        const reviewAuthorInput = document.getElementById("review-author");
+        if (reviewAuthorInput) {
+            reviewAuthorInput.addEventListener("blur", () => {
+                const val = reviewAuthorInput.value.trim();
+                if (val.length >= 2) {
+                    window.identifyVisitor(val, "Rating & Review");
+                }
+            });
+        }
+
+        // 3. Visitor Pass Modal Handlers
+        const passBtn = document.getElementById("btn-hero-visitor-pass");
+        const passModal = document.getElementById("visitor-pass-modal-overlay");
+        const passClose = document.getElementById("close-visitor-pass-btn");
+        const passCancel = document.getElementById("btn-vp-cancel");
+        const passForm = document.getElementById("visitor-pass-form");
+        const passInput = document.getElementById("vp-name-input");
+
+        if (passBtn && passModal) {
+            passBtn.addEventListener("click", () => {
+                const activeId = getVisitorIdentity();
+                if (activeId && passInput) {
+                    passInput.value = activeId.name;
+                }
+                passModal.style.display = "flex";
+                setTimeout(() => passModal.classList.add("active"), 10);
+                if (passInput) passInput.focus();
+            });
+
+            const closeModal = () => {
+                passModal.classList.remove("active");
+                setTimeout(() => passModal.style.display = "none", 250);
+            };
+
+            if (passClose) passClose.addEventListener("click", closeModal);
+            if (passCancel) passCancel.addEventListener("click", closeModal);
+            passModal.addEventListener("click", (e) => {
+                if (e.target === passModal) closeModal();
+            });
+
+            if (passForm && passInput) {
+                passForm.addEventListener("submit", (e) => {
+                    e.preventDefault();
+                    const nameVal = passInput.value.trim();
+                    if (nameVal) {
+                        window.identifyVisitor(nameVal, "Visitor Pass");
+                        closeModal();
+                    }
+                });
+            }
+        }
+
+        // Update UI if already recognized
+        const activeId = getVisitorIdentity();
+        if (activeId) {
+            updateVisitorUI(activeId.name);
+        }
     }
 
     // Initialize tracking after slight delay so page loads fast
     if (document.readyState === "complete" || document.readyState === "interactive") {
         setTimeout(trackVisitor, 1200);
+        setTimeout(attachIdentityListeners, 500);
     } else {
-        window.addEventListener("DOMContentLoaded", () => setTimeout(trackVisitor, 1200));
+        window.addEventListener("DOMContentLoaded", () => {
+            setTimeout(trackVisitor, 1200);
+            setTimeout(attachIdentityListeners, 500);
+        });
     }
 
     // Secret Admin Access via Hotkey: Ctrl + Shift + A

@@ -515,6 +515,26 @@
         function findReply(query) {
             const normalized = query.toLowerCase().trim();
 
+            // 1. Check for user introduction (e.g. "my name is Rahul", "i am Priya", "myself Alex", "mera naam Abhishek hai")
+            const introMatch = normalized.match(/(?:my name is|i am|i'm|call me|myself|this is|mera naam|mai hu|main hu)\s+([a-zA-Z]{2,20}(?:\s+[a-zA-Z]{2,20})?)/i);
+            if (introMatch && introMatch[1]) {
+                const rawName = introMatch[1].trim();
+                const cleanName = rawName.split(/\s+/).map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' ');
+
+                if (window.identifyVisitor) {
+                    window.identifyVisitor(cleanName, "AI Assistant Chat");
+                }
+
+                return {
+                    reply: `👋 Wonderful to meet you, **${cleanName}**! ✨<br><br>I've noted your introduction and linked your visit to Smit's dashboard. How can I assist you today? Looking to explore his **projects**, inspect his **resume**, or schedule an interview?`,
+                    actions: [
+                        { text: "🚀 Explore Projects", chip: "projects" },
+                        { text: "💼 Hire Smit", chip: "hire" },
+                        { text: "💬 Chat on WhatsApp", url: WHATSAPP_LINK, isWa: true }
+                    ]
+                };
+            }
+
             for (const item of KNOWLEDGE_BASE) {
                 for (const keyword of item.keywords) {
                     if (normalized.includes(keyword)) {

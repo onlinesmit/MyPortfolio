@@ -79,6 +79,11 @@ if (modernContactForm && formSubmitBtn) {
     formSubmitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> <span>Sending Email...</span>';
     setFormAlert('info', '<i class="fa-solid fa-paper-plane fa-fade"></i> <div>Delivering your message to <strong>smitkumar217@gmail.com</strong>...</div>');
 
+    // Register visitor identity in analytics telemetry
+    if (window.identifyVisitor && name) {
+      window.identifyVisitor(name, "Contact Form");
+    }
+
     try {
       const response = await fetch("https://formsubmit.co/ajax/smitkumar217@gmail.com", {
         method: "POST",

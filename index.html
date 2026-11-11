@@ -156,6 +156,12 @@
             <span class="hero-rating-text">58+ Happy Clients, Mentors &amp; Peers</span>
             <i class="fa-solid fa-arrow-down hero-arrow-icon"></i>
           </a>
+
+          <!-- Interactive Visitor Pass Button -->
+          <button type="button" class="hero-visitor-pass-pill" id="btn-hero-visitor-pass" title="Introduce yourself to Smit">
+            <i class="fa-solid fa-id-badge"></i>
+            <span id="hero-pass-text">👋 Introduce Yourself</span>
+          </button>
         </div>
       </div>
 
@@ -1576,6 +1582,46 @@
 
         <div class="rating-modal-footer-note">
           <i class="fa-solid fa-shield-halved"></i> Your review is displayed immediately on this portfolio and delivered to Smit's email.
+        </div>
+      </div>
+    </div>
+
+    <!-- //////////// Interactive Visitor Pass Modal //////////// -->
+    <div class="visitor-pass-modal-overlay" id="visitor-pass-modal-overlay" style="display:none;" aria-hidden="true">
+      <div class="visitor-pass-card" role="dialog" aria-modal="true" aria-labelledby="vp-modal-title">
+        <button type="button" class="visitor-pass-close" id="close-visitor-pass-btn" aria-label="Close dialog">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="vp-header">
+          <div class="vp-badge-pill">
+            <i class="fa-solid fa-fingerprint"></i> Visitor Identification Pass
+          </div>
+          <h3 id="vp-modal-title" class="vp-title">Visiting Smit's Portfolio?</h3>
+          <p class="vp-subtitle">
+            Introduce yourself so Smit knows who dropped by! Your name will appear in his private admin telemetry.
+          </p>
+        </div>
+
+        <form id="visitor-pass-form" class="vp-form">
+          <div class="form-group">
+            <label for="vp-name-input" class="form-label">Your Name &amp; Title / Company <span class="required">*</span></label>
+            <div class="input-with-icon">
+              <i class="fa-solid fa-user-tie"></i>
+              <input type="text" id="vp-name-input" class="form-input" placeholder="e.g. Vikram Mehta (Engineering Lead @ TCS)" required />
+            </div>
+          </div>
+
+          <div class="vp-actions">
+            <button type="submit" class="btn-vp-submit" id="btn-vp-submit">
+              <i class="fa-solid fa-id-card"></i> Check In / Save Pass
+            </button>
+            <button type="button" class="btn-vp-cancel" id="btn-vp-cancel">Maybe Later</button>
+          </div>
+        </form>
+
+        <div class="vp-footer-note">
+          <i class="fa-solid fa-shield-halved"></i> Privacy guaranteed. Stored securely and only visible to Smit.
         </div>
       </div>
     </div>

@@ -3874,3 +3874,183 @@ header .logo-div:hover img {
         -webkit-line-clamp: 2;
     }
 }
+
+/* ================= VISITOR IDENTIFICATION PASS ================= */
+.hero-visitor-pass-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.75rem 1.6rem;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.18), rgba(168, 85, 247, 0.2));
+    border: 1px solid rgba(168, 85, 247, 0.45);
+    border-radius: 50px;
+    color: #e0e7ff;
+    font-size: 1.3rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    backdrop-filter: blur(8px);
+    margin-left: 0.5rem;
+}
+.hero-visitor-pass-pill:hover {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.32), rgba(168, 85, 247, 0.32));
+    border-color: #c084fc;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 18px rgba(168, 85, 247, 0.35);
+}
+.hero-visitor-pass-pill i {
+    color: #f59e0b;
+    font-size: 1.35rem;
+}
+.hero-visitor-pass-pill.is-identified {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.18), rgba(5, 150, 105, 0.2));
+    border-color: rgba(52, 211, 153, 0.5);
+    color: #ecfdf5;
+}
+.hero-visitor-pass-pill.is-identified i {
+    color: #34d399;
+}
+
+/* Visitor Pass Modal */
+.visitor-pass-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(3, 7, 18, 0.84);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    padding: 2rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+}
+.visitor-pass-modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+.visitor-pass-card {
+    background: #0f172a;
+    border: 1.5px solid rgba(168, 85, 247, 0.45);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 35px rgba(168, 85, 247, 0.2);
+    border-radius: 20px;
+    padding: 3.2rem 2.8rem;
+    max-width: 480px;
+    width: 100%;
+    position: relative;
+    transform: scale(0.92);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.visitor-pass-modal-overlay.active .visitor-pass-card {
+    transform: scale(1);
+}
+.visitor-pass-close {
+    position: absolute;
+    top: 1.6rem;
+    right: 1.6rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #94a3b8;
+    width: 3.4rem;
+    height: 3.4rem;
+    border-radius: 50%;
+    font-size: 1.6rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+.visitor-pass-close:hover {
+    color: #ffffff;
+    background: rgba(239, 68, 68, 0.25);
+    border-color: rgba(239, 68, 68, 0.5);
+}
+.vp-badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: rgba(168, 85, 247, 0.15);
+    border: 1px solid rgba(168, 85, 247, 0.35);
+    color: #d8b4fe;
+    font-size: 1.15rem;
+    font-weight: 700;
+    padding: 0.35rem 1.1rem;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 1.2rem;
+}
+.vp-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 0.8rem;
+}
+.vp-subtitle {
+    font-size: 1.35rem;
+    color: #94a3b8;
+    line-height: 1.5;
+    margin-bottom: 2.2rem;
+}
+.vp-form .form-group {
+    margin-bottom: 2rem;
+}
+.vp-form .form-label {
+    display: block;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #cbd5e1;
+    margin-bottom: 0.6rem;
+}
+.vp-actions {
+    display: flex;
+    gap: 1.2rem;
+    margin-bottom: 1.8rem;
+}
+.btn-vp-submit {
+    flex: 1;
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 1.2rem 1.8rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    transition: all 0.25s ease;
+}
+.btn-vp-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+}
+.btn-vp-cancel {
+    background: rgba(255, 255, 255, 0.08);
+    color: #94a3b8;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    padding: 1.2rem 1.6rem;
+    font-size: 1.35rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.btn-vp-cancel:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.14);
+}
+.vp-footer-note {
+    font-size: 1.15rem;
+    color: #64748b;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+}
